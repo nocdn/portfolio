@@ -10,7 +10,4 @@
   main {
     height: 100dvh;
   }
-  Sidebar {
-    height: 100%;
-  }
 </style>
