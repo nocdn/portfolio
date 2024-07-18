@@ -26,7 +26,7 @@
 
 <style lang="scss">
     .sidebar {
-        height: 100%;
+        height: 100vh;
         padding-left: 2rem;
         display: flex;
         flex-direction: column;

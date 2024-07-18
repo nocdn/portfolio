@@ -30,8 +30,11 @@
 <main>
     <Sidebar selectedIndex={selectedIndex} />
     <div class="main-content">
-      <!-- <About /> -->
-      <Projects />
+      {#if selectedIndex === 0}
+        <About />
+      {:else if selectedIndex === 1}
+        <Projects />
+      {/if}
     </div>
 </main>
 
@@ -44,6 +47,7 @@
   }
 
   .main-content {
-    padding: 8rem 4rem 0rem
+    padding: 8rem 4rem 0rem;
+    overflow-y: scroll;
   }
 </style>

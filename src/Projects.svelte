@@ -1,5 +1,18 @@
 <script>
+  let shownProjects = 0
 
+  function graduallyShowProjects() {
+    const interval = setInterval(() => {
+      if (shownProjects < 4) {
+        shownProjects += 1;
+        console.log(shownProjects);
+      } else {
+        clearInterval(interval);
+      }
+    }, 200);
+  }
+
+  graduallyShowProjects();
 </script>
 
 <div class="projects-content content">
@@ -8,7 +21,7 @@
         <h1 data-value="What have I made?">What have I made?</h1>
     </div>
     <div class="projects-grid">
-        <div class="project-card lightGreen">
+        <div class="project-card lightGreen" style="opacity: {shownProjects >= 1? 1 : 0};">
           <img
             src="src/assets/projects-images/shared-calendar.png"
             alt="a screenshot of a shared calendar"
@@ -34,14 +47,15 @@
             and family.
           </p>
           <div class="stack-chips">
-            <span class="stack-chip js">JavaScript</span>
             <span class="stack-chip supabase">Supabase</span>
+            <span class="stack-chip js">JavaScript</span>
             <span class="stack-chip aws">S3</span>
             <span class="stack-chip aws">Lambda</span>
             <span class="stack-chip aws">IAM</span>
           </div>
         </div>
-        <div class="project-card lightOrange">
+        
+        <div class="project-card lightOrange" style="opacity: {shownProjects >= 2? 1 : 0};">
           <img
             src="src/assets/projects-images/language-learning.png"
             alt="a screenshot of a language learning app"
@@ -70,7 +84,7 @@
           </div>
         </div>
 
-        <div class="project-card lightRed">
+        <div class="project-card lightRed" style="opacity: {shownProjects >= 3? 1 : 0};">
           <img
             src="src/assets/projects-images/portfolio-site.png"
             alt="a screenshot of a language learning app"
@@ -102,7 +116,7 @@
           </div>
         </div>
 
-        <div class="project-card lightBlue">
+        <div class="project-card lightBlue" style="opacity: {shownProjects >= 4? 1 : 0};">
           <img
             src="src/assets/projects-images/portfolio-site.png"
             alt="a screenshot of a language learning app"
@@ -124,9 +138,8 @@
             ></span>
           </h4>
           <p class="project-description">
-            How's that for recursion?
-            This is a fairly simple website that I made to introduce myself and showcase some of my skills.
-            It was also a way for me to learn and practice Svelte.
+            An over-engineered solution to a problem of having a list of things, but now knowing the order, ie. favourite films.
+            This app comes in to use an elo system to show you all the comparisons, and then create a ranked table.
           </p>
           <div class="stack-chips">
             <span class="stack-chip svelte">Svelte</span>
