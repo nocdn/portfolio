@@ -60,27 +60,6 @@
 </div>
 
 <style lang="scss">
-  .markdown-text {
-    opacity: 0.4;
-    color: darkgray;
-  }
-
-  .content-header {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-
-    span {
-      font-size: 2rem;
-      font-weight: 600;
-    }
-  }
-
-  .about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2.75rem;
-  }
 
   .shell-container {
     display: flex;

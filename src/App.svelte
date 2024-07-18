@@ -1,6 +1,7 @@
 <script>
     import Sidebar from './Sidebar.svelte';
     import About from './About.svelte';
+    import Projects from './Projects.svelte';
 
     let selectedIndex = 0;
 
@@ -29,7 +30,8 @@
 <main>
     <Sidebar selectedIndex={selectedIndex} />
     <div class="main-content">
-      <About />
+      <!-- <About /> -->
+      <Projects />
     </div>
 </main>
 
