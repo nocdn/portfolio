@@ -33,7 +33,7 @@
 <div class="about-content content">
     <div class="about-header content-header">
         <span class="markdown-text"># </span>
-        <h1 data-value="So who am I?">So who am I?</h1>
+        <h1 data-value="Who am I?">Who am I?</h1>
     </div>
     <p>
         Hey, World! I'm a student and an aspiring developer who likes to
