@@ -1,3 +1,10 @@
+<script>
+    export let selectedIndex;
+
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+</script>
+
+
 <div class="sidebar">
     <div class="sidebar-header">
         <!-- svelte-ignore a11y-img-redundant-alt -->
@@ -9,16 +16,15 @@
     </div>
 
     <div class="sidebar-nav">
-        <a class="sidebar-item" href="index.html">About</a>
-        <a class="sidebar-item" href="about.html">Projects</a>
-        <a class="sidebar-item" href="contact.html">Education</a>
-        <a class="sidebar-item" href="contact.html">Contact</a>
-        <a class="sidebar-item" href="contact.html">Official</a>
+        <a class="sidebar-item" class:sidebar-selected={selectedIndex === 0} href="about.html">{selectedIndex === 0 ? "> About" : "About"}</a>
+        <a class="sidebar-item" class:sidebar-selected={selectedIndex === 1} href="projects.html">{selectedIndex === 1 ? "> Projects" : "Projects"}</a>
+        <a class="sidebar-item" class:sidebar-selected={selectedIndex === 2} href="education.html">{selectedIndex === 2 ? "> Education" : "Education"}</a>
+        <a class="sidebar-item" class:sidebar-selected={selectedIndex === 3} href="contact.html">{selectedIndex === 3 ? "> Contact" : "Contact"}</a>
+        <a class="sidebar-item" class:sidebar-selected={selectedIndex === 4} href="official.html">{selectedIndex === 4 ? "> Official" : "Official"}</a>
     </div>
 </div>
 
 <style lang="scss">
-
     .sidebar {
         height: 100%;
         padding-left: 2rem;
@@ -55,6 +61,6 @@
 
     .sidebar-selected {
         color: rgb(144, 31, 56);
-        font-weight: 600;
+        font-weight: 700;
     }
 </style>
