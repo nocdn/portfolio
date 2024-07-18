@@ -2,13 +2,15 @@
   let shownOutputs = 0
 
   function graduallyShowOutputs() {
-    setInterval(() => {
-      shownOutputs += 1
-      console.log(shownOutputs)
-    }, 250)
+    const interval = setInterval(() => {
+      if (shownOutputs < 3) {
+        shownOutputs += 1;
+        console.log(shownOutputs);
+      } else {
+        clearInterval(interval);
+      }
+    }, 250);
   }
-
-  // graduallyShowOutputs()
 
   setTimeout(graduallyShowOutputs, 1800);
 
@@ -52,8 +54,8 @@
         >🎓 Studying Computer Science at the
         <span class="">University of York, UK.</span></span
       >
-      <span>✏️ Focused on mobile and web development.</span>
-      <span>🔍 Always open to new opportunities.</span>
+      <span>🔍 Focused on web development.</span>
+      <span>🌟 Always open to new opportunities.</span>
     </p>
 </div>
 
