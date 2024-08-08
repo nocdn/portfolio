@@ -1,41 +1,35 @@
 <script>
-    import Sidebar from './Sidebar.svelte';
-    import About from './About.svelte';
-    import Projects from './Projects.svelte';
+  import Sidebar from './Sidebar.svelte';
+  import About from './About.svelte';
+  import Projects from './Projects.svelte';
+  import Education from './Education.svelte';
 
-    let selectedIndex = 0;
+  let selectedIndex = 0;
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-        e.preventDefault();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      e.preventDefault();
 
-        if (e.key === "ArrowUp") {
-          
-          if (selectedIndex === 0) {
-            selectedIndex = 4
-          } else {
-            selectedIndex -= 1
-          }
-        } else if (e.key === "ArrowDown") {
-          if (selectedIndex === 4) {
-            selectedIndex = 0
-          } else {
-            selectedIndex += 1
-          }
-        }
+      if (e.key === "ArrowUp") {
+        selectedIndex = selectedIndex === 0 ? 4 : selectedIndex - 1;
+      } else if (e.key === "ArrowDown") {
+        selectedIndex = selectedIndex === 4 ? 0 : selectedIndex + 1;
       }
-    })
+    }
+  });
 </script>
 
 <main>
-    <Sidebar selectedIndex={selectedIndex} />
-    <div class="main-content">
-      {#if selectedIndex === 0}
-        <About />
-      {:else if selectedIndex === 1}
-        <Projects />
-      {/if}
-    </div>
+  <Sidebar bind:selectedIndex />
+  <div class="main-content">
+    {#if selectedIndex === 0}
+      <About />
+    {:else if selectedIndex === 1}
+      <Projects />
+    {:else if selectedIndex === 2}
+      <Education />
+    {/if}
+  </div>
 </main>
 
 <style>
