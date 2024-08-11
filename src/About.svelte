@@ -54,7 +54,7 @@
         >🎓 Studying Computer Science at the
         <span class="">University of York, UK.</span></span
       >
-      <span>🔍 Focused on web development.</span>
+      <span>🔍 Focused on web and mobile development.</span>
       <span>🌟 Always open to new opportunities.</span>
     </p>
 </div>

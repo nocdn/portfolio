@@ -45,13 +45,6 @@
         href="#"
         >{selectedIndex === 3 ? "> Contact" : "Contact"}</a
       >
-      <a
-        class="sidebar-item"
-        class:sidebar-selected={selectedIndex === 4}
-        on:click={() => handleClick(4)}
-        href="#"
-        >{selectedIndex === 4 ? "> Official" : "Official"}</a
-      >
     </div>
 </div>
   
