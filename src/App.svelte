@@ -17,6 +17,21 @@
       }
     }
   });
+
+
+  // start counting time
+  // if over 10s, then set variable hintVisible to true
+
+  let hintVisible = false;
+
+  let count = 0;
+  const timer = setInterval(() => {
+    if (++count === 10) {
+      hintVisible = true
+      console.log("Hint should now be visible")
+      clearInterval(timer);
+    }
+  }, 1000);
 </script>
 
 <main>

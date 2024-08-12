@@ -4,6 +4,8 @@
     function handleClick(index) {
       selectedIndex = index;
     }
+
+    export let noMovement;
 </script>
   
 <div class="sidebar">
