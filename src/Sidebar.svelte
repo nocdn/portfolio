@@ -1,5 +1,5 @@
 <script>
-    import pfpimage from "./assets/newpfp.jpeg";
+    import pfpimage from "./assets/newpfp.webp";
 
     export let selectedIndex;
 
