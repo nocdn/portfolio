@@ -11,9 +11,9 @@
             e.preventDefault();
 
             if (e.key === "ArrowUp") {
-                selectedIndex = selectedIndex === 0 ? 4 : selectedIndex - 1;
+                selectedIndex = selectedIndex === 0 ? 3 : selectedIndex - 1;
             } else if (e.key === "ArrowDown") {
-                selectedIndex = selectedIndex === 4 ? 0 : selectedIndex + 1;
+                selectedIndex = selectedIndex === 3 ? 0 : selectedIndex + 1;
             }
         }
     });
