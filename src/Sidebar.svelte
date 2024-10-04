@@ -1,91 +1,85 @@
 <script>
+    import pfpimage from "./assets/newpfp.jpeg";
+
     export let selectedIndex;
-  
+
     function handleClick(index) {
-      selectedIndex = index;
+        selectedIndex = index;
     }
 
     export let noMovement;
 </script>
-  
+
 <div class="sidebar">
     <div class="sidebar-header">
-      <!-- svelte-ignore a11y-img-redundant-alt -->
-      <img
-        class="pfp"
-        src="src/assets/newpfp.jpeg"
-        alt="profile picture of Bartosz Bak"
-      />
+        <!-- svelte-ignore a11y-img-redundant-alt -->
+        <img class="pfp" src={pfpimage} alt="profile picture of Bartosz Bak" />
     </div>
-  
+
     <div class="sidebar-nav">
-      <a
-        class="sidebar-item"
-        class:sidebar-selected={selectedIndex === 0}
-        on:click={() => handleClick(0)}
-        href="#"
-        >{selectedIndex === 0 ? "> About" : "About"}</a
-      >
-      <a
-        class="sidebar-item"
-        class:sidebar-selected={selectedIndex === 1}
-        on:click={() => handleClick(1)}
-        href="#"
-        >{selectedIndex === 1 ? "> Projects" : "Projects"}</a
-      >
-      <a
-        class="sidebar-item"
-        class:sidebar-selected={selectedIndex === 2}
-        on:click={() => handleClick(2)}
-        href="#"
-        >{selectedIndex === 2 ? "> Education" : "Education"}</a
-      >
-      <a
-        class="sidebar-item"
-        class:sidebar-selected={selectedIndex === 3}
-        on:click={() => handleClick(3)}
-        href="#"
-        >{selectedIndex === 3 ? "> Contact" : "Contact"}</a
-      >
+        <a
+            class="sidebar-item"
+            class:sidebar-selected={selectedIndex === 0}
+            on:click={() => handleClick(0)}
+            href="#">{selectedIndex === 0 ? "> About" : "About"}</a
+        >
+        <a
+            class="sidebar-item"
+            class:sidebar-selected={selectedIndex === 1}
+            on:click={() => handleClick(1)}
+            href="#">{selectedIndex === 1 ? "> Projects" : "Projects"}</a
+        >
+        <a
+            class="sidebar-item"
+            class:sidebar-selected={selectedIndex === 2}
+            on:click={() => handleClick(2)}
+            href="#">{selectedIndex === 2 ? "> Education" : "Education"}</a
+        >
+        <a
+            class="sidebar-item"
+            class:sidebar-selected={selectedIndex === 3}
+            on:click={() => handleClick(3)}
+            href="#">{selectedIndex === 3 ? "> Contact" : "Contact"}</a
+        >
     </div>
 </div>
-  
+
 <style lang="scss">
     .sidebar {
-      height: 100vh;
-      padding-left: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 6rem;
+        height: 100vh;
+        padding-left: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
     }
     .sidebar-header {
-      height: 35%;
-      display: flex;
-      align-items: flex-end;
-  
-      img {
-        width: 6rem;
-        height: auto;
-        border-radius: 50%;
-      }
+        height: 35%;
+        display: flex;
+        align-items: flex-end;
+
+        img {
+            width: 6rem;
+            height: auto;
+            border-radius: 50%;
+        }
     }
-  
+
     .sidebar-nav {
-      a {
-        text-decoration: none;
-      }
-  
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
+        a {
+            text-decoration: none;
+        }
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
     }
-  
+
     .sidebar-item {
-      color: rgb(24, 23, 32);
+        color: rgb(24, 23, 32);
     }
-  
+
     .sidebar-selected {
-      color: rgb(144, 31, 56);
-      font-weight: 700;
+        color: rgb(144, 31, 56);
+        font-weight: 700;
     }
 </style>
