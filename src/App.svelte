@@ -4,6 +4,8 @@
     import Projects from "./Projects.svelte";
     import Education from "./Education.svelte";
 
+    import Construction from "./Construction.svelte";
+
     let selectedIndex = 0;
 
     document.addEventListener("keydown", (e) => {
@@ -34,16 +36,20 @@
 </script>
 
 <main>
-    <Sidebar bind:selectedIndex />
-    <div class="main-content">
-        {#if selectedIndex === 0}
-            <About />
-        {:else if selectedIndex === 1}
-            <Projects />
-        {:else if selectedIndex === 2}
-            <Education />
-        {/if}
-    </div>
+    {#if window.innerWidth > 884}
+        <Sidebar bind:selectedIndex />
+        <div class="main-content">
+            {#if selectedIndex === 0}
+                <About />
+            {:else if selectedIndex === 1}
+                <Projects />
+            {:else if selectedIndex === 2}
+                <Education />
+            {/if}
+        </div>
+    {:else}
+        <Construction />
+    {/if}
 </main>
 
 <style>
