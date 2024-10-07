@@ -37,7 +37,7 @@
 
 <main>
     {#if window.innerWidth > 884}
-        <Sidebar bind:selectedIndex noMovement={true} />
+        <Sidebar bind:selectedIndex noMovement={hintVisible} />
         <div class="main-content">
             {#if selectedIndex === 0}
                 <About />

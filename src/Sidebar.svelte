@@ -21,25 +21,25 @@
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 0}
             on:click={() => handleClick(0)}
-            href="#">{selectedIndex === 0 ? "> About" : "About"}</a
+            href="null">{selectedIndex === 0 ? "> About" : "About"}</a
         >
         <a
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 1}
             on:click={() => handleClick(1)}
-            href="#">{selectedIndex === 1 ? "> Projects" : "Projects"}</a
+            href="null">{selectedIndex === 1 ? "> Projects" : "Projects"}</a
         >
         <a
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 2}
             on:click={() => handleClick(2)}
-            href="#">{selectedIndex === 2 ? "> Education" : "Education"}</a
+            href="null">{selectedIndex === 2 ? "> Education" : "Education"}</a
         >
         <a
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 3}
             on:click={() => handleClick(3)}
-            href="#">{selectedIndex === 3 ? "> Contact" : "Contact"}</a
+            href="null">{selectedIndex === 3 ? "> Contact" : "Contact"}</a
         >
     </div>
     {#if noMovement}
@@ -109,6 +109,8 @@
         gap: 1rem;
         width: 70%;
         align-items: flex-start;
+
+        font-size: 0.9rem;
 
         opacity: 0.4;
 
