@@ -216,11 +216,13 @@
         grid-template-columns: 1fr 1fr;
         padding-left: 2rem;
         row-gap: 5rem;
+        column-gap: 2.5rem;
     }
 
     .project-card {
+        min-width: 0;
         max-width: 24rem;
-        height: 24rem;
+        // height: 24rem;
         // background-color: #fffee0;
         padding: 0.5rem;
         border-radius: 0.75rem;
@@ -254,12 +256,10 @@
 
     .stack-chips {
         display: flex;
+        flex-wrap: wrap; // Enable flex items to wrap to the next line
         gap: 0.75rem;
         padding: 0.5rem;
-        // outline: 1px dashed lightblue;
         border-radius: 0 0 0.4rem 0.4rem;
-        // margin-bottom: 0.1rem;
-        // justify-content: space-between;
     }
 
     .lightOrange {
