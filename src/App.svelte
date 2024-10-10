@@ -3,12 +3,37 @@
     import About from "./About.svelte";
     import Projects from "./Projects.svelte";
     import Education from "./Education.svelte";
-
     import Construction from "./Construction.svelte";
 
     let selectedIndex = 0;
+    let hintVisible = false;
+    let count = 0;
+    let timer;
+
+    // Function to start the inactivity timer
+    function startTimer() {
+        timer = setInterval(() => {
+            if (++count === 10) {
+                hintVisible = true;
+                console.log("Hint should now be visible");
+                clearInterval(timer); // Stop the timer after 10 seconds
+            }
+        }, 1000);
+    }
+
+    // Start the timer initially
+    startTimer();
+
+    // Movement detection function
+    function movementDetected() {
+        hintVisible = false; // Ensure hintVisible is false
+        clearInterval(timer); // Stop the timer to prevent hintVisible from becoming true
+        console.log("Movement detected, hint disabled permanently.");
+    }
 
     document.addEventListener("keydown", (e) => {
+        movementDetected(); // Detect movement on any keypress
+
         if (e.key === "ArrowUp" || e.key === "ArrowDown") {
             e.preventDefault();
 
@@ -19,20 +44,6 @@
             }
         }
     });
-
-    // start counting time
-    // if over 10s, then set variable hintVisible to true
-
-    let hintVisible = false;
-
-    let count = 0;
-    const timer = setInterval(() => {
-        if (++count === 10) {
-            hintVisible = true;
-            console.log("Hint should now be visible");
-            clearInterval(timer);
-        }
-    }, 1000);
 </script>
 
 <main>
