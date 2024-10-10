@@ -21,25 +21,25 @@
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 0}
             on:click={() => handleClick(0)}
-            href="null">{selectedIndex === 0 ? "> About" : "About"}</a
+            href="#">{selectedIndex === 0 ? "> About" : "About"}</a
         >
         <a
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 1}
             on:click={() => handleClick(1)}
-            href="null">{selectedIndex === 1 ? "> Projects" : "Projects"}</a
+            href="#">{selectedIndex === 1 ? "> Projects" : "Projects"}</a
         >
         <a
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 2}
             on:click={() => handleClick(2)}
-            href="null">{selectedIndex === 2 ? "> Education" : "Education"}</a
+            href="#">{selectedIndex === 2 ? "> Education" : "Education"}</a
         >
         <a
             class="sidebar-item"
             class:sidebar-selected={selectedIndex === 3}
             on:click={() => handleClick(3)}
-            href="null">{selectedIndex === 3 ? "> Contact" : "Contact"}</a
+            href="#">{selectedIndex === 3 ? "> Contact" : "Contact"}</a
         >
     </div>
     {#if noMovement}
