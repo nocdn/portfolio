@@ -2,6 +2,8 @@
     import languageLearningImage from "./assets/projects-images/language-learning.png";
     import portfolioSiteImage from "./assets/projects-images/portfolio-site.png";
     import sharedCalendarImage from "./assets/projects-images/shared-calendar.png";
+    import filmsEloImage from "./assets/projects-images/elo-site.jpeg";
+    import whisperSiteImage from "./assets/projects-images/whisperSite.jpeg";
 
     let shownProjects = 0;
 
@@ -146,8 +148,8 @@
             style="opacity: {shownProjects >= 4 ? 1 : 0};"
         >
             <img
-                src={portfolioSiteImage}
-                alt="a screenshot of a language learning app"
+                src={filmsEloImage}
+                alt="a screenshot of a film ranking web app"
                 class="project-image"
             />
             <h4 class="project-heading">
@@ -186,8 +188,8 @@
             style="opacity: {shownProjects >= 5 ? 1 : 0};"
         >
             <img
-                src={portfolioSiteImage}
-                alt="a screenshot of a language learning app"
+                src={whisperSiteImage}
+                alt="a screenshot of a transcription web app"
                 class="project-image"
             />
             <h4 class="project-heading">
