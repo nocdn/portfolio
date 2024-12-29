@@ -142,6 +142,7 @@
             <div class="stack-chips">
                 <span class="stack-chip svelte">Svelte</span>
                 <span class="stack-chip js">JavaScript</span>
+                <span class="stack-chip tailwind">Tailwind CSS</span>
             </div>
         </div>
 
@@ -218,6 +219,7 @@
             <div class="stack-chips">
                 <span class="stack-chip js">JavaScript</span>
                 <span class="stack-chip python">Python</span>
+                <span class="stack-chip tailwind">Tailwind CSS</span>
             </div>
         </div>
     </div>
@@ -345,5 +347,10 @@
         background-color: #ffdd00;
         outline: 1px dashed #3000ce;
         color: #041bb3;
+    }
+    .tailwind {
+        background-color: #38bdf9;
+        outline: 1px dashed #2c5282;
+        color: white;
     }
 </style>
