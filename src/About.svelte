@@ -18,7 +18,7 @@
     // Function to simulate typing of the command
     function writeCommand() {
         let promptTextContent = commandPrompt;
-        const fullCommand = [" ./", "skills", ".sh"];
+        const fullCommand = [" ./", "stack", ".sh"];
 
         // Remove the blinking cursor just before the command starts to appear
         document.getElementById("blinking-cursor").style.display = "none";
@@ -45,7 +45,7 @@
 <div class="about-content content">
     <div class="about-header content-header">
         <span class="markdown-text"># </span>
-        <h1 data-value="Who am I?">Who am I?</h1>
+        <h1 class="text-3xl" data-value="Who am I?">Who am I?</h1>
     </div>
     <p>
         Hey, World! I'm a student and an aspiring developer who likes to create
@@ -60,13 +60,13 @@
         </p>
 
         <p class="command-output" style="opacity: {shownOutputs >= 1 ? 1 : 0};">
-            Python, Shell, JavaScript
+            Svelte 5, Tailwind CSS, JavaScript
         </p>
         <p class="command-output" style="opacity: {shownOutputs >= 2 ? 1 : 0};">
-            Web development and scripting
+            Python, Bash, Flask
         </p>
         <p class="command-output" style="opacity: {shownOutputs >= 3 ? 1 : 0};">
-            Comfortable with Unix systems and Git
+            Git, Docker, Unix systems
         </p>
     </div>
 
@@ -76,7 +76,7 @@
                 >University of York, UK.</span
             ></span
         >
-        <span>🔍 Focused on web and mobile development.</span>
+        <span>🔍 Focused on web and backend development.</span>
         <span>🌟 Always open to new opportunities.</span>
     </p>
 </div>

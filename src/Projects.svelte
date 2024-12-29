@@ -24,7 +24,9 @@
 <div class="projects-content content">
     <div class="projects-header content-header">
         <span class="markdown-text"># </span>
-        <h1 data-value="What have I made?">What have I made?</h1>
+        <h1 class="text-3xl" data-value="What have I made?">
+            What have I made?
+        </h1>
     </div>
     <div class="projects-grid">
         <div
@@ -36,7 +38,7 @@
                 alt="a screenshot of a shared calendar"
                 class="project-image"
             />
-            <h4 class="project-heading">
+            <h4 class="project-heading font-bold">
                 Shared calendar, notes and files<a
                     href="https://github.com/nocdn/Non-Exam-Assessment"
                     target="_blank"
@@ -77,7 +79,7 @@
                 alt="a screenshot of a language learning app"
                 class="project-image"
             />
-            <h4 class="project-heading">
+            <h4 class="project-heading font-bold">
                 Language Learning App<a
                     href="https://github.com/nocdn/language-learning"
                     target="_blank"
@@ -113,7 +115,7 @@
                 alt="a screenshot of this website"
                 class="project-image"
             />
-            <h4 class="project-heading">
+            <h4 class="project-heading font-bold">
                 This website<a
                     href="https://github.com/nocdn/portfolio-website-svelte"
                     target="_blank"
@@ -152,7 +154,7 @@
                 alt="a screenshot of a film ranking web app"
                 class="project-image"
             />
-            <h4 class="project-heading">
+            <h4 class="project-heading font-bold">
                 Elo ranking tool<a
                     href="https://github.com/nocdn/films-elo"
                     target="_blank"
@@ -192,7 +194,7 @@
                 alt="a screenshot of a transcription web app"
                 class="project-image"
             />
-            <h4 class="project-heading">
+            <h4 class="project-heading font-bold">
                 Whisper transcription app<span
                     ><svg
                         viewBox="0 0 256 250"
