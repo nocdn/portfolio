@@ -4,6 +4,7 @@
   import Projects from "./Projects.svelte";
   import Education from "./Education.svelte";
   import Construction from "./Construction.svelte";
+  import Contact from "./Contact.svelte";
 
   let selectedIndex = 0;
   let hintVisible = false;
@@ -61,6 +62,8 @@
         <Projects />
       {:else if selectedIndex === 2}
         <Education />
+      {:else if selectedIndex === 3}
+        <Contact />
       {/if}
     </div>
   {:else}
