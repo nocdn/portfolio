@@ -9,12 +9,79 @@
   ];
 
   let changingString = $state(phrases[0]);
-
   const chars = "!<>-_\\/[]{}—=+*^?#________";
+  let currentPhraseIndex = 0;
+  let frame = 0;
+  let frameRequest;
+  let queue = [];
 
   function randomChar() {
     return chars[Math.floor(Math.random() * chars.length)];
   }
+
+  function setText(newText) {
+    const oldText = changingString;
+    const length = Math.max(oldText.length, newText.length);
+    queue = [];
+
+    // create transition queue for each character
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || "";
+      const to = newText[i] || "";
+      const start = Math.floor(Math.random() * 40);
+      const end = start + Math.floor(Math.random() * 40);
+      queue.push({ from, to, start, end });
+    }
+
+    cancelAnimationFrame(frameRequest);
+    frame = 0;
+    update();
+  }
+
+  function update() {
+    let output = "";
+    let complete = 0;
+
+    for (let i = 0; i < queue.length; i++) {
+      let { from, to, start, end, char } = queue[i];
+
+      if (frame >= end) {
+        complete++;
+        output += to;
+      } else if (frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = randomChar();
+          queue[i].char = char;
+        }
+        output += char;
+      } else {
+        output += from;
+      }
+    }
+
+    changingString = output;
+
+    if (complete === queue.length) {
+      return true;
+    } else {
+      frameRequest = requestAnimationFrame(update);
+      frame++;
+      return false;
+    }
+  }
+
+  function next() {
+    const nextPhrase = phrases[currentPhraseIndex];
+    setText(nextPhrase);
+    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+    setTimeout(next, 2000);
+  }
+
+  // start the animation
+  // inspiration from https://codepen.io/soulwire/pen/mEMPrK
+  setTimeout(() => {
+    next();
+  }, 800);
 </script>
 
 <div class="education-content content h-4/6">

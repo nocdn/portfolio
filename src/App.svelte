@@ -6,7 +6,7 @@
   import Construction from "./Construction.svelte";
   import Contact from "./Contact.svelte";
 
-  let selectedIndex = 0;
+  let selectedIndex = 3;
   let hintVisible = false;
   let count = 0;
   let timer;
