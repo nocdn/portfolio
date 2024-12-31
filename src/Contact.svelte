@@ -90,14 +90,15 @@
       You can reach me on {changingString}
     </h1>
   </div>
-  <div id="contact-chip-grid" class="flex flex-col gap-5">
+  <div id="contact-chip-grid" class="flex flex-col gap-7">
     <div class="grid grid-cols-2 gap-3">
       <GithubChip />
       <LinkedInChip />
       <InstagramChip />
       <TwitterChip />
     </div>
-    <div class="grid place-content-center">
+    <p>Or, most directly through e-mail</p>
+    <div class="grid">
       <MailChip />
     </div>
   </div>
