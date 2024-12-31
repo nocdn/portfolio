@@ -97,6 +97,8 @@
       <InstagramChip />
       <TwitterChip />
     </div>
-    <MailChip />
+    <div class="grid place-content-center">
+      <MailChip />
+    </div>
   </div>
 </div>
