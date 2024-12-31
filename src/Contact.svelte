@@ -1,12 +1,11 @@
 <script>
-  const phrases = [
-    "github",
-    "email",
-    "linkedin",
-    "phone",
-    "twitter",
-    "instagram",
-  ];
+  import GithubChip from "./lib/GithubChip.svelte";
+  import MailChip from "./lib/MailChip.svelte";
+  import LinkedInChip from "./lib/LinkedInChip.svelte";
+  import TwitterChip from "./lib/TwitterChip.svelte";
+  import InstagramChip from "./lib/InstagramChip.svelte";
+
+  const phrases = ["github", "email", "linkedin", "twitter", "instagram"];
 
   let changingString = $state(phrases[0]);
   const chars = "!<>-_\\/[]{}—=+*^?#________";
@@ -74,7 +73,7 @@
     const nextPhrase = phrases[currentPhraseIndex];
     setText(nextPhrase);
     currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-    setTimeout(next, 2000);
+    setTimeout(next, 1700);
   }
 
   // start the animation
@@ -87,8 +86,17 @@
 <div class="education-content content h-4/6">
   <div class="education-header content-header">
     <span class="markdown-text"># </span>
-    <h1 class="text-3xl" data-value="You can reach me on:">
-      You can reach me on: {changingString}
+    <h1 class="text-3xl" data-value="You can reach me on">
+      You can reach me on {changingString}
     </h1>
+  </div>
+  <div id="contact-chip-grid" class="flex flex-col gap-5">
+    <div class="grid grid-cols-2 gap-3">
+      <GithubChip />
+      <LinkedInChip />
+      <InstagramChip />
+      <TwitterChip />
+    </div>
+    <MailChip />
   </div>
 </div>
