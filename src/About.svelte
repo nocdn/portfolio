@@ -18,7 +18,7 @@
   // Function to simulate typing of the command
   function writeCommand() {
     let promptTextContent = commandPrompt;
-    const fullCommand = [" ./", "stack", ".sh"];
+    const fullCommand = [" cat ", "stack", ".txt"];
 
     // Remove the blinking cursor just before the command starts to appear
     document.getElementById("blinking-cursor").style.display = "none";
