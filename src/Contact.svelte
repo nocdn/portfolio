@@ -76,24 +76,33 @@
     setText(nextPhrase);
     currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
 
-    // only schedule next animation if not hovered
+    // Only schedule next animation if not hovered
     if (!isHovered) {
       animationTimeout = setTimeout(next, 1700);
     }
   }
 
+  let currentHover = $state("");
+
   function handleMouseEnter() {
     isHovered = true;
-    // clear any pending animation timeout
+    // Clear any pending animation timeout
     if (animationTimeout) {
       clearTimeout(animationTimeout);
     }
+    // Get the current phrase by looking at the previous index
+    const currentIndex =
+      (currentPhraseIndex - 1 + phrases.length) % phrases.length;
+    console.log("Currently displaying:", phrases[currentIndex]);
+    currentHover = phrases[currentIndex];
   }
 
   function handleMouseLeave() {
     isHovered = false;
-    // resume animation
+    // Resume animation
     animationTimeout = setTimeout(next, 1700);
+
+    currentHover = "";
   }
 
   // start the animation
@@ -117,10 +126,10 @@
   </div>
   <div id="contact-chip-grid" class="flex flex-col gap-7">
     <div class="grid grid-cols-2 gap-3">
-      <GithubChip />
-      <LinkedInChip />
-      <InstagramChip />
-      <TwitterChip />
+      <GithubChip pulsating={currentHover === "github"} />
+      <LinkedInChip pulsating={currentHover === "linkedin"} />
+      <InstagramChip pulsating={currentHover === "instagram"} />
+      <TwitterChip pulsating={currentHover === "twitter"} />
     </div>
     <p>Or, most directly through e-mail</p>
     <div class="grid">

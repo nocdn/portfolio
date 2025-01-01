@@ -1,5 +1,7 @@
 <script>
   import mail from "../assets/mail.svg";
+
+  let { pulsating = false } = $props();
 </script>
 
 <div class="flex gap-6 h-fit bg-[#FFF7F4] p-4 rounded-xl w-fit pr-12">
@@ -7,7 +9,7 @@
     href="mailto:contact@bartoszbak.org"
     class="p-3 bg-[#FEE8DD] w-12 grid place-content-center rounded-md"
   >
-    <img src={mail} alt="mail" />
+    <img class={pulsating ? "pulsating" : ""} src={mail} alt="mail" />
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">
@@ -18,3 +20,21 @@
     >
   </div>
 </div>
+
+<style>
+  .pulsating {
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>
