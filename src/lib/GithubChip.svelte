@@ -11,6 +11,8 @@
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">Github</p>
-    <p class="text-sm text-[#8A24DF]">github.com/nocdn</p>
+    <a href="https://github.com/nocdn" class="text-sm text-[#8A24DF]"
+      >github.com/nocdn</a
+    >
   </div>
 </div>

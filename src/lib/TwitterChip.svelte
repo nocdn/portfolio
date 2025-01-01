@@ -11,6 +11,8 @@
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">Twitter / X</p>
-    <p class="text-sm text-[#217EE0]">x.com/AKBB071</p>
+    <a href="https://x.com/AKBB071" class="text-sm text-[#217EE0]"
+      >x.com/AKBB071</a
+    >
   </div>
 </div>

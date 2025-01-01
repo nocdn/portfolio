@@ -11,6 +11,8 @@
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">LinkedIn</p>
-    <p class="text-sm text-[#2E38F1]">linkedin.com/in/bartek-bak</p>
+    <a href="https://linkedin.com/in/bartek-bak" class="text-sm text-[#2E38F1]"
+      >linkedin.com/in/bartek-bak</a
+    >
   </div>
 </div>

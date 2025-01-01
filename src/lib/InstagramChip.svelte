@@ -11,6 +11,8 @@
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">Instagram</p>
-    <p class="text-sm text-[#DD20BA]">instagram.com/bartek_front/</p>
+    <a href="https://instagram.com/bartek_front/" class="text-sm text-[#DD20BA]"
+      >instagram.com/bartek_front/</a
+    >
   </div>
 </div>

@@ -13,6 +13,8 @@
     <p class="text-m font-sans tracking-wide font-semibold">
       Reach me quickly:
     </p>
-    <p class="text-sm text-[#ED5F17]">contact@bartoszbak.org</p>
+    <a href="mailto:contact@bartoszbak.org" class="text-sm text-[#ED5F17]"
+      >contact@bartoszbak.org</a
+    >
   </div>
 </div>
