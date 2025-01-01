@@ -13,6 +13,8 @@
   let frame = 0;
   let frameRequest;
   let queue = [];
+  let isHovered = false;
+  let animationTimeout;
 
   function randomChar() {
     return chars[Math.floor(Math.random() * chars.length)];
@@ -73,7 +75,25 @@
     const nextPhrase = phrases[currentPhraseIndex];
     setText(nextPhrase);
     currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-    setTimeout(next, 1700);
+
+    // only schedule next animation if not hovered
+    if (!isHovered) {
+      animationTimeout = setTimeout(next, 1700);
+    }
+  }
+
+  function handleMouseEnter() {
+    isHovered = true;
+    // clear any pending animation timeout
+    if (animationTimeout) {
+      clearTimeout(animationTimeout);
+    }
+  }
+
+  function handleMouseLeave() {
+    isHovered = false;
+    // resume animation
+    animationTimeout = setTimeout(next, 1700);
   }
 
   // start the animation
@@ -86,7 +106,12 @@
 <div class="education-content content h-4/6">
   <div class="education-header content-header">
     <span class="markdown-text"># </span>
-    <h1 class="text-3xl" data-value="You can reach me on">
+    <h1
+      class="text-3xl"
+      data-value="You can reach me on"
+      on:mouseenter={handleMouseEnter}
+      on:mouseleave={handleMouseLeave}
+    >
       You can reach me on {changingString}
     </h1>
   </div>
