@@ -1,10 +1,13 @@
 <script>
   import github from "../assets/github.svg";
 
-  let { pulsating = false } = $props();
+  let { pulsating = false, faded = false } = $props();
 </script>
 
-<div class="flex gap-4 h-fit bg-[#FCF3FF] p-4 rounded-xl">
+<main
+  style="opacity: {faded ? 0.8 : 1};"
+  class="flex gap-4 h-fit bg-[#FCF3FF] p-4 rounded-xl"
+>
   <a
     href="https://github.com/nocdn"
     class="p-3 bg-[#EFDFFC] w-12 grid place-content-center rounded-md"
@@ -17,7 +20,7 @@
       >github.com/nocdn</a
     >
   </div>
-</div>
+</main>
 
 <style>
   .pulsating {

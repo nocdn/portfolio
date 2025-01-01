@@ -1,10 +1,13 @@
 <script>
   import instagram from "../assets/instagram.svg";
 
-  let { pulsating = false } = $props();
+  let { pulsating = false, faded = false } = $props();
 </script>
 
-<div class="flex gap-4 h-fit bg-[#FFF5FE] p-4 rounded-xl">
+<div
+  style="opacity: {faded ? 0.8 : 1}"
+  class="flex gap-4 h-fit bg-[#FFF5FE] p-4 rounded-xl"
+>
   <a
     href="https://instagram.com/bartek_front/"
     class="p-3 bg-[#FCE0F8] w-12 grid place-content-center rounded-md"

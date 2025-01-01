@@ -1,10 +1,13 @@
 <script>
   import linkedin from "../assets/linkedin.svg";
 
-  let { pulsating = false } = $props();
+  let { pulsating = false, faded = false } = $props();
 </script>
 
-<div class="flex gap-4 h-fit bg-[#F4F4FF] p-4 rounded-xl">
+<div
+  style="opacity: {faded ? 0.8 : 1}"
+  class="flex gap-4 h-fit bg-[#F4F4FF] p-4 rounded-xl"
+>
   <a
     href="https://linkedin.com/in/bartek-bak"
     class="p-3 bg-[#E0E1FD] w-12 grid place-content-center rounded-md"

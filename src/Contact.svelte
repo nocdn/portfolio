@@ -5,6 +5,9 @@
   import TwitterChip from "./lib/TwitterChip.svelte";
   import InstagramChip from "./lib/InstagramChip.svelte";
 
+  import SocialChip from "./SocialChip.svelte";
+  import github from "./assets/github.svg";
+
   const phrases = ["github", "email", "linkedin", "twitter", "instagram"];
 
   let changingString = $state(phrases[0]);
@@ -38,7 +41,7 @@
     frame = 0;
     update();
   }
-
+  let currentlyShowing = $state("");
   function update() {
     let output = "";
     let complete = 0;
@@ -126,10 +129,10 @@
   </div>
   <div id="contact-chip-grid" class="flex flex-col gap-7">
     <div class="grid grid-cols-2 gap-3">
-      <GithubChip pulsating={currentHover === "github"} />
-      <LinkedInChip pulsating={currentHover === "linkedin"} />
-      <InstagramChip pulsating={currentHover === "instagram"} />
-      <TwitterChip pulsating={currentHover === "twitter"} />
+      <GithubChip pulsating={currentHover === "github"} faded={1 != 1} />
+      <LinkedInChip pulsating={currentHover === "linkedin"} faded={1 != 1} />
+      <InstagramChip pulsating={currentHover === "instagram"} faded={1 != 1} />
+      <TwitterChip pulsating={currentHover === "twitter"} faded={1 != 1} />
     </div>
     <p>Or, most directly through e-mail</p>
     <div class="grid">

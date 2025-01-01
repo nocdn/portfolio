@@ -1,10 +1,13 @@
 <script>
   import twitter from "../assets/twitter.svg";
 
-  let { pulsating = false } = $props();
+  let { pulsating = false, faded = false } = $props();
 </script>
 
-<div class="flex gap-4 h-fit bg-[#F4F9FF] p-4 rounded-xl">
+<div
+  style="opacity: {faded ? 0.8 : 1};"
+  class="flex gap-4 h-fit bg-[#F4F9FF] p-4 rounded-xl"
+>
   <a
     href="https://x.com/AKBB071"
     class="p-3 bg-[#DEEDFF] w-12 grid place-content-center rounded-md"

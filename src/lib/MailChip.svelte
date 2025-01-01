@@ -1,10 +1,13 @@
 <script>
   import mail from "../assets/mail.svg";
 
-  let { pulsating = false } = $props();
+  let { pulsating = false, faded = false } = $props();
 </script>
 
-<div class="flex gap-6 h-fit bg-[#FFF7F4] p-4 rounded-xl w-fit pr-12">
+<div
+  style="opacity: {faded ? 0.8 : 1}"
+  class="flex gap-6 h-fit bg-[#FFF7F4] p-4 rounded-xl w-fit pr-12"
+>
   <a
     href="mailto:contact@bartoszbak.org"
     class="p-3 bg-[#FEE8DD] w-12 grid place-content-center rounded-md"
