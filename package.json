@@ -13,9 +13,12 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "sass": "^1.83.0",
-    "svelte": "^5.16.0",
+    "svelte": "^5.16.1",
     "tailwindcss": "^3.4.17",
     "vercel": "^35.2.4",
     "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "lucide-svelte": "^0.469.0"
   }
 }

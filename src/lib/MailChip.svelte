@@ -1,5 +1,5 @@
 <script>
-  import mail from "../assets/mail.svg";
+  import { Mail } from "lucide-svelte";
 
   let { pulsating = false, faded = false } = $props();
 </script>
@@ -12,7 +12,8 @@
     href="mailto:contact@bartoszbak.org"
     class="p-3 bg-[#FEE8DD] w-12 grid place-content-center rounded-md"
   >
-    <img class={pulsating ? "pulsating" : ""} src={mail} alt="mail" />
+    <!-- <img class={pulsating ? "pulsating" : ""} src={mail} alt="mail" /> -->
+    <Mail />
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">

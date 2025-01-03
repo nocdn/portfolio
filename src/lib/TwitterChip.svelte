@@ -1,5 +1,5 @@
 <script>
-  import twitter from "../assets/twitter.svg";
+  import { Twitter } from "lucide-svelte";
 
   let { pulsating = false, faded = false } = $props();
 </script>
@@ -12,7 +12,8 @@
     href="https://x.com/AKBB071"
     class="p-3 bg-[#DEEDFF] w-12 grid place-content-center rounded-md"
   >
-    <img class={pulsating ? "pulsating" : ""} src={twitter} alt="twitter" />
+    <!-- <img class={pulsating ? "pulsating" : ""} src={twitter} alt="twitter" /> -->
+    <Twitter />
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">Twitter / X</p>

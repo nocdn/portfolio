@@ -1,5 +1,5 @@
 <script>
-  import instagram from "../assets/instagram.svg";
+  import { Instagram } from "lucide-svelte";
 
   let { pulsating = false, faded = false } = $props();
 </script>
@@ -12,7 +12,8 @@
     href="https://instagram.com/bartek_front/"
     class="p-3 bg-[#FCE0F8] w-12 grid place-content-center rounded-md"
   >
-    <img class={pulsating ? "pulsating" : ""} src={instagram} alt="Instagram" />
+    <!-- <img class={pulsating ? "pulsating" : ""} src={instagram} alt="Instagram" /> -->
+    <Instagram />
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">Instagram</p>

@@ -9,6 +9,11 @@
     backgroundColor,
     foregroundColor,
   } = $props();
+
+  import { Github } from "lucide-svelte";
+  import { Linkedin } from "lucide-svelte";
+  import { Twitter } from "lucide-svelte";
+  import { Instagram } from "lucide-svelte";
 </script>
 
 <main
@@ -19,7 +24,15 @@
     href={link}
     class="p-3 bg-[{foregroundColor}] w-12 grid place-content-center rounded-md"
   >
-    <img class={pulsating ? "pulsating" : ""} src={icon} alt="Github" />
+    {#if icon === "github"}
+      <Github />
+    {:else if icon === "linkedin"}
+      <Linkedin />
+    {:else if icon === "twitter"}
+      <Twitter />
+    {:else if icon === "instagram"}
+      <Instagram />
+    {/if}
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">{title}</p>

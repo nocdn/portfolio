@@ -1,5 +1,5 @@
 <script>
-  import github from "../assets/github.svg";
+  import { Github } from "lucide-svelte";
 
   let { pulsating = false, faded = false } = $props();
 </script>
@@ -12,7 +12,8 @@
     href="https://github.com/nocdn"
     class="p-3 bg-[#EFDFFC] w-12 grid place-content-center rounded-md"
   >
-    <img class={pulsating ? "pulsating" : ""} src={github} alt="Github" />
+    <!-- <img class={pulsating ? "pulsating" : ""} src={github} alt="Github" /> -->
+    <Github />
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">Github</p>

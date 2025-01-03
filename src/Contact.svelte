@@ -6,7 +6,6 @@
   import InstagramChip from "./lib/InstagramChip.svelte";
 
   import SocialChip from "./SocialChip.svelte";
-  import github from "./assets/github.svg";
 
   const phrases = ["github", "email", "linkedin", "twitter", "instagram"];
 

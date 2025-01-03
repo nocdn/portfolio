@@ -1,5 +1,5 @@
 <script>
-  import linkedin from "../assets/linkedin.svg";
+  import { Linkedin } from "lucide-svelte";
 
   let { pulsating = false, faded = false } = $props();
 </script>
@@ -12,7 +12,8 @@
     href="https://linkedin.com/in/bartek-bak"
     class="p-3 bg-[#E0E1FD] w-12 grid place-content-center rounded-md"
   >
-    <img class={pulsating ? "pulsating" : ""} src={linkedin} alt="LinkedIn" />
+    <!-- <img class={pulsating ? "pulsating" : ""} src={linkedin} alt="LinkedIn" /> -->
+    <Linkedin />
   </a>
   <div class="flex flex-col gap-1">
     <p class="text-m font-sans tracking-wide font-semibold">LinkedIn</p>
