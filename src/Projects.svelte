@@ -1,9 +1,9 @@
 <script>
-  import languageLearningImage from "./assets/projects-images/language-learning.png";
-  import portfolioSiteImage from "./assets/projects-images/portfolio-site.png";
-  import sharedCalendarImage from "./assets/projects-images/shared-calendar.png";
-  import filmsEloImage from "./assets/projects-images/elo-site.jpeg";
-  import whisperSiteImage from "./assets/projects-images/whisperSite.jpeg";
+  import languageLearningImage from "./assets/projects-images/language-learning.avif";
+  import portfolioSiteImage from "./assets/projects-images/portfolio-site.avif";
+  import sharedCalendarImage from "./assets/projects-images/shared-calendar.avif";
+  import filmsEloImage from "./assets/projects-images/elo-site.avif";
+  import whisperSiteImage from "./assets/projects-images/whisperSite.avif";
 
   let shownProjects = 0;
 
