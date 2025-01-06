@@ -10,6 +10,7 @@ bun.lockb
 
 node_modules
 dist-ssr
+dist/
 *.local
 
 # Editor directories and files
@@ -23,3 +24,4 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+.github
