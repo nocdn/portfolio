@@ -41,6 +41,7 @@
           href="https://github.com/nocdn/Non-Exam-Assessment"
           target="_blank"
           style="color: currentColor;"
+          aria-label="GitHub link to the project"
           ><svg
             viewBox="0 0 256 250"
             width="1rem"
@@ -82,6 +83,7 @@
           href="https://github.com/nocdn/language-learning"
           target="_blank"
           style="color: currentColor;"
+          aria-label="GitHub link to the project"
           ><svg
             viewBox="0 0 256 250"
             width="1rem"
@@ -118,6 +120,7 @@
           href="https://github.com/nocdn/portfolio-website-svelte"
           target="_blank"
           style="color: currentColor;"
+          aria-label="GitHub link to the project"
           ><svg
             viewBox="0 0 256 250"
             width="1rem"
@@ -158,6 +161,7 @@
           href="https://github.com/nocdn/films-elo"
           target="_blank"
           style="color: currentColor;"
+          aria-label="GitHub link to the project"
           ><svg
             viewBox="0 0 256 250"
             width="1rem"
