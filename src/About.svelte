@@ -55,6 +55,20 @@
   setTimeout(writeCommand, 1500); // Start typing the command after 1.5 seconds
 
   let showMap = $state(false);
+  let isMapVisible = $state(false); // Add new state for actual visibility
+
+  function handleMapShow() {
+    showMap = true;
+    isMapVisible = true;
+  }
+
+  function handleMapHide() {
+    showMap = false;
+    // Delay removing element to allow animation to play
+    setTimeout(() => {
+      isMapVisible = false;
+    }, 300); // Match this with your animation duration
+  }
 </script>
 
 <div class="about-content content">
@@ -69,22 +83,27 @@
     Hey, World! My name is Bartek, and I'm a student and an aspiring full-stack
     software engineer who likes to craft nice things.
   </p>
-  <div class="relative">
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div class="relative w-fit">
+    <!-- svelte-ignore a11y_unknown_aria_attribute -->
+    <!-- svelte-ignore a11y_mouse_events_have_key_events -->
     <div
-      onmouseover={() => {
-        showMap = true;
-        console.log("showMap", showMap);
-      }}
+      aria-label="hover to reveal map of York"
+      onmouseover={handleMapShow}
+      onmouseleave={handleMapHide}
       class="flex gap-2 items-center opacity-70"
     >
-      <MapPin size={18} /> York, United Kingdom, GMT
+      <MapPin size={18} /> <span class="">York, United Kingdom,</span> GMT
     </div>
-    {#if showMap}
+    {#if isMapVisible}
       <div class="">
         <img
           src={yorkMap}
           alt="map of york"
-          class="absolute bottom-10 mt-0 w-64 h-64 rounded-3xl shadow-lg motion-opacity-in-100 motion-translate-y-in-25 motion-blur-in-md motion-scale-in-75"
+          class="absolute bottom-10 right-0 mt-0 w-64 h-64 rounded-3xl shadow-lg motion-opacity-in-100 {showMap
+            ? 'motion-opacity-in-100 motion-translate-y-in-25 motion-blur-in-md motion-scale-in-75'
+            : 'motion-opacity-out-0 motion-translate-y-out-25 motion-blur-out-xl motion-scale-out-75'}"
+          style="box-shadow: inset 0 0 50px 50px rgba(255, 255, 255, 0.5);"
         />
       </div>
     {/if}
