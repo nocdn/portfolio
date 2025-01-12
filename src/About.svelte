@@ -2,7 +2,7 @@
   import { MapPin } from "lucide-svelte";
   import yorkMap from "./assets/yorkmap.avif";
 
-  let userAgent = "";
+  let userAgent = $state("");
   if (window.navigator.userAgent.includes("Mac")) {
     userAgent = "macintosh";
   } else if (window.navigator.userAgent.includes("Windows")) {
@@ -29,12 +29,12 @@
 
   let commandPrompt = "";
 
-  // Function to simulate typing of the command
+  // function to simulate typing of the command
   function writeCommand() {
     let promptTextContent = commandPrompt;
     const fullCommand = [" cat ", "stack", ".txt"];
 
-    // Remove the blinking cursor just before the command starts to appear
+    // remove blinking cursor just before the command starts to appear
     document.getElementById("blinking-cursor").style.display = "none";
 
     for (let i = 0; i < fullCommand.length; i++) {
@@ -46,16 +46,32 @@
     }
   }
 
-  // Show the blinking cursor before the command is typed
+  // show the blinking cursor before the command is typed
   function showBlinkingCursor() {
     document.getElementById("blinking-cursor").style.display = "inline-block";
   }
 
-  setTimeout(showBlinkingCursor, 1000); // Show cursor after 1 second
-  setTimeout(writeCommand, 1500); // Start typing the command after 1.5 seconds
+  setTimeout(showBlinkingCursor, 1000); // show cursor after 1 second
+  setTimeout(writeCommand, 1500); // start typing the command after 1.5 seconds
 
   let showMap = $state(false);
-  let isMapVisible = $state(false); // Add new state for actual visibility
+  let isMapVisible = $state(false);
+
+  let showClock = $state(false);
+  let isClockVisible = $state(false);
+
+  function handleClockShow() {
+    showClock = true;
+    isClockVisible = true;
+  }
+
+  function handleClockHide() {
+    showClock = false;
+    // delay removing element to allow animation to play
+    setTimeout(() => {
+      isClockVisible = false;
+    }, 300); // matching with animation duration
+  }
 
   function handleMapShow() {
     showMap = true;
@@ -64,11 +80,23 @@
 
   function handleMapHide() {
     showMap = false;
-    // Delay removing element to allow animation to play
+    // delay removing element to allow animation to play
     setTimeout(() => {
       isMapVisible = false;
-    }, 300); // Match this with your animation duration
+    }, 300); // matching with animation duration
   }
+
+  let gmtTime = $state("00:00");
+
+  function updateTime() {
+    const now = new Date();
+    const hours = String(now.getUTCHours()).padStart(2, "0");
+    const minutes = String(now.getUTCMinutes()).padStart(2, "0");
+    gmtTime = `${hours}:${minutes}`;
+  }
+
+  setInterval(updateTime, 1000);
+  updateTime();
 </script>
 
 <div class="about-content content">
@@ -80,20 +108,25 @@
     class="font-sans text-xl pr-12"
     style="font-family: 'Geist', sans-serif; font-weight: 500;"
   >
-    Hey, World! My name is Bartek, and I'm a student and an aspiring full-stack
+    My name is Bartosz Bak, and I'm a student and an aspiring full-stack
     software engineer who likes to craft nice things.
   </p>
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div class="relative w-fit">
     <!-- svelte-ignore a11y_unknown_aria_attribute -->
     <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-    <div
-      aria-label="hover to reveal map of York"
-      onmouseover={handleMapShow}
-      onmouseleave={handleMapHide}
-      class="flex gap-2 items-center opacity-70"
-    >
-      <MapPin size={18} /> <span class="">York, United Kingdom,</span> GMT
+    <div class="flex gap-2 items-center opacity-70">
+      <MapPin size={18} />
+      <!-- svelte-ignore a11y_mouse_events_have_key_events -->
+      <span onmouseover={handleMapShow} onmouseleave={handleMapHide}
+        >York, United Kingdom,</span
+      >
+      <!-- svelte-ignore a11y_mouse_events_have_key_events -->
+      <span
+        onmouseover={handleClockShow}
+        onmouseleave={handleClockHide}
+        class="cursor-pointer">GMT</span
+      >
     </div>
     {#if isMapVisible}
       <div class="">
@@ -105,6 +138,17 @@
             : 'motion-opacity-out-0 motion-translate-y-out-25 motion-blur-out-xl motion-scale-out-75'}"
           style="box-shadow: inset 0 0 50px 50px rgba(255, 255, 255, 0.5);"
         />
+      </div>
+    {/if}
+    {#if isClockVisible}
+      <div class="relative">
+        <div
+          class="bg-[#252525] text-white font-mono font-semibold text-2xl grid place-content-center absolute bottom-10 right-0 mt-0 w-32 h-16 rounded-xl shadow-lg motion-opacity-in-100 {showClock
+            ? 'motion-opacity-in-100 motion-translate-y-in-25 motion-blur-in-md motion-scale-in-75'
+            : 'motion-opacity-out-0 motion-translate-y-out-25 motion-blur-out-xl motion-scale-out-75'}"
+        >
+          {gmtTime}
+        </div>
       </div>
     {/if}
   </div>
