@@ -29,12 +29,12 @@
 
   let commandPrompt = "";
 
-  // function to simulate typing of the command
+  // Function to simulate typing of the command
   function writeCommand() {
     let promptTextContent = commandPrompt;
     const fullCommand = [" cat ", "stack", ".txt"];
 
-    // remove blinking cursor just before the command starts to appear
+    // remove  blinking cursor just before the command starts to appear
     document.getElementById("blinking-cursor").style.display = "none";
 
     for (let i = 0; i < fullCommand.length; i++) {
@@ -222,10 +222,6 @@
     100% {
       opacity: 1;
     }
-  }
-
-  .tilting {
-    animation: tiltleftandright 0.75s linear infinite;
   }
 
   @keyframes tiltleftandright {
