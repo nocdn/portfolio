@@ -1,5 +1,19 @@
 <script>
-  let shownOutputs = 0;
+  import { MapPin } from "lucide-svelte";
+  import yorkMap from "./assets/yorkmap.avif";
+
+  let userAgent = "";
+  if (window.navigator.userAgent.includes("Mac")) {
+    userAgent = "macintosh";
+  } else if (window.navigator.userAgent.includes("Windows")) {
+    userAgent = "windows";
+  } else if (window.navigator.userAgent.includes("Linux")) {
+    userAgent = "linux";
+  } else {
+    userAgent = "unknown";
+  }
+
+  let shownOutputs = $state(0);
 
   function graduallyShowOutputs() {
     const interval = setInterval(() => {
@@ -39,6 +53,8 @@
 
   setTimeout(showBlinkingCursor, 1000); // Show cursor after 1 second
   setTimeout(writeCommand, 1500); // Start typing the command after 1.5 seconds
+
+  let showMap = $state(false);
 </script>
 
 <div class="about-content content">
@@ -46,14 +62,39 @@
     <span class="markdown-text"># </span>
     <h1 class="text-3xl" data-value="Who am I?">Who am I?</h1>
   </div>
-  <p>
-    Hey, World! I'm a student and an aspiring developer who likes to create nice
-    things.
+  <p
+    class="font-sans text-xl pr-12"
+    style="font-family: 'Geist', sans-serif; font-weight: 500;"
+  >
+    Hey, World! My name is Bartek, and I'm a student and an aspiring full-stack
+    software engineer who likes to craft nice things.
   </p>
+  <div class="relative">
+    <div
+      onmouseover={() => {
+        showMap = true;
+        console.log("showMap", showMap);
+      }}
+      class="flex gap-2 items-center opacity-70"
+    >
+      <MapPin size={18} /> York, United Kingdom, GMT
+    </div>
+    {#if showMap}
+      <div class="">
+        <img
+          src={yorkMap}
+          alt="map of york"
+          class="absolute bottom-10 mt-0 w-64 h-64 rounded-3xl shadow-lg motion-opacity-in-100 motion-translate-y-in-25 motion-blur-in-md motion-scale-in-75"
+        />
+      </div>
+    {/if}
+  </div>
 
   <div class="shell-container">
     <p class="shell-prompt">
-      bartosz ~ $ <span id="command"></span><span id="blinking-cursor">█</span>
+      bartosz@{userAgent} ~ $ <span id="command"></span><span
+        id="blinking-cursor">█</span
+      >
     </p>
 
     <p class="command-output" style="opacity: {shownOutputs >= 1 ? 1 : 0};">
@@ -67,7 +108,9 @@
     </p>
   </div>
 
-  <p style="display: flex; flex-direction: column; gap: 0.35rem">
+  <p
+    style="display: flex; flex-direction: column; gap: 0.35rem; font-family: 'Geist', sans-serif; letter-spacing: 0.05rem;"
+  >
     <span
       >🎓 Studying Computer Science at the <span>University of York, UK.</span
       ></span
@@ -78,13 +121,14 @@
 </div>
 
 <style lang="scss">
+  @import url("https://fonts.googleapis.com/css2?family=Geist:wght@500&display=swap");
   .shell-container {
     display: flex;
     flex-direction: column;
     background-color: #f6f8fa;
     padding: 0.75rem;
     border-radius: 0.25rem;
-    width: 50%;
+    width: 28rem;
   }
 
   .shell-prompt {
@@ -114,6 +158,28 @@
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  .tilting {
+    animation: tiltleftandright 0.75s linear infinite;
+  }
+
+  @keyframes tiltleftandright {
+    0% {
+      rotate: 0deg;
+    }
+
+    25% {
+      rotate: 3deg;
+    }
+
+    75% {
+      rotate: -3deg;
+    }
+
+    100% {
+      rotate: 0deg;
     }
   }
 </style>
