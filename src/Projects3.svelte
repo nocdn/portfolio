@@ -8,7 +8,7 @@
   import ProjectCard from "./lib/ProjectCard.svelte";
 </script>
 
-<div class="projects-content content">
+<div class="projects-content content pb-96">
   <div class="projects-header content-header">
     <span class="markdown-text"># </span>
     <h1 class="text-3xl" data-value="What have I made?">What have I made?</h1>
@@ -19,8 +19,8 @@
         title="Shared calendar, notes and files"
         description="A full-stack shared calendar, notes and files system for friends and
         family."
-        githubLink="github.com/nocdn/Non-Exam-Assessment"
-        demoLink="github.com/nocdn/Non-Exam-Assessment"
+        githubLink="https://github.com/nocdn/Non-Exam-Assessment"
+        demoLink="https://github.com/nocdn/Non-Exam-Assessment"
         imageurl="src/assets/projects-images/shared-calendar.avif"
         techStack={["Supabase", "JavaScript", "S3", "Lambda", "IAM"]}
         backgroundColor="#F4F9FF"
@@ -29,8 +29,8 @@
       <ProjectCard
         title="Whisper transcription app"
         description="A web app to transcribe uploaded audio into text, using the OpenAI Whisper models and Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
-        githubLink="github.com/nocdn/transcription-svelte"
-        demoLink="whisper.bartoszbak.org"
+        githubLink="https://github.com/nocdn/transcription-svelte"
+        demoLink="https://whisper.bartoszbak.org"
         imageurl="src/assets/projects-images/whisperSite.avif"
         techStack={["Svelte", "Flask", "Tailwind"]}
         backgroundColor="#FCF3FF"
@@ -41,7 +41,7 @@
       <ProjectCard
         title="Language Learning App"
         description="A small language learning app for school coursework."
-        githubLink="github.com/nocdn/language-learning"
+        githubLink="https://github.com/nocdn/language-learning"
         demoLink=""
         imageurl="src/assets/projects-images/language-learning.avif"
         techStack={["JavaScript"]}
@@ -51,8 +51,8 @@
       <ProjectCard
         title="This website"
         description="How's that for recursion? This is a fairly simple website that I made to introduce myself and showcase some of my skills. It was also a way for me to learn and practice Svelte and Tailwind CSS. It also comes with some fun easter eggs."
-        githubLink="github.com/nocdn/portfolio-website-svelte"
-        demoLink="bartoszbak.org"
+        githubLink="https://github.com/nocdn/portfolio-website-svelte"
+        demoLink="https://bartoszbak.org"
         imageurl="src/assets/projects-images/portfolio-site.avif"
         techStack={["Svelte", "JavaScript", "Tailwind"]}
         backgroundColor="#FFF5FE"

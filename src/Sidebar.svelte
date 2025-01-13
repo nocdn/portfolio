@@ -12,34 +12,45 @@
 
 <div class="sidebar">
   <div class="sidebar-header">
-    <!-- svelte-ignore a11y-img-redundant-alt -->
-    <img class="pfp" src={pfpimage} alt="profile picture of Bartosz Bak" />
+    <img class="pfp" src={pfpimage} alt="profile icon of nocdn" />
   </div>
 
   <div class="sidebar-nav">
+    <!-- svelte-ignore a11y_missing_attribute -->
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <a
       class="sidebar-item"
       class:sidebar-selected={selectedIndex === 0}
       on:click={() => handleClick(0)}
-      href="#">{selectedIndex === 0 ? "> About" : "About"}</a
+      >{selectedIndex === 0 ? "> About" : "About"}</a
     >
+    <!-- svelte-ignore a11y_missing_attribute -->
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <a
       class="sidebar-item"
       class:sidebar-selected={selectedIndex === 1}
       on:click={() => handleClick(1)}
-      href="#">{selectedIndex === 1 ? "> Projects" : "Projects"}</a
+      >{selectedIndex === 1 ? "> Projects" : "Projects"}</a
     >
+    <!-- svelte-ignore a11y_missing_attribute -->
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <a
       class="sidebar-item"
       class:sidebar-selected={selectedIndex === 2}
       on:click={() => handleClick(2)}
-      href="#">{selectedIndex === 2 ? "> Education" : "Education"}</a
+      >{selectedIndex === 2 ? "> Education" : "Education"}</a
     >
+    <!-- svelte-ignore a11y_missing_attribute -->
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <a
       class="sidebar-item"
       class:sidebar-selected={selectedIndex === 3}
       on:click={() => handleClick(3)}
-      href="#">{selectedIndex === 3 ? "> Contact" : "Contact"}</a
+      >{selectedIndex === 3 ? "> Contact" : "Contact"}</a
     >
   </div>
   {#if noMovement}

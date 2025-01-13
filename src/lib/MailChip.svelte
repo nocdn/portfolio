@@ -26,10 +26,6 @@
 </div>
 
 <style>
-  .pulsating {
-    animation: pulse 1s infinite;
-  }
-
   @keyframes pulse {
     0% {
       transform: scale(1);
