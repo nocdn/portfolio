@@ -46,7 +46,7 @@
         imageurl="src/assets/projects-images/language-learning.avif"
         techStack={["JavaScript"]}
         backgroundColor="#FFFAF4"
-        textColor="#C16A03"
+        textColor="#873E00"
       />
       <ProjectCard
         title="This website"
@@ -71,7 +71,7 @@
         imageurl="src/assets/projects-images/elo-site.avif"
         techStack={["JavaScript", "Svelte", "PostgreSQL"]}
         backgroundColor="#FEF7F4"
-        textColor="#E93500"
+        textColor="#ca2e00"
       />
     </div>
   </div>
