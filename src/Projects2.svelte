@@ -14,7 +14,7 @@
     <h1 class="text-3xl" data-value="What have I made?">What have I made?</h1>
   </div>
   <div class="projects-columns grid grid-cols-3">
-    <div id="first-column" class="flex flex-col gap-8">
+    <div id="first-column" class="flex flex-col gap-4">
       <ProjectCard
         title="Shared calendar, notes and files"
         description="A full-stack shared calendar, notes and files system for friends and
@@ -23,11 +23,21 @@
         demoLink="github.com/nocdn/Non-Exam-Assessment"
         imageurl="src/assets/projects-images/shared-calendar.avif"
         techStack={["Supabase", "JavaScript", "S3", "Lambda", "IAM"]}
-        backgroundColor="#F1FFF5"
-        textColor="#207130"
+        backgroundColor="#F4F9FF"
+        textColor="darkBlue"
+      />
+      <ProjectCard
+        title="Whisper transcription app"
+        description="A web app to transcribe uploaded audio into text, using the OpenAI Whisper models and Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
+        githubLink="github.com/nocdn/transcription-svelte"
+        demoLink="whisper.bartoszbak.org"
+        imageurl="src/assets/projects-images/whisperSite.avif"
+        techStack={["Svelte", "Flask", "Tailwind"]}
+        backgroundColor="#FCF3FF"
+        textColor="#511F7D"
       />
     </div>
-    <div id="second-column" class="flex flex-col gap-8">
+    <div id="second-column" class="flex flex-col gap-4">
       <ProjectCard
         title="Language Learning App"
         description="A small language learning app for school coursework."
@@ -38,8 +48,18 @@
         backgroundColor="#FFFAF4"
         textColor="#C16A03"
       />
+      <ProjectCard
+        title="This website"
+        description="How's that for recursion? This is a fairly simple website that I made to introduce myself and showcase some of my skills. It was also a way for me to learn and practice Svelte and Tailwind CSS. It also comes with some fun easter eggs."
+        githubLink="github.com/nocdn/portfolio-website-svelte"
+        demoLink="bartoszbak.org"
+        imageurl="src/assets/projects-images/portfolio-site.avif"
+        techStack={["Svelte", "JavaScript", "Tailwind"]}
+        backgroundColor="#FFF5FE"
+        textColor="#A53168"
+      />
     </div>
-    <div id="third-column" class="flex flex-col gap-8">
+    <div id="third-column" class="flex flex-col gap-4">
       <ProjectCard
         title="Elo film ranking"
         description="An over-engineered solution to a problem of having a list of things, but
