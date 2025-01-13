@@ -2,6 +2,7 @@
   import Sidebar from "./Sidebar.svelte";
   import About from "./About.svelte";
   import Projects from "./Projects.svelte";
+  import Projects2 from "./Projects2.svelte";
   import Education from "./Education.svelte";
   import Construction from "./Construction.svelte";
   import Contact from "./Contact.svelte";
@@ -57,7 +58,8 @@
     <Sidebar bind:selectedIndex noMovement={hintVisible} />
     <div class="main-content">
       {#if selectedIndex === 0}
-        <About />
+        <!-- <About /> -->
+        <Projects2 />
       {:else if selectedIndex === 1}
         <Projects />
       {:else if selectedIndex === 2}

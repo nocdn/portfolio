@@ -120,8 +120,8 @@
     <h1
       class="text-3xl"
       data-value="You can reach me on"
-      on:mouseenter={handleMouseEnter}
-      on:mouseleave={handleMouseLeave}
+      onmouseenter={handleMouseEnter}
+      onmouseleave={handleMouseLeave}
     >
       You can reach me on {changingString}
     </h1>
