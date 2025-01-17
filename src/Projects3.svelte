@@ -6,6 +6,10 @@
   import whisperSiteImage from "./assets/projects-images/whisperSite.avif";
 
   import ProjectCard from "./lib/ProjectCard.svelte";
+
+  import MiscProjectCard from "./lib/MiscProjectCard.svelte";
+
+  import { GraduationCap } from "lucide-svelte";
 </script>
 
 <div class="projects-content content pb-96">
@@ -74,5 +78,45 @@
         textColor="#ca2e00"
       />
     </div>
+  </div>
+  <div id="misc-projects" class="bg-gray-50 w-full h-64 p-6 flex gap-8">
+    <MiscProjectCard
+      rotation={1.5}
+      title="Minecraft account finder"
+      link="https://google.com"
+      icon="UserSearch"
+    />
+    <MiscProjectCard
+      rotation={-1.5}
+      title="Random topic for revision"
+      link="https://github.com/nocdn/random-revision"
+      icon="GraduationCap"
+      colors={[
+        "white",
+        "white",
+        "#d8e2dc",
+        "#ffe5d9",
+        "#ffcad4",
+        "#f4acb7",
+        "#9d8189",
+        "white",
+      ]}
+    />
+    <MiscProjectCard
+      rotation={1.5}
+      title="Curseforge modpack downloader for vps's"
+      link="https://github.com/nocdn/curseforge-modpack-downloader"
+      icon="Anvil"
+      colors={[
+        "white",
+        "white",
+        "#2b2d42",
+        "#8d99ae",
+        "#edf2f4",
+        "#ef476f",
+        "#ef233c",
+        "white",
+      ]}
+    />
   </div>
 </div>
