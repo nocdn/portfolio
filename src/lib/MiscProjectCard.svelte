@@ -43,9 +43,9 @@
 <a
   href={link}
   class="relative aspect-[9/10] w-44 flex flex-col justify-between overflow-hidden rounded-xl p-3 border"
-  style="transform: rotate({hovering
-    ? 0
-    : rotation}deg); transition: transform 0.3s, box-shadow 0.5s; box-shadow: {hovering
+  style="transform: rotate({hovering ? 0 : rotation}deg) scale({hovering
+    ? 1.05
+    : 1}); transition: transform 0.3s, box-shadow 0.5s; box-shadow: {hovering
     ? '0 0 20px rgba(0, 0, 0, 0.1)'
     : 'none'}; background-image: {gradient}; background-size: {numStripes *
     stripeWidth}px {numStripes * stripeWidth}px;"
@@ -63,7 +63,10 @@
   {/if}
   {#if hovering}
     <div
-      class="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md motion-duration-500 backdrop-blur-md"
+      class="absolute inset-0 bg-gradient-to-t from-white opacity-50 blur-sm z-10 motion-opacity-in-0"
+    ></div>
+    <div
+      class="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md motion-duration-500 z-20"
     >
       {title}
     </div>

@@ -79,16 +79,17 @@
       />
     </div>
   </div>
-  <div id="misc-projects" class="bg-gray-50 w-full h-64 p-6 flex gap-8">
+  <h2 class="text-2xl font-bold mt-12">Miscellaneous projects:</h2>
+  <div id="misc-projects" class="w-full h-64 p-6 flex gap-10">
     <MiscProjectCard
       rotation={1.5}
-      title="Minecraft account finder"
+      title="Minecraft account finder."
       link="https://google.com"
       icon="UserSearch"
     />
     <MiscProjectCard
       rotation={-1.5}
-      title="Random topic for revision"
+      title="Random topic for revision."
       link="https://github.com/nocdn/random-revision"
       icon="GraduationCap"
       colors={[
@@ -104,7 +105,7 @@
     />
     <MiscProjectCard
       rotation={1.5}
-      title="Curseforge modpack downloader for vps's"
+      title="Curseforge modpack downloader."
       link="https://github.com/nocdn/curseforge-modpack-downloader"
       icon="Anvil"
       colors={[
