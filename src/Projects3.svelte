@@ -17,12 +17,12 @@
     <span class="markdown-text"># </span>
     <h1 class="text-3xl" data-value="What have I made?">What have I made?</h1>
   </div>
-  <div class="projects-columns grid grid-cols-3">
-    <div id="first-column" class="flex flex-col gap-4">
+  <div class="projects-columns grid grid-cols-3 gap-x-10">
+    <div id="first-column" class="flex flex-col gap-10">
       <ProjectCard
         title="Shared calendar, notes and files"
         description="A full-stack shared calendar, notes and files system for friends and
-        family."
+        family. My first introduction to AWS and Supabase, with a focus on serverless."
         githubLink="https://github.com/nocdn/Non-Exam-Assessment"
         demoLink="https://github.com/nocdn/Non-Exam-Assessment"
         imageurl="src/assets/projects-images/shared-calendar.avif"
@@ -41,10 +41,10 @@
         textColor="#511F7D"
       />
     </div>
-    <div id="second-column" class="flex flex-col gap-4">
+    <div id="second-column" class="flex flex-col gap-10">
       <ProjectCard
         title="Language Learning App"
-        description="A small language learning app for school coursework."
+        description="A small language learning app for school coursework that can be ran locally, and works as a PWA."
         githubLink="https://github.com/nocdn/language-learning"
         demoLink=""
         imageurl="src/assets/projects-images/language-learning.avif"
@@ -63,7 +63,7 @@
         textColor="#A53168"
       />
     </div>
-    <div id="third-column" class="flex flex-col gap-4">
+    <div id="third-column" class="flex flex-col gap-10">
       <ProjectCard
         title="Elo film ranking"
         description="An over-engineered solution to a problem of having a list of things, but
