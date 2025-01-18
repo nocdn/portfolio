@@ -29,7 +29,7 @@
 
 <div
   id="main-container"
-  class="relative flex flex-col gap-5 p-3 rounded-lg max-w-72 border"
+  class="relative flex flex-col gap-5 p-3 rounded-lg border"
   style="background-color: {backgroundColor};"
 >
   <div class="relative">
