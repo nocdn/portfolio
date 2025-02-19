@@ -79,7 +79,7 @@
       class="h-full motion-opacity-in-0 motion-duration-500 motion-blur-in-sm z-50 absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center text-gray-700 p-2 backdrop-blur-[3px]"
     >
       <div
-        class="bg-white text-black p-2 rounded-lg shadow-lg motionopacity-in-0 motion-blur-in-sm text-sm border shadow-sm"
+        class="bg-white text-black p-2 rounded-lg motionopacity-in-0 motion-blur-in-sm text-sm border shadow-sm"
       >
         {title}
       </div>
