@@ -86,13 +86,15 @@
     <MiscProjectCard
       rotation={1.5}
       title="Minecraft account finder."
-      link="https://google.com"
+      sourceLink="https://google.com"
+      demoLink="https://google.com"
       icon="UserSearch"
     />
     <MiscProjectCard
       rotation={-1.5}
       title="Random topic for revision."
-      link="https://github.com/nocdn/random-revision"
+      sourceLink="https://github.com/nocdn/random-revision"
+      demoLink="https://random-revision.vercel.app"
       icon="GraduationCap"
       colors={[
         "white",
@@ -108,7 +110,8 @@
     <MiscProjectCard
       rotation={1.5}
       title="Curseforge modpack downloader."
-      link="https://github.com/nocdn/curseforge-modpack-downloader"
+      sourceLink="https://github.com/nocdn/curseforge-modpack-downloader"
+      demoLink="https://curseforge-modpack-downloader.vercel.app"
       icon="Anvil"
       colors={[
         "white",

@@ -99,6 +99,7 @@
   .sidebar-nav {
     a {
       text-decoration: none;
+      cursor: pointer;
     }
 
     display: flex;
