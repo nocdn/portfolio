@@ -63,10 +63,10 @@
   {/if}
   {#if hovering}
     <div
-      class="absolute inset-0 bg-gradient-to-t from-white opacity-50 blur-sm z-10 motion-opacity-in-0"
+      class="absolute inset-0 bg-gradient-to-t from-white opacity-80 blur-sm z-10 motion-opacity-in-0 translate-y-6"
     ></div>
     <div
-      class="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md motion-duration-500 z-20"
+      class="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md motion-duration-500 z-20 font-geistmono"
     >
       {title}
     </div>

@@ -99,10 +99,10 @@
   updateTime();
 </script>
 
-<div class="about-content content">
+<div class="about-content content motion-opacity-in-0">
   <div class="about-header content-header">
     <span class="markdown-text"># </span>
-    <h1 class="text-3xl" data-value="Who am I?">Who am I?</h1>
+    <h1 class="text-3xl font-geistmono" data-value="Who am I?">Who am I?</h1>
   </div>
   <p
     class="font-sans text-xl pr-12"
@@ -172,14 +172,16 @@
   </div>
 
   <p
-    style="display: flex; flex-direction: column; gap: 0.35rem; font-family: 'Geist', sans-serif; letter-spacing: 0.05rem;"
+    style="display: flex; flex-direction: column; gap: 0.35rem; font-family: 'Geist', sans-serif; letter-spacing: 0.025rem;"
   >
     <span
-      >🎓 Studying Computer Science at the <span>University of York, UK.</span
-      ></span
+      ><span class="mr-1">🎓</span> Studying Computer Science at the
+      <span>University of York, UK.</span></span
     >
-    <span>🔍 Focused on web and backend development.</span>
-    <span>🌟 Always open to new opportunities.</span>
+    <span
+      ><span class="mr-1">🔍</span> Focused on web and backend development.</span
+    >
+    <span><span class="mr-1">🌟</span> Always open to new opportunities.</span>
   </p>
 </div>
 

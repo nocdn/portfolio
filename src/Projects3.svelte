@@ -12,7 +12,7 @@
   import { GraduationCap } from "lucide-svelte";
 </script>
 
-<div class="projects-content content pb-96">
+<div class="projects-content content pb-96 motion-opacity-in-0">
   <div class="projects-header content-header">
     <span class="markdown-text"># </span>
     <h1 class="text-3xl" data-value="What have I made?">What have I made?</h1>
@@ -79,7 +79,9 @@
       />
     </div>
   </div>
-  <h2 class="text-2xl font-bold mt-12">Miscellaneous projects:</h2>
+  <h2 class="text-2xl font-semibold font-geistmono mt-12">
+    Miscellaneous projects:
+  </h2>
   <div id="misc-projects" class="w-full h-64 p-6 flex gap-10">
     <MiscProjectCard
       rotation={1.5}

@@ -58,7 +58,7 @@
       </a>
     {/if}
   </links>
-  <p id="description" class="text-sm font-mono pl-1">
+  <p id="description" class="text-sm font-geistmono pl-1">
     {description}
   </p>
   <chips class="flex flex-wrap gap-2">
