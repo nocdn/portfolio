@@ -1,5 +1,0 @@
-https://squish.addy.ie/
-
-or the source code:
-
-https://github.com/addyosmani/squish

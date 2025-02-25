@@ -1,2 +1,1 @@
-- implement this effect for the miscellaneous project cards, where the title and a button to go to source and/or demo shows on top of the parallax blur [https://x.com/kumailnanji/status/1826961587334459431?s=46]
-- add the motion-translate-y- class to the about, projects, education, contact pages and choose whether its translate y or translate x based on if the user has just come from a page below it or above it in the sidebar
+- on hovering over the bullet points on about page, suggest taking the user to the corresponding other page, such as hovering over the "studing cs at..." one would take the user to the Education page, the "focused on web dev..." would take the user to the Projects page, etc.

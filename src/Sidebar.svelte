@@ -1,148 +1,107 @@
 <script>
-  import pfpimage from "./assets/newpfp.webp";
+  let { selectedIndex, onIndexChange = () => {} } = $props();
 
-  export let selectedIndex;
+  import pfpImage from "/pfp.webp";
+  import SidebarItem from "./lib/SidebarItem.svelte";
+
+  import { ChevronsUpDown } from "lucide-svelte";
 
   function handleClick(index) {
     selectedIndex = index;
+    console.log("selected index:", selectedIndex);
   }
 
-  export let noMovement;
+  let noMovement = $state(false);
+  let count = 0;
+  let timer = $state();
+
+  // function to start inactivity timer
+  function startTimer() {
+    timer = setInterval(() => {
+      if (++count === 10) {
+        noMovement = true;
+        console.log("Hint should now be visible");
+        clearInterval(timer); // stop timer after 10 seconds
+      }
+    }, 1000);
+  }
+
+  // start the timer initially
+  startTimer();
+
+  function movementDetected() {
+    noMovement = false;
+    clearInterval(timer); // stop timer to prevent noMovement from becoming true
+    console.log("Movement detected, hint disabled permanently.");
+  }
+
+  document.addEventListener("keydown", (e) => {
+    movementDetected(); // detect movement on any keypress
+
+    if (
+      e.key === "ArrowUp" ||
+      e.key === "ArrowDown" ||
+      e.key === "j" ||
+      e.key === "k"
+    ) {
+      e.preventDefault();
+
+      if (e.key === "ArrowUp" || e.key === "k") {
+        selectedIndex = selectedIndex === 0 ? 3 : selectedIndex - 1;
+        onIndexChange(selectedIndex);
+      } else if (e.key === "ArrowDown" || e.key === "j") {
+        selectedIndex = selectedIndex === 3 ? 0 : selectedIndex + 1;
+        onIndexChange(selectedIndex);
+      }
+    }
+  });
 </script>
 
-<div class="sidebar">
-  <div class="sidebar-header">
-    <img class="pfp" src={pfpimage} alt="profile icon of nocdn" />
+<sidebar class="p-8 grid grid-rows-[40%_30%_30%] h-full">
+  <div id="sidebar-header" class="flex flex-col justify-end h-full">
+    <img
+      src={pfpImage}
+      class="rounded-full aspect-square w-24 mb-8"
+      alt="pfp of github user nocdn"
+    />
   </div>
-
-  <div class="sidebar-nav">
-    <!-- svelte-ignore a11y_missing_attribute -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <a
-      class="sidebar-item"
-      class:sidebar-selected={selectedIndex === 0}
-      on:click={() => handleClick(0)}
-      >{selectedIndex === 0 ? "> About" : "About"}</a
-    >
-    <!-- svelte-ignore a11y_missing_attribute -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <a
-      class="sidebar-item"
-      class:sidebar-selected={selectedIndex === 1}
-      on:click={() => handleClick(1)}
-      >{selectedIndex === 1 ? "> Projects" : "Projects"}</a
-    >
-    <!-- svelte-ignore a11y_missing_attribute -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <a
-      class="sidebar-item"
-      class:sidebar-selected={selectedIndex === 2}
-      on:click={() => handleClick(2)}
-      >{selectedIndex === 2 ? "> Education" : "Education"}</a
-    >
-    <!-- svelte-ignore a11y_missing_attribute -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <a
-      class="sidebar-item"
-      class:sidebar-selected={selectedIndex === 3}
-      on:click={() => handleClick(3)}
-      >{selectedIndex === 3 ? "> Contact" : "Contact"}</a
-    >
+  <div id="sidebar-items" class="flex flex-col justify-center gap-3">
+    <SidebarItem
+      text="About"
+      isSelected={selectedIndex === 0}
+      onClick={() => {
+        onIndexChange(0);
+      }}
+    />
+    <SidebarItem
+      text="Projects"
+      isSelected={selectedIndex === 1}
+      onClick={() => {
+        onIndexChange(1);
+      }}
+    />
+    <SidebarItem
+      text="Education"
+      isSelected={selectedIndex === 2}
+      onClick={() => {
+        onIndexChange(2);
+      }}
+    />
+    <SidebarItem
+      text="Contact"
+      isSelected={selectedIndex === 3}
+      onClick={() => {
+        onIndexChange(3);
+      }}
+    />
   </div>
-  {#if noMovement}
-    <div class="movement-indicator">
-      <svg
-        width="36"
-        height="36"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M7.75739 5.04077L9.1716 6.45498L11.0001 4.62652V10H13.0001V4.62661L14.8284 6.45498L16.2426 5.04077L12 0.798126L7.75739 5.04077Z"
-          fill="currentColor"
-        />
-        <path
-          d="M16.2426 18.9593L14.8284 17.545L13.0001 19.3734V14H11.0001V19.3735L9.1716 17.545L7.75739 18.9593L12 23.2019L16.2426 18.9593Z"
-          fill="currentColor"
-        />
-      </svg>
-      <p>Use the up and down arrows to navigate</p>
-    </div>
-  {/if}
-</div>
-
-<style lang="scss">
-  .sidebar {
-    height: 100vh;
-    padding-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
-  }
-  .sidebar-header {
-    height: 35%;
-    display: flex;
-    align-items: flex-end;
-
-    img {
-      width: 6rem;
-      height: auto;
-      border-radius: 50%;
-    }
-  }
-
-  .sidebar-nav {
-    a {
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .sidebar-item {
-    color: rgb(24, 23, 32);
-  }
-
-  .sidebar-selected {
-    color: rgb(144, 31, 56);
-    font-weight: 700;
-  }
-
-  .movement-indicator {
-    display: flex;
-    gap: 1rem;
-    width: 70%;
-    align-items: flex-start;
-
-    font-size: 0.9rem;
-
-    opacity: 0.4;
-
-    letter-spacing: 1px;
-
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Open Sans",
-      "Helvetica Neue",
-      sans-serif;
-
-    svg {
-      width: 30%;
-    }
-  }
-</style>
+  <div id="sidebar-hint" class="flex flex-col justify-center">
+    {#if noMovement}
+      <div class="grid grid-cols-[20%_80%] opacity-40 motion-opacity-in-0 w-30">
+        <ChevronsUpDown size={16} strokeWidth={2} class="mt-1" />
+        <span class="text-sm">Use arrow keys or vi(m) bindings to navigate</span
+        >
+      </div>
+    {/if}
+  </div>
+</sidebar>

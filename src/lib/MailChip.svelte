@@ -1,12 +1,27 @@
 <script>
-  import { Mail } from "lucide-svelte";
+  import { Mail, Send } from "lucide-svelte";
 
   let { pulsating = false, faded = false } = $props();
+
+  let isHovered = $state(false);
+  let sendShown = $state(false);
+
+  $effect(() => {
+    if (isHovered) {
+      sendShown = true;
+    } else if (isHovered === false) {
+      setTimeout(() => {
+        sendShown = false;
+      }, 300);
+    }
+  });
 </script>
 
-<div
+<main
+  onmouseenter={() => (isHovered = true)}
+  onmouseleave={() => (isHovered = false)}
   style="opacity: {faded ? 0.8 : 1}"
-  class="flex gap-6 h-fit bg-[#FFF7F4] p-4 rounded-xl w-fit pr-12"
+  class="flex gap-6 h-fit bg-[#FFF7F4] p-4 rounded-xl w-fit pr-12 relative"
 >
   <a
     href="mailto:contact@bartoszbak.org"
@@ -16,14 +31,24 @@
     <Mail />
   </a>
   <div class="flex flex-col gap-1">
-    <p class="text-m font-sans tracking-wide font-semibold">
+    <p class="text-m font-geist tracking-wide font-semibold">
       Reach me quickly:
     </p>
-    <a href="mailto:contact@bartoszbak.org" class="text-sm text-[#ED5F17]"
-      >contact@bartoszbak.org</a
+    <a
+      href="mailto:contact@bartoszbak.org"
+      class="text-sm text-[#ED5F17] font-geist-mono">contact@bartoszbak.org</a
     >
   </div>
-</div>
+  {#if sendShown}
+    <div
+      class="absolute top-4 right-4 {isHovered
+        ? 'motion-preset-fade'
+        : 'motion-opacity-out-0'} motion-duration-300"
+    >
+      <Send size={16} class="animate-pointing-top-right-sm" />
+    </div>
+  {/if}
+</main>
 
 <style>
   @keyframes pulse {

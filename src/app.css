@@ -1,52 +1,188 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-}
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap");
+@import "tailwindcss";
+@plugin "tailwindcss-motion";
 
 :root {
-  font-family: "SF Mono", monospace;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
   font-weight: 500;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-weight: 700;
+#app {
+  height: 100dvh;
+  width: 100dvw;
+  display: grid;
+  place-content: center;
 }
 
-.markdown-text {
-  opacity: 0.4;
-  color: darkgray;
-}
+@theme {
+  --font-geist-mono: "Geist Mono", monospace;
+  --font-geist: "Geist", sans-serif;
 
-.content-header {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  --animate-pointing-top-right-md: pointing-top-right-md 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-top-left-md: pointing-top-left-md 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-bottom-right-md: pointing-bottom-right-md 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-bottom-left-md: pointing-bottom-left-md 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
 
-  span {
-    font-size: 2rem;
-    font-weight: 600;
+  --animate-pointing-top-right-sm: pointing-top-right-sm 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-top-left-sm: pointing-top-left-sm 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-bottom-right-sm: pointing-bottom-right-sm 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-bottom-left-sm: pointing-bottom-left-sm 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+
+  --animate-pointing-top-right-xs: pointing-top-right-xs 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-top-left-xs: pointing-top-left-xs 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-bottom-right-xs: pointing-bottom-right-xs 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+  --animate-pointing-bottom-left-xs: pointing-bottom-left-xs 1.75s
+    cubic-bezier(0.87, 0, 0.13, 1) infinite;
+
+  @keyframes pointing-top-right-md {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(3px, -3px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
-}
+  @keyframes pointing-top-left-md {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-3px, -3px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-bottom-right-md {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(3px, 3px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-bottom-left-md {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-3px, 3px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 2.75rem;
+  @keyframes pointing-top-right-sm {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-top-left-sm {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-2px, -2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-bottom-right-sm {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(2px, 2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-bottom-left-sm {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-2px, 2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes pointing-top-right-xs {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(1px, -1px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-top-left-xs {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-1px, -1px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-bottom-right-xs {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(1px, 1px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes pointing-bottom-left-xs {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-1px, 1px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
 }

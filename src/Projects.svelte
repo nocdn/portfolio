@@ -1,23 +1,18 @@
 <script>
-  import languageLearningImage from "./assets/projects-images/language-learning.avif";
-  import portfolioSiteImage from "./assets/projects-images/portfolio-site.avif";
-  import sharedCalendarImage from "./assets/projects-images/shared-calendar.avif";
-  import filmsEloImage from "./assets/projects-images/elo-site.avif";
-  import whisperSiteImage from "./assets/projects-images/whisperSite.avif";
-
+  import ContentHeader from "./lib/ContentHeader.svelte";
   import ProjectCard from "./lib/ProjectCard.svelte";
-
   import MiscProjectCard from "./lib/MiscProjectCard.svelte";
 
-  import { GraduationCap } from "lucide-svelte";
+  import sharedCalendar from "/sharedCalendar.avif";
+  import whisperSite from "/whisperSite.avif";
+  import languageLearning from "/languageLearning.avif";
+  import portfolioSite from "/portfolioSite.avif";
+  import eloSite from "/eloSite.avif";
 </script>
 
-<div class="projects-content content pb-96 motion-opacity-in-0">
-  <div class="projects-header content-header">
-    <span class="markdown-text"># </span>
-    <h1 class="text-3xl" data-value="What have I made?">What have I made?</h1>
-  </div>
-  <div class="projects-columns grid grid-cols-3 gap-x-10">
+<projects class="flex flex-col gap-12 motion-opacity-in-0">
+  <ContentHeader title="What have I made?" />
+  <div id="projects-columns" class="grid grid-cols-3 gap-x-10">
     <div id="first-column" class="flex flex-col gap-10">
       <ProjectCard
         title="Shared calendar, notes and files"
@@ -25,7 +20,7 @@
         family. My first introduction to AWS and Supabase, with a focus on serverless."
         githubLink="https://github.com/nocdn/Non-Exam-Assessment"
         demoLink="https://github.com/nocdn/Non-Exam-Assessment"
-        imageurl="src/assets/projects-images/shared-calendar.avif"
+        imageurl={sharedCalendar}
         techStack={["Supabase", "JavaScript", "S3", "Lambda", "IAM"]}
         backgroundColor="#F4F9FF"
         textColor="darkBlue"
@@ -35,7 +30,7 @@
         description="A web app to transcribe uploaded audio into text, using the OpenAI Whisper models and Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
         githubLink="https://github.com/nocdn/transcription-svelte"
         demoLink="https://whisper.bartoszbak.org"
-        imageurl="src/assets/projects-images/whisperSite.avif"
+        imageurl={whisperSite}
         techStack={["Svelte", "Flask", "Tailwind"]}
         backgroundColor="#FCF3FF"
         textColor="#511F7D"
@@ -47,7 +42,7 @@
         description="A small language learning app for school coursework that can be ran locally, and works as a PWA."
         githubLink="https://github.com/nocdn/language-learning"
         demoLink=""
-        imageurl="src/assets/projects-images/language-learning.avif"
+        imageurl={languageLearning}
         techStack={["JavaScript"]}
         backgroundColor="#FFFAF4"
         textColor="#873E00"
@@ -57,7 +52,7 @@
         description="How's that for recursion? This is a fairly simple website that I made to introduce myself and showcase some of my skills. It was also a way for me to learn and practice Svelte and Tailwind CSS. It also comes with some fun easter eggs."
         githubLink="https://github.com/nocdn/portfolio-website-svelte"
         demoLink="https://bartoszbak.org"
-        imageurl="src/assets/projects-images/portfolio-site.avif"
+        imageurl={portfolioSite}
         techStack={["Svelte", "JavaScript", "Tailwind"]}
         backgroundColor="#FFF5FE"
         textColor="#A53168"
@@ -72,23 +67,33 @@
         table."
         githubLink="https://github.com/nocdn/films-elo"
         demoLink="https://films-elo.vercel.app/"
-        imageurl="src/assets/projects-images/elo-site.avif"
+        imageurl={eloSite}
         techStack={["JavaScript", "Svelte", "PostgreSQL"]}
         backgroundColor="#FEF7F4"
         textColor="#ca2e00"
       />
     </div>
   </div>
-  <h2 class="text-2xl font-semibold font-geistmono mt-12">
+  <p class="text-2xl font-semibold font-geist-mono mt-12">
     Miscellaneous projects:
-  </h2>
-  <div id="misc-projects" class="w-full h-64 p-6 flex gap-10">
+  </p>
+  <miscProjects class="w-full h-64 p-6 flex gap-10">
     <MiscProjectCard
       rotation={1.5}
       title="Minecraft account finder."
       sourceLink="https://google.com"
       demoLink="https://google.com"
       icon="UserSearch"
+      colors={[
+        "white",
+        "white",
+        "#9ADB76",
+        "#8FD268",
+        "#8B624B",
+        "#372B1C",
+        "#373B39",
+        "white",
+      ]}
     />
     <MiscProjectCard
       rotation={-1.5}
@@ -109,7 +114,7 @@
     />
     <MiscProjectCard
       rotation={1.5}
-      title="Curseforge modpack downloader."
+      title="Curseforge pack downloader."
       sourceLink="https://github.com/nocdn/curseforge-modpack-downloader"
       demoLink="https://curseforge-modpack-downloader.vercel.app"
       icon="Anvil"
@@ -124,5 +129,5 @@
         "white",
       ]}
     />
-  </div>
-</div>
+  </miscProjects>
+</projects>

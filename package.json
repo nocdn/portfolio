@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-website-svelte",
+  "name": "portrefactor",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,18 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^4.0.4",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.5.3",
-    "sass": "^1.85.0",
-    "svelte": "^5.20.2",
-    "tailwindcss": "^3.4.17",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "svelte": "^5.20.4",
     "tailwindcss-motion": "^1.1.0",
-    "vercel": "^35.2.4",
-    "vite": "^5.4.14"
+    "vite": "^6.2.0"
   },
   "dependencies": {
-    "lucide-svelte": "^0.469.0",
+    "@tailwindcss/vite": "^4.0.8",
+    "lucide-svelte": "^0.475.0",
+    "tailwindcss": "^4.0.8",
     "tinycolor2": "^1.6.0"
   }
 }

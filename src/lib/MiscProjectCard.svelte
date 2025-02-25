@@ -1,5 +1,5 @@
 <script>
-  // Github is the unused icon
+  // github is the unused icon
   import { Github } from "lucide-svelte";
 
   import {
@@ -30,77 +30,55 @@
   } = $props();
   let hovering = $state(false);
 
-  const stripeWidth = 30; // Width of each stripe in pixels
+  const stripeWidth = 30; // width of each stripe in pixels
   const numStripes = colors.length;
 
-  // Calculate the gradient
+  // calculate the gradient
   const gradient = `repeating-linear-gradient(
-    135deg,
-    ${colors
-      .map(
-        (color, index) =>
-          `${color} ${index * stripeWidth}px, ${color} ${(index + 1) * stripeWidth}px`
-      )
-      .join(", ")}
-  )`;
+      135deg,
+      ${colors
+        .map(
+          (color, index) =>
+            `${color} ${index * stripeWidth}px, ${color} ${(index + 1) * stripeWidth}px`
+        )
+        .join(", ")}
+    )`;
 </script>
 
-<a
-  href={sourceLink}
-  class="relative aspect-[9/10] w-44 flex flex-col justify-between overflow-hidden rounded-xl p-3 border"
-  style="transform: rotate({hovering ? 0 : rotation}deg) scale({hovering
-    ? 1.05
-    : 1}); transition: transform 0.3s, box-shadow 0.5s; box-shadow: {hovering
-    ? '0 0 20px rgba(0, 0, 0, 0.1)'
-    : 'none'}; background-image: {gradient}; background-size: {numStripes *
-    stripeWidth}px {numStripes * stripeWidth}px;"
-  onmouseenter={() => (hovering = true)}
-  onmouseleave={() => (hovering = false)}
->
-  {#if icon === "UserSearch"}
-    <UserSearch />
-  {:else if icon === "GraduationCap"}
-    <GraduationCap />
-  {:else if icon === "BookMarked"}
-    <BookMarked />
-  {:else if icon === "Anvil"}
-    <Anvil />
-  {/if}
+<div class="flex flex-col h-72 w-44 justify-between">
+  <div
+    class="h-54 w-44 flex flex-col justify-between overflow-hidden {hovering
+      ? 'rounded-xl'
+      : 'rounded-xl'} border border-gray-200 relative"
+    style="transform: rotate({hovering ? 0 : rotation}deg) scale({hovering
+      ? 1.05
+      : 1}); transition: transform 0.3s, box-shadow 0.5s; box-shadow: {hovering
+      ? '0 0 20px rgba(0, 0, 0, 0.1)'
+      : 'none'};"
+  >
+    <a
+      href={sourceLink}
+      class="relative h-full w-full transform-gpu"
+      style="
+      background-image: {gradient}; 
+      background-size: {numStripes * stripeWidth}px {numStripes *
+        stripeWidth}px;
+      transform: perspective(1000px) translateZ({hovering ? '100px' : '0'});
+      transition: transform 0.3s ease-out;"
+      onmouseenter={() => (hovering = true)}
+      onmouseleave={() => (hovering = false)}
+    >
+      {#if hovering}{/if}
+    </a>
+  </div>
   {#if hovering}
-    <!-- <div
-      class="absolute inset-0 bg-gradient-to-t from-white opacity-80 blur-sm z-10 motion-opacity-in-0 translate-y-6"
-    ></div>
-    <div
-      class="motion-opacity-in-0 motion-translate-y-in-100 motion-blur-in-md motion-duration-500 z-20 font-geistmono"
-    >
-      {title}
-    </div> -->
-    <div
-      class="h-full motion-opacity-in-0 motion-duration-500 motion-blur-in-sm z-50 absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center text-gray-700 p-2 backdrop-blur-[3px]"
-    >
-      <div
-        class="bg-white text-black p-2 rounded-lg motionopacity-in-0 motion-blur-in-sm text-sm border shadow-sm"
-      >
+    <div class="motion-preset-slide-down motion-opacity-in-0 flex gap-0.5 px-1">
+      <p class="text-md text-pretty">
         {title}
-      </div>
-      <div class="flex flex-col items-center gap-2 mt-2">
-        <!-- svelte-ignore node_invalid_placement_ssr -->
-        <a
-          href={sourceLink}
-          class="bg-white rounded-md font-geistmono px-2 py-0.5 flex gap-1 items-center text-sm"
-        >
-          source <CodeXmlIcon size={18} />
-        </a>
-        {#if demoLink}
-          <!-- svelte-ignore node_invalid_placement_ssr -->
-          <a
-            href={demoLink}
-            class="bg-white rounded-md font-geistmono px-2 py-0.5 flex gap-1 items-center text-sm"
-          >
-            demo <ArrowUpRight size={18} />
-          </a>
-        {/if}
+      </p>
+      <div class="w-5 h-5 animate-pointing-top-right mt-0.5">
+        <ArrowUpRight size={20} />
       </div>
     </div>
   {/if}
-</a>
+</div>
