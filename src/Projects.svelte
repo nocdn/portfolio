@@ -74,8 +74,8 @@
       />
     </div>
   </div>
-  <p class="text-2xl font-semibold font-geist-mono mt-12">
-    Miscellaneous projects:
+  <p class="text-2xl font-bold font-mono mt-12">
+    <span class="opacity-20">##</span> Miscellaneous projects:
   </p>
   <miscProjects class="w-full h-64 p-6 flex gap-10">
     <MiscProjectCard
