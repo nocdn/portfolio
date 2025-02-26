@@ -81,8 +81,8 @@
     <MiscProjectCard
       rotation={1.5}
       title="Minecraft account finder."
-      sourceLink="https://google.com"
-      demoLink="https://google.com"
+      sourceLink="https://github.com/nocdn/namesniper"
+      demoLink="https://github.com/nocdn/namesniper"
       icon="UserSearch"
       colors={[
         "white",

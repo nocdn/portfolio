@@ -1,1 +1,2 @@
 - on hovering over the bullet points on about page, suggest taking the user to the corresponding other page, such as hovering over the "studing cs at..." one would take the user to the Education page, the "focused on web dev..." would take the user to the Projects page, etc.
+- remove the arrow movement hint after hovering over it
