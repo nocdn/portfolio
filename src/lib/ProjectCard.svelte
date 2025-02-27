@@ -47,16 +47,22 @@
       id="code-link"
       href={githubLink}
       style="background-color: {darkenedHex}; color: {textColor}; border: 1px solid {darkestHex};"
-      class="text-black rounded-full px-3 py-1 text-sm flex gap-2 items-center w-fit cursor-pointer font-geist"
+      class="text-black rounded-full px-3 py-1 text-sm flex gap-2 items-center w-fit cursor-pointer font-geist group"
     >
-      source <ArrowUpRight size={16} />
+      source <ArrowUpRight
+        size={16}
+        class="group-hover:animate-pointing-top-right-xs"
+      />
     </a>
     {#if demoLink != ""}
       <a
         href={demoLink}
-        class="border border-gray-300 rounded-full px-3 py-1 text-sm flex gap-1 items-center w-fit cursor-pointer"
+        class="border border-gray-300 rounded-full px-3 py-1 text-sm flex gap-1 items-center w-fit cursor-pointer group"
       >
-        demo <ArrowUpRight size={16} />
+        demo <ArrowUpRight
+          size={16}
+          class="group-hover:animate-pointing-top-right-xs"
+        />
       </a>
     {/if}
   </links>
