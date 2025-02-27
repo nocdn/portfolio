@@ -76,7 +76,7 @@
       <p class="text-md text-pretty">
         {title}
       </p>
-      <div class="w-5 h-5 animate-pointing-top-right mt-0.5">
+      <div class="w-5 h-5 animate-pointing-top-right-md mt-0.5">
         <ArrowUpRight size={20} />
       </div>
     </div>

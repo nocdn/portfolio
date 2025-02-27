@@ -96,28 +96,28 @@
       ]}
     />
     <MiscProjectCard
-      rotation={-1.5}
-      title="Random topic for revision."
-      sourceLink="https://github.com/nocdn/random-revision"
-      demoLink="https://random-revision.vercel.app"
-      icon="GraduationCap"
-      colors={[
-        "white",
-        "white",
-        "#d8e2dc",
-        "#ffe5d9",
-        "#ffcad4",
-        "#f4acb7",
-        "#9d8189",
-        "white",
-      ]}
-    />
-    <MiscProjectCard
       rotation={1.5}
       title="Curseforge pack downloader."
       sourceLink="https://github.com/nocdn/curseforge-modpack-downloader"
       demoLink="https://curseforge-modpack-downloader.vercel.app"
       icon="Anvil"
+      colors={[
+        "white",
+        "white",
+        "#F16436",
+        "#F16436",
+        "#0D0D0D",
+        "#0F2B45",
+        "#0F2B45",
+        "white",
+      ]}
+    />
+    <MiscProjectCard
+      rotation={-1.5}
+      title="Random topic for revision."
+      sourceLink="https://github.com/nocdn/random-revision"
+      demoLink="https://random-revision.vercel.app"
+      icon="GraduationCap"
       colors={[
         "white",
         "white",
