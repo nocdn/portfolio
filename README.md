@@ -4,31 +4,31 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### purpose
+### Purpose
 
-This is a static site I made this as a simple project to learn Svelte, then Svelte 5, and later Tailwind CSS.
+This is a static site I made to learn Svelte, then Svelte 5, and later Tailwind CSS.
 
-### building
+### Building
 
-clone the repo:
+Clone the repo:
 
 ```bash
 git clone github.com/nocdn/portfolio-website-svelte.git
 ```
 
-install dependencies:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-build the project:
+Build the project:
 
 ```bash
 npm run build
 ```
 
-now you can serve the files generated in the `dist` folder with whatever server you want.
+Wow you can serve the files generated in the `dist` folder with any static hosting server or service.
 
 ### License
 
