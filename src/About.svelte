@@ -60,16 +60,11 @@
     My name is Bartosz Bak, and I'm a student and an aspiring full-stack
     software engineer who likes to craft nice things.
   </p>
-  <div class="flex flex-col group h-8 hover:h-24 bg-red-100 transition-all">
+  <div class="flex flex-col group h-8 transition-all">
     <div class="flex gap-2 items-center opacity-70 font-geist-mono">
       <MapPin size={18} />
       <span>York, United Kingdom,</span>
       <span>GMT</span>
-    </div>
-    <div
-      class="group-hover:motion-scale-y-in-0 opacity-0 group-hover:opacity-100"
-    >
-      map goes here
     </div>
   </div>
   <div class="flex flex-col bg-gray-50 p-3 rounded-sm w-md">
