@@ -46,6 +46,8 @@
     <a
       id="code-link"
       href={githubLink}
+      target="_blank"
+      rel="noopener noreferrer"
       style="background-color: {darkenedHex}; color: {textColor}; border: 1px solid {darkestHex};"
       class="text-black rounded-full px-3 py-1 text-sm flex gap-2 items-center w-fit cursor-pointer font-geist group"
     >
@@ -57,6 +59,8 @@
     {#if demoLink != ""}
       <a
         href={demoLink}
+        target="_blank"
+        rel="noopener noreferrer"
         class="border border-gray-300 rounded-full px-3 py-1 text-sm flex gap-1 items-center w-fit cursor-pointer group"
       >
         demo <ArrowUpRight

@@ -4,13 +4,14 @@
   import MiscProjectCard from "./lib/MiscProjectCard.svelte";
 
   import sharedCalendar from "/sharedCalendar.avif";
-  import whisperSite from "/whisperSite.avif";
+  import whisperSite from "/whisper.avif";
   import languageLearning from "/languageLearning.avif";
-  import portfolioSite from "/portfolioSite.avif";
-  import eloSite from "/eloSite.avif";
+  import portfolioSite from "/portfolio.avif";
+  import filmsElo from "/filmsElo.avif";
+  import segments from "/segments.avif";
 </script>
 
-<projects class="flex flex-col gap-12 motion-opacity-in-0 pr-16 ">
+<projects class="flex flex-col gap-12 motion-opacity-in-0 pr-16">
   <ContentHeader title="What have I made?" />
   <div id="projects-columns" class="grid grid-cols-3 gap-x-10">
     <div id="first-column" class="flex flex-col gap-10">
@@ -26,8 +27,8 @@
         textColor="darkBlue"
       />
       <ProjectCard
-        title="Whisper transcription app"
-        description="A web app to transcribe uploaded audio into text, using the OpenAI Whisper models and Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
+        title="Transcription app"
+        description="A web app to transcribe uploaded files into text, using the OpenAI Whisper models and Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
         githubLink="https://github.com/nocdn/transcription-svelte"
         demoLink="https://whisper.bartoszbak.org"
         imageurl={whisperSite}
@@ -38,6 +39,16 @@
     </div>
     <div id="second-column" class="flex flex-col gap-10">
       <ProjectCard
+        title="Ad segment remover"
+        description="RESTful API (with a web interface) to remove ad segments from audio and video files."
+        githubLink="https://github.com/nocdn/ad-segment-remover"
+        demoLink="https://segments.bartoszbak.org"
+        imageurl={segments}
+        techStack={["Svelte", "Flask", "Tailwind"]}
+        backgroundColor="#FFF5FE"
+        textColor="#A53168"
+      />
+      <ProjectCard
         title="Language Learning App"
         description="A small language learning app for school coursework that can be ran locally, and works as a PWA."
         githubLink="https://github.com/nocdn/language-learning"
@@ -46,16 +57,6 @@
         techStack={["JavaScript"]}
         backgroundColor="#FFFAF4"
         textColor="#873E00"
-      />
-      <ProjectCard
-        title="This website"
-        description="How's that for recursion? This is a fairly simple website that I made to introduce myself and showcase some of my skills. It was also a way for me to learn and practice Svelte and Tailwind CSS. It also comes with some fun easter eggs."
-        githubLink="https://github.com/nocdn/portfolio-website-svelte"
-        demoLink="https://bartoszbak.org"
-        imageurl={portfolioSite}
-        techStack={["Svelte", "JavaScript", "Tailwind"]}
-        backgroundColor="#FFF5FE"
-        textColor="#A53168"
       />
     </div>
     <div id="third-column" class="flex flex-col gap-10">
@@ -67,10 +68,20 @@
         table."
         githubLink="https://github.com/nocdn/films-elo"
         demoLink="https://films-elo.vercel.app/"
-        imageurl={eloSite}
+        imageurl={filmsElo}
         techStack={["JavaScript", "Svelte", "PostgreSQL"]}
         backgroundColor="#FEF7F4"
         textColor="#ca2e00"
+      />
+      <ProjectCard
+        title="This website"
+        description="How's that for recursion? This is a fairly simple website that I made to introduce myself and showcase some of my skills. It was also a way for me to learn and practice Svelte and Tailwind CSS. It also comes with some fun easter eggs."
+        githubLink="https://github.com/nocdn/portfolio-website-svelte"
+        demoLink="https://bartoszbak.org"
+        imageurl={portfolioSite}
+        techStack={["Svelte", "JavaScript", "Tailwind"]}
+        backgroundColor="#FFF5FE"
+        textColor="#A53168"
       />
     </div>
   </div>
