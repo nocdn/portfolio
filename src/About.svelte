@@ -1,7 +1,8 @@
 <script>
   import ContentHeader from "./lib/ContentHeader.svelte";
   import { MapPin } from "lucide-svelte";
-  let { navigationDirection } = $props();
+  // accept the prop
+  let { contentAnimationDirection } = $props();
 
   let userAgent = $state("");
   if (window.navigator.userAgent.includes("Mac")) {
@@ -34,28 +35,36 @@
     let promptTextContent = commandPrompt;
     const fullCommand = [" cat ", "stack", ".txt"];
 
-    // remove  blinking cursor just before the command starts to appear
-    document.getElementById("blinking-cursor").style.display = "none";
+    // remove blinking cursor just before the command starts to appear
+    const cursor = document.getElementById("blinking-cursor");
+    if (cursor) cursor.style.display = "none";
 
     for (let i = 0; i < fullCommand.length; i++) {
       setTimeout(() => {
         promptTextContent += fullCommand[i];
         commandPrompt = promptTextContent;
-        document.getElementById("command").innerText = commandPrompt;
+        const commandEl = document.getElementById("command");
+        if (commandEl) commandEl.innerText = commandPrompt;
       }, i * 100);
     }
   }
 
   // show the blinking cursor before the command is typed
   function showBlinkingCursor() {
-    document.getElementById("blinking-cursor").style.display = "inline-block";
+    const cursor = document.getElementById("blinking-cursor");
+    if (cursor) cursor.style.display = "inline-block";
   }
 
   setTimeout(showBlinkingCursor, 1000); // show cursor after 1 second
   setTimeout(writeCommand, 1500); // start typing the command after 1.5 seconds
 </script>
 
-<about class="flex flex-col gap-12 motion-opacity-in-0 animate-small-fade-down">
+<!-- remove old animation, apply conditional class -->
+<about
+  class="flex flex-col gap-12 {contentAnimationDirection === 'up'
+    ? 'animate-small-fade-up'
+    : 'animate-small-fade-down'}"
+>
   <ContentHeader title="Who am I?" />
   <p class="text-lg font-geist pr-24 text-balance">
     My name is Bartosz Bak, and I'm a student and an aspiring full-stack

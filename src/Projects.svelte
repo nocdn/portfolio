@@ -3,6 +3,8 @@
   import ProjectCard from "./lib/ProjectCard.svelte";
   import MiscProjectCard from "./lib/MiscProjectCard.svelte";
 
+  let { contentAnimationDirection } = $props();
+
   import sharedCalendar from "/sharedCalendar.avif";
   import whisperSite from "/whisper.avif";
   import languageLearning from "/languageLearning.avif";
@@ -12,7 +14,10 @@
 </script>
 
 <projects
-  class="flex flex-col gap-12 motion-opacity-in-0 pr-16 animate-small-fade-up"
+  class="flex flex-col gap-12 motion-opacity-in-0 pr-16 {contentAnimationDirection ===
+  'up'
+    ? 'animate-small-fade-up'
+    : 'animate-small-fade-down'}"
 >
   <ContentHeader title="What have I made?" />
   <div id="projects-columns" class="grid grid-cols-3 gap-x-10">

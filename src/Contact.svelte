@@ -5,10 +5,15 @@
   import ContentHeader from "./lib/ContentHeader.svelte";
 
   import MorphingText from "./lib/MorphingText.svelte";
-  let { navigationDirection } = $props();
+  let { contentAnimationDirection } = $props();
 </script>
 
-<contact class="flex flex-col gap-12 motion-opacity-in-0">
+<contact
+  class="flex flex-col gap-12 motion-opacity-in-0 {contentAnimationDirection ===
+  'up'
+    ? 'animate-small-fade-up'
+    : 'animate-small-fade-down'}"
+>
   <ContentHeader title="You can reach me on">
     {#snippet customElement()}
       <MorphingText />

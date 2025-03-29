@@ -6,8 +6,25 @@
   import Contact from "./Contact.svelte";
 
   let selectedIndex = $state(0);
-  function handleIndexChange(index) {
-    selectedIndex = index;
+  // 'up' means the content should slide up (user navigated down)
+  // 'down' means the content should slide down (user navigated up)
+  let contentAnimationDirection = $state("down"); // default animation for initial load
+
+  function handleIndexChange(newIndex) {
+    // determine direction based on index change
+    if (newIndex > selectedIndex || (selectedIndex === 3 && newIndex === 0)) {
+      // user navigated DOWN or wrapped bottom to top
+      contentAnimationDirection = "up"; // content should animate UP
+    } else if (
+      newIndex < selectedIndex ||
+      (selectedIndex === 0 && newIndex === 3)
+    ) {
+      // user navigated UP or wrapped top to bottom
+      contentAnimationDirection = "down"; // content should animate DOWN
+    }
+
+    // update the index *after* determining direction
+    selectedIndex = newIndex;
   }
 </script>
 
@@ -15,13 +32,13 @@
   <Sidebar {selectedIndex} onIndexChange={handleIndexChange} />
   <content class="px-16 py-32 overflow-y-scroll">
     {#if selectedIndex === 0}
-      <About />
+      <About {contentAnimationDirection} />
     {:else if selectedIndex === 1}
-      <Projects />
+      <Projects {contentAnimationDirection} />
     {:else if selectedIndex === 2}
-      <Education />
+      <Education {contentAnimationDirection} />
     {:else if selectedIndex === 3}
-      <Contact />
+      <Contact {contentAnimationDirection} />
     {/if}
   </content>
 </main>

@@ -6,11 +6,6 @@
 
   import { ChevronsUpDown } from "lucide-svelte";
 
-  function handleClick(index) {
-    selectedIndex = index;
-    console.log("selected index:", selectedIndex);
-  }
-
   let noMovement = $state(false);
   let count = 0;
   let timer = $state();
@@ -46,12 +41,17 @@
     ) {
       e.preventDefault();
 
+      let newIndex = selectedIndex; // calculate new index based on current
+
       if (e.key === "ArrowUp" || e.key === "k") {
-        selectedIndex = selectedIndex === 0 ? 3 : selectedIndex - 1;
-        onIndexChange(selectedIndex);
+        newIndex = selectedIndex === 0 ? 3 : selectedIndex - 1;
       } else if (e.key === "ArrowDown" || e.key === "j") {
-        selectedIndex = selectedIndex === 3 ? 0 : selectedIndex + 1;
-        onIndexChange(selectedIndex);
+        newIndex = selectedIndex === 3 ? 0 : selectedIndex + 1;
+      }
+
+      // only call if the index actually changed
+      if (newIndex !== selectedIndex) {
+        onIndexChange(newIndex);
       }
     }
   });
