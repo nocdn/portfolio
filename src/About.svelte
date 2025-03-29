@@ -1,6 +1,6 @@
 <script>
   import ContentHeader from "./lib/ContentHeader.svelte";
-  import { MapPin } from "lucide-svelte";
+  import { Globe } from "lucide-svelte";
   // accept the prop
   let { contentAnimationDirection } = $props();
 
@@ -18,7 +18,7 @@
   let shownOutputs = $state(0);
   function graduallyShowOutputs() {
     const interval = setInterval(() => {
-      if (shownOutputs < 3) {
+      if (shownOutputs < 4) {
         shownOutputs += 1;
       } else {
         clearInterval(interval);
@@ -61,23 +61,26 @@
 
 <!-- remove old animation, apply conditional class -->
 <about
-  class="flex flex-col gap-12 {contentAnimationDirection === 'up'
+  class="flex flex-col gap-9.5 {contentAnimationDirection === 'up'
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'}"
 >
   <ContentHeader title="Who am I?" />
-  <p class="text-lg font-geist pr-24 text-balance">
-    My name is Bartosz Bak, and I'm a student and an aspiring full-stack
-    software engineer who likes to craft nice things.
-  </p>
-  <div class="flex flex-col group h-8 transition-all">
-    <div class="flex gap-2 items-center opacity-70 font-geist-mono">
-      <MapPin size={18} />
-      <span>York, United Kingdom,</span>
-      <span>GMT</span>
+  <header class="flex flex-col gap-3">
+    <p class="text-lg font-geist pr-24 text-balance">
+      My name is Bartosz Bak, and I'm a student and an aspiring full-stack
+      engineer who likes to craft nice things.
+    </p>
+    <div class="flex flex-col group h-8 transition-all">
+      <a
+        href="https://maps.app.goo.gl/1wJWH9Vi86rza4iY9"
+        class="flex gap-2 items-center font-geist-mono text-md"
+      >
+        <Globe size={14} strokeWidth={2.5} /> York, United Kingdom, GMT
+      </a>
     </div>
-  </div>
-  <div class="flex flex-col bg-gray-50 p-3 rounded-sm w-md">
+  </header>
+  <div class="flex flex-col bg-gray-50 p-3 rounded-sm w-lg">
     <p class="text-red-700 font-geist-mono mb-3 font-bold">
       bartosz@{userAgent} ~ $ <span id="command"></span><span
         id="blinking-cursor">█</span
@@ -88,19 +91,25 @@
       class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
       style="opacity: {shownOutputs >= 1 ? 1 : 0};"
     >
-      Svelte 5, Tailwind CSS, JavaScript
+      TypeScript, JavaScript, Python, Bash
     </p>
     <p
       class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
       style="opacity: {shownOutputs >= 2 ? 1 : 0};"
     >
-      Python, Bash, Flask
+      SvelteKit, Flask, Tailwind CSS
     </p>
     <p
       class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
       style="opacity: {shownOutputs >= 3 ? 1 : 0};"
     >
-      Git, Docker, Unix systems
+      Git, Docker, Unix systems, Nginx, PostgreSQL
+    </p>
+    <p
+      class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
+      style="opacity: {shownOutputs >= 4 ? 1 : 0};"
+    >
+      AWS, GCP, Supabase, OCI, CI/CD understanding
     </p>
   </div>
   <p class="flex flex-col gap-1.5 text-md font-geist tracking-[0.025rem]">
@@ -108,9 +117,10 @@
       ><span class="mr-1">🎓</span> Studying Computer Science at the
       <span>University of York, UK.</span></span
     >
+    <span><span class="mr-1">🔍</span> Focused on full-stack development.</span>
     <span
-      ><span class="mr-1">🔍</span> Focused on web and backend development.</span
+      ><span class="mr-1">🌟</span> Interested in AI research, modern frameworks
+      and UI/UX design.</span
     >
-    <span><span class="mr-1">🌟</span> Always open to new opportunities.</span>
   </p>
 </about>
