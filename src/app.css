@@ -51,6 +51,34 @@
   --animate-pointing-bottom-left-xs: pointing-bottom-left-xs 1.75s
     cubic-bezier(0.87, 0, 0.13, 1) infinite;
 
+  --animate-small-fade-up: small-fade-up 0.3s
+    cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  --animate-small-fade-down: small-fade-down 0.3s
+    cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  @keyframes small-fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(7px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes small-fade-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-7px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @keyframes pointing-top-right-md {
     0% {
       transform: translate(0, 0);

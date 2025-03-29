@@ -1,6 +1,7 @@
 <script>
   import ContentHeader from "./lib/ContentHeader.svelte";
   import { MapPin } from "lucide-svelte";
+  let { navigationDirection } = $props();
 
   let userAgent = $state("");
   if (window.navigator.userAgent.includes("Mac")) {
@@ -54,7 +55,7 @@
   setTimeout(writeCommand, 1500); // start typing the command after 1.5 seconds
 </script>
 
-<about class="flex flex-col gap-12 motion-opacity-in-0">
+<about class="flex flex-col gap-12 motion-opacity-in-0 animate-small-fade-down">
   <ContentHeader title="Who am I?" />
   <p class="text-lg font-geist pr-24 text-balance">
     My name is Bartosz Bak, and I'm a student and an aspiring full-stack

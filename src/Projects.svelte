@@ -11,7 +11,9 @@
   import segments from "/segments.avif";
 </script>
 
-<projects class="flex flex-col gap-12 motion-opacity-in-0 pr-16">
+<projects
+  class="flex flex-col gap-12 motion-opacity-in-0 pr-16 animate-small-fade-up"
+>
   <ContentHeader title="What have I made?" />
   <div id="projects-columns" class="grid grid-cols-3 gap-x-10">
     <div id="first-column" class="flex flex-col gap-10">

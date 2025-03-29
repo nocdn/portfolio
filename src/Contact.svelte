@@ -5,6 +5,7 @@
   import ContentHeader from "./lib/ContentHeader.svelte";
 
   import MorphingText from "./lib/MorphingText.svelte";
+  let { navigationDirection } = $props();
 </script>
 
 <contact class="flex flex-col gap-12 motion-opacity-in-0">
