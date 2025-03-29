@@ -14,6 +14,12 @@
   >
     <p>JavaScript</p>
   </main>
+{:else if technology == "TypeScript"}
+  <main
+    class="grid place-content-center p-1 px-2 rounded-lg border border-dashed w-fit h-fit text-xs border-white bg-[#2F74C0] text-white font-geist-mono"
+  >
+    <p>TypeScript</p>
+  </main>
 {:else if technology == "Tailwind"}
   <main
     class="grid place-content-center p-1 px-2 rounded-lg border border-dashed w-fit h-fit text-xs border-purple-900 bg-[#7DD3FC] text-white font-semibold font-geist-mono"
@@ -31,6 +37,12 @@
     class="grid place-content-center p-1 px-2 rounded-lg border border-dashed w-fit h-fit text-xs border-red-900 bg-[#ff3422] text-white font-geist-mono"
   >
     <p>Svelte</p>
+  </main>
+{:else if technology == "SvelteKit"}
+  <main
+    class="grid place-content-center p-1 px-2 rounded-lg border border-dashed w-fit h-fit text-xs border-red-900 bg-[#ff3422] text-white font-geist-mono"
+  >
+    <p>SvelteKit</p>
   </main>
 {:else if technology == "Flask"}
   <main

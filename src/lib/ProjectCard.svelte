@@ -6,7 +6,7 @@
     description,
     githubLink,
     demoLink,
-    imageurl,
+    imageurl = null,
     backgroundColor,
     textColor,
     techStack,
@@ -30,13 +30,16 @@
   class="relative flex flex-col gap-5 p-3 rounded-lg border border-gray-200"
   style="background-color: {backgroundColor};"
 >
-  <div class="relative">
-    <img
-      src={imageurl}
-      alt={title}
-      class="w-full rounded-lg border border-gray-200"
-    />
-  </div>
+  {#if imageurl !== null}
+    <div class="relative">
+      <img
+        src={imageurl}
+        alt={title}
+        loading="eager"
+        class="w-full rounded-lg border border-gray-200"
+      />
+    </div>
+  {/if}
   <div id="title-and-github" class="flex gap-2 w-full items-start pl-1">
     <p style="color: {textColor};" class="font-geist text-md">
       {title}
