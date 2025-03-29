@@ -21,7 +21,7 @@
     : 'animate-small-fade-down'}"
 >
   <ContentHeader title="What have I made?" />
-  <div id="projects-columns" class="grid grid-cols-3 gap-x-10">
+  <div id="projects-columns" class="grid grid-cols-2 lg:grid-cols-3 gap-x-10">
     <div id="first-column" class="flex flex-col gap-10">
       <ProjectCard
         title="Transcription app"

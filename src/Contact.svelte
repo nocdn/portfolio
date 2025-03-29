@@ -33,7 +33,7 @@
         primaryColor="#E0E1FD"
         backgroundColor="#F4F4FF"
         textColor="#2E38F1"
-        link="linkedin.com/in/bartosz-bak-2b8a1b1b3/"
+        link="linkedin.com/in/bartek-bak/"
       />
       <SocialChip
         socialIcon="instagram"

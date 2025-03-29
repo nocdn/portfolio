@@ -52,14 +52,14 @@
       <Twitter />
     {/if}
   </a>
-  <div class="flex flex-col gap-1">
+  <div class="flex flex-col gap-1 justify-center lg:justify-start">
     <p class="text-m font-sans tracking-wide font-semibold">
       {#if socialIcon === "github"}Github{:else if socialIcon === "linkedin"}Linkedin{:else if socialIcon === "instagram"}Instagram{:else if socialIcon === "twitter"}Twitter{/if}
     </p>
     <a
       href="https://{link}"
       style="color: {textColor};"
-      class="text-sm font-geist-mono">{link}</a
+      class="text-sm font-geist-mono hidden lg:block">{link}</a
     >
   </div>
   {#if arrowShown}
