@@ -3,8 +3,9 @@
 
   import pfpImage from "/pfp.webp";
   import SidebarItem from "./lib/SidebarItem.svelte";
+  import Skybordered from "./lib/Skybordered.svelte";
 
-  import { ChevronsUpDown } from "lucide-svelte";
+  import { ChevronsUpDown, Command, Plus } from "lucide-svelte";
 
   let noMovement = $state(false);
   let count = 0;
@@ -57,38 +58,40 @@
   });
 </script>
 
-<sidebar class="p-8 grid grid-rows-[40%_30%_30%] h-full">
-  <div id="sidebar-header" class="flex flex-col justify-end h-full">
+<sidebar
+  class="p-8 pb-10 pl-12 grid grid-rows-[40%_30%_30%] h-full opacity-50 hover:opacity-100 transition-opacity duration-300"
+>
+  <!-- <div id="sidebar-header" class="flex flex-col justify-center h-full">
     <img
       src={pfpImage}
-      class="rounded-full aspect-square w-24 mb-8"
+      class="rounded-full aspect-square w-24 mb-12"
       alt="pfp of github user nocdn"
     />
-  </div>
-  <div id="sidebar-items" class="flex flex-col justify-center gap-3">
+  </div> -->
+  <div id="sidebar-items" class="flex flex-col justify-start gap-3 mt-12">
     <SidebarItem
-      text="About"
+      text="ABOUT"
       isSelected={selectedIndex === 0}
       onClick={() => {
         onIndexChange(0);
       }}
     />
     <SidebarItem
-      text="Projects"
+      text="PROJECTS"
       isSelected={selectedIndex === 1}
       onClick={() => {
         onIndexChange(1);
       }}
     />
     <SidebarItem
-      text="Education"
+      text="EDUCATION"
       isSelected={selectedIndex === 2}
       onClick={() => {
         onIndexChange(2);
       }}
     />
     <SidebarItem
-      text="Contact"
+      text="CONTACT"
       isSelected={selectedIndex === 3}
       onClick={() => {
         onIndexChange(3);
@@ -104,4 +107,16 @@
       </div>
     {/if}
   </div>
+  <!-- <div
+    class="font-geist-mono text-sm flex gap-2 items-center mt-auto hover:outline outline-gray-200 w-fit px-2 py-1 cursor-pointer"
+  >
+    <Command size={13} />
+    <Plus size={12} strokeWidth={2.5} /> K
+  </div> -->
+  <Skybordered
+    class="px-2 py-1 cursor-pointer flex items-center gap-2 w-fit h-fit mt-auto"
+  >
+    <Command size={13} />
+    <Plus size={12} strokeWidth={2.5} /> K
+  </Skybordered>
 </sidebar>
