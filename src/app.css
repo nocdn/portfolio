@@ -60,10 +60,12 @@
   @keyframes small-fade-up {
     0% {
       opacity: 0;
+      filter: blur(1px);
       transform: translateY(7px);
     }
     100% {
       opacity: 1;
+      filter: blur(0);
       transform: translateY(0);
     }
   }
@@ -71,10 +73,12 @@
   @keyframes small-fade-down {
     0% {
       opacity: 0;
+      filter: blur(1px);
       transform: translateY(-7px);
     }
     100% {
       opacity: 1;
+      filter: blur(0);
       transform: translateY(0);
     }
   }
