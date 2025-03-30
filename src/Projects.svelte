@@ -57,7 +57,7 @@
     <div id="second-column" class="flex flex-col gap-10">
       <ProjectCard
         title="Ad segment remover"
-        description="RESTful API (with a web interface) to remove ad segments from audio and video files."
+        description="RESTful API (with a web interface) to intelligently and automatically remove ad segments from audio and video files."
         githubLink="https://github.com/nocdn/ad-segment-remover"
         demoLink="https://segments.bartoszbak.org"
         imageurl={segments}

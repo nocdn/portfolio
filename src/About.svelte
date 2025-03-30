@@ -1,5 +1,6 @@
 <script>
   import ContentHeader from "./lib/ContentHeader.svelte";
+  import Skybordered from "./lib/Skybordered.svelte";
   import { Globe } from "lucide-svelte";
   // accept the prop
   let { contentAnimationDirection } = $props();
@@ -59,7 +60,6 @@
   setTimeout(writeCommand, 1500); // start typing the command after 1.5 seconds
 </script>
 
-<!-- remove old animation, apply conditional class -->
 <about
   class="flex flex-col gap-9.5 {contentAnimationDirection === 'up'
     ? 'animate-small-fade-up'
@@ -67,21 +67,21 @@
 >
   <ContentHeader title="Who am I?" />
   <header class="flex flex-col gap-3">
-    <p class="text-lg font-geist pr-24 text-balance">
-      My name is Bartosz Bak, and I'm a student and an aspiring full-stack
-      engineer who likes to craft nice things.
+    <p class="text-md pr-24 text-balance font-geist-mono font-medium">
+      My name is Bartosz Bak, and I'm a student at the University of York and an
+      aspiring full-stack engineer who likes to craft nice things.
     </p>
-    <div class="flex flex-col group h-8 transition-all">
-      <a
-        href="https://maps.app.goo.gl/1wJWH9Vi86rza4iY9"
-        class="flex gap-2 items-center font-geist-mono text-md"
-      >
-        <Globe size={14} strokeWidth={2.5} /> York, United Kingdom, GMT
-      </a>
-    </div>
   </header>
   <div class="flex flex-col bg-gray-50 p-3 rounded-sm w-lg">
-    <p class="text-red-700 font-geist-mono mb-3 font-bold">
+    <div class="flex gap-2 items-center pb-2 pt-1">
+      {#each ["#FF5F57", "#FDBC2C", "#29C941"] as color}
+        <div
+          style="background-color: {color};"
+          class="h-2.5 w-2.5 rounded-full"
+        ></div>
+      {/each}
+    </div>
+    <p class="text-red-700 font-geist-mono mb-2 font-bold">
       bartosz@{userAgent} ~ $ <span id="command"></span><span
         id="blinking-cursor">█</span
       >
@@ -112,15 +112,4 @@
       AWS, GCP, Supabase, OCI, CI/CD understanding
     </p>
   </div>
-  <p class="flex flex-col gap-1.5 text-md font-geist tracking-[0.025rem]">
-    <span
-      ><span class="mr-1">🎓</span> Studying Computer Science at the
-      <span>University of York, UK.</span></span
-    >
-    <span><span class="mr-1">🔍</span> Focused on full-stack development.</span>
-    <span
-      ><span class="mr-1">🌟</span> Interested in AI research, modern frameworks
-      and UI/UX design.</span
-    >
-  </p>
 </about>

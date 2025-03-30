@@ -30,7 +30,7 @@
 
 <main class="grid grid-cols-[20%_80%] w-dvw h-dvh motion-opacity-in-0">
   <Sidebar {selectedIndex} onIndexChange={handleIndexChange} />
-  <content class="px-16 py-32 overflow-y-scroll">
+  <content class="px-16 py-16 overflow-y-scroll">
     {#if selectedIndex === 0}
       <About {contentAnimationDirection} />
     {:else if selectedIndex === 1}

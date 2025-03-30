@@ -20,7 +20,7 @@
     {/snippet}
   </ContentHeader>
   <div id="contact-chip-grid" class="flex flex-col gap-7">
-    <div class="grid grid-cols-2 gap-3">
+    <div class="grid grid-cols-2 gap-y-6 gap-x-8">
       <SocialChip
         socialIcon="github"
         primaryColor="#EFDFFC"

@@ -41,7 +41,7 @@
     </div>
   {/if}
   <div id="title-and-github" class="flex gap-2 w-full items-start pl-1">
-    <p style="color: {textColor};" class="font-geist text-md">
+    <p style="color: {textColor};" class="font-geist font-semibold text-md">
       {title}
     </p>
   </div>
