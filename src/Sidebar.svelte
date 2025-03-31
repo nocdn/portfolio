@@ -11,36 +11,10 @@
     onCmdPalette = () => {},
   } = $props();
 
-  let showHint = $state(false); // state to control hint visibility
-  let inactivityTimer = $state(null); // timer ID
-  const INACTIVITY_TIMEOUT = 10000; // 10 seconds
-
-  // function to start or restart the inactivity timer
-  function resetInactivityTimer() {
-    clearTimeout(inactivityTimer); // clear existing timer
-    showHint = false; // hide hint immediately on activity
-    inactivityTimer = setTimeout(() => {
-      // start new timer
-      console.log("10 seconds inactive, showing hint.");
-      showHint = true; // show hint after timeout
-    }, INACTIVITY_TIMEOUT);
-  }
-
-  // function to handle any detected movement/activity
-  function handleActivity() {
-    resetInactivityTimer();
-  }
-
   function handleKeyDown(e) {
-    // exclude modifier keys from resetting the timer unless it's cmd/ctrl+k
-    if (!e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
-      handleActivity(); // reset timer on most key presses
-    }
-
     // handle cmd/ctrl+K to launch command palette
     if ((e.metaKey || e.ctrlKey) && e.key === "k") {
       e.preventDefault();
-      handleActivity(); // register as activity
       onCmdPalette();
       return;
     }
@@ -53,7 +27,6 @@
       e.key === "k"
     ) {
       e.preventDefault();
-      handleActivity(); // register navigation as activity
 
       let newIndex = selectedIndex;
       if (e.key === "ArrowUp" || e.key === "k") {
@@ -68,16 +41,13 @@
     }
   }
 
-  // start  timer when the component mounts
+  // set up keyboard listeners when component mounts
   onMount(() => {
-    resetInactivityTimer(); // start the first timer
     document.addEventListener("keydown", handleKeyDown);
+  });
 
-    // cleanup listener and timer on unmount
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      clearTimeout(inactivityTimer);
-    };
+  onDestroy(() => {
+    document.removeEventListener("keydown", handleKeyDown);
   });
 </script>
 
@@ -90,7 +60,6 @@
       isSelected={selectedIndex === 0}
       onClick={() => {
         onIndexChange(0);
-        handleActivity();
       }}
     />
     <SidebarItem
@@ -98,7 +67,6 @@
       isSelected={selectedIndex === 1}
       onClick={() => {
         onIndexChange(1);
-        handleActivity();
       }}
     />
     <SidebarItem
@@ -106,7 +74,6 @@
       isSelected={selectedIndex === 2}
       onClick={() => {
         onIndexChange(2);
-        handleActivity();
       }}
     />
     <SidebarItem
@@ -114,30 +81,13 @@
       isSelected={selectedIndex === 3}
       onClick={() => {
         onIndexChange(3);
-        handleActivity();
       }}
     />
   </div>
-  <div
-    id="sidebar-hint"
-    class="flex flex-col justify-center h-full"
-    onmouseover={handleActivity}
-    role="tooltip"
-    onfocus={handleActivity}
-  >
-    {#if showHint}
-      <div class="grid grid-cols-[20%_80%] opacity-40 motion-opacity-in-0 w-30">
-        <ChevronsUpDown size={16} strokeWidth={2} class="mt-1" />
-        <span class="text-xs font-jetbrains-mono"
-          >USE ARROW KEYS OR VI(M) BINDINGS TO NAVIGATE</span
-        >
-      </div>
-    {/if}
-  </div>
+  <div class="flex flex-col justify-center h-full"></div>
   <button
     onclick={() => {
       onCmdPalette();
-      handleActivity(); // register click as activity
     }}
     class="mt-auto focus:outline-none"
   >
