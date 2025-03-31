@@ -1,6 +1,7 @@
 <script>
   import ContentHeader from "./lib/ContentHeader.svelte";
   import Skybordered from "./lib/Skybordered.svelte";
+  import Signature from "./lib/Signature.svelte";
   import { Globe } from "lucide-svelte";
   // accept the prop
   let { contentAnimationDirection } = $props();
@@ -112,4 +113,5 @@
       AWS, GCP, Supabase, OCI, CI/CD understanding
     </p>
   </div>
+  <Signature />
 </about>
