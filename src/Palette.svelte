@@ -59,6 +59,12 @@
       },
     ],
   };
+
+  let searchValue = $state("");
+
+  $effect(() => {
+    console.log("search", searchValue);
+  });
 </script>
 
 <container
@@ -84,6 +90,7 @@
       <ScanSearch size={20} class="opacity-50" />
       <input
         bind:this={inputElement}
+        bind:value={searchValue}
         type="text"
         placeholder="choose a command or search..."
         class="w-full focus:outline-none font-medium font-jetbrains-mono"
@@ -96,7 +103,7 @@
     </search>
     <content class="flex flex-col gap-4 p-4">
       <p class="text-sm font-jetbrains-mono font-semibold">LINKS:</p>
-      <div class="flex flex-col gap-1.5">
+      <div class="flex flex-col gap-2.5">
         {#each options.links as link}
           <a
             href={link.link}
@@ -109,7 +116,7 @@
         {/each}
       </div>
       <p class="text-sm font-jetbrains-mono font-semibold">SOCIALS:</p>
-      <div class="flex flex-col gap-1.5">
+      <div class="flex flex-col gap-2.5">
         {#each options.social_links as link}
           <a
             href={link.link}
