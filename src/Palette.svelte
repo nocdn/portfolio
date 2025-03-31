@@ -75,7 +75,10 @@
       ? 'animate-palette-out'
       : 'animate-palette-in'} border border-gray-200 rounded-xl"
   >
-    <search class="flex gap-3 items-center border-gray-200 border-b-2 pb-3 p-4">
+    <search
+      style="border-bottom: 1.5px dashed #eaeaea"
+      class="flex gap-3 items-center pb-3 p-4"
+    >
       <ScanSearch size={20} class="opacity-50" />
       <input
         type="text"
@@ -89,7 +92,7 @@
       />
     </search>
     <content class="flex flex-col gap-4 p-4">
-      <p class="text-sm font-jetbrains-mono">LINKS:</p>
+      <p class="text-sm font-jetbrains-mono font-semibold">LINKS:</p>
       <div class="flex flex-col gap-1.5">
         {#each options.links as link}
           <a
@@ -102,7 +105,7 @@
           </a>
         {/each}
       </div>
-      <p class="text-sm font-jetbrains-mono">SOCIALS:</p>
+      <p class="text-sm font-jetbrains-mono font-semibold">SOCIALS:</p>
       <div class="flex flex-col gap-1.5">
         {#each options.social_links as link}
           <a

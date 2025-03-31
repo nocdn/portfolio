@@ -2,6 +2,7 @@
   import ContentHeader from "./lib/ContentHeader.svelte";
   import Skybordered from "./lib/Skybordered.svelte";
   import Signature from "./lib/Signature.svelte";
+  import { Heart } from "lucide-svelte";
   import { Globe } from "lucide-svelte";
   // accept the prop
   let { contentAnimationDirection } = $props();
@@ -64,7 +65,7 @@
 <about
   class="flex flex-col gap-9.5 {contentAnimationDirection === 'up'
     ? 'animate-small-fade-up'
-    : 'animate-small-fade-down'}"
+    : 'animate-small-fade-down'} h-full"
 >
   <ContentHeader title="Who am I?" />
   <header class="flex flex-col gap-3">
@@ -113,5 +114,14 @@
       AWS, GCP, Supabase, OCI, CI/CD understanding
     </p>
   </div>
-  <Signature />
+  <div class="mt-auto flex flex-col gap-3 opacity-40">
+    <div class="font-jetbrains-mono text-sm">
+      HOPE YOU ENJOY THE SITE <Heart
+        size={14}
+        class="inline-block mb-1"
+        fill="red"
+      />
+    </div>
+    <Signature />
+  </div>
 </about>

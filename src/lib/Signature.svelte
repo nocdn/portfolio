@@ -1,8 +1,7 @@
-<!-- SignatureAnimation.svelte -->
+<!-- Credit: https://codepen.io/kiranpate1/pen/ExBpaeW -->
 <script>
   import { onMount } from "svelte";
 
-  // Comprehensive data extracted from the provided HTML and CSS
   const lettersData = {
     // Uppercase
     A_up: {
@@ -525,7 +524,6 @@
       margin: "0 -4px 0 -10px",
       caseClass: "lo",
     },
-    // Space
     " ": { isSpace: true, margin: "0 6px" }, // Adjusted margin for visual spacing
   };
 
@@ -616,7 +614,7 @@
     width: fit-content; /* Or set a specific width if needed */
     position: relative; /* Added for potential absolute positioning inside */
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 12px;
   }
 
   .signature-main > div:not(.space) {
@@ -636,7 +634,7 @@
     fill: none;
     stroke-dasharray: var(--dasharray);
     stroke-dashoffset: var(--dasharray);
-    transition: stroke-dashoffset 0.25s ease-out; /* Match JS animationDuration */
+    transition: stroke-dashoffset 0.25s ease-out;
   }
 
   .signature-main > div.animate-in :global(svg path) {

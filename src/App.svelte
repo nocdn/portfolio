@@ -34,13 +34,17 @@
   }
 </script>
 
-<main class="grid grid-cols-[20%_80%] w-dvw h-dvh motion-opacity-in-0">
+<main
+  class="grid grid-cols-[20%_80%] w-dvw h-dvh motion-opacity-in-0 {cmdPaletteVisible
+    ? 'opacity-50'
+    : ''} transition-all duration-300"
+>
   <Sidebar
     {selectedIndex}
     onIndexChange={handleIndexChange}
     onCmdPalette={handleCmdPalette}
   />
-  <content class="px-16 py-16 overflow-y-scroll">
+  <content class="px-16 pt-16 pb-11 overflow-y-scroll">
     {#if selectedIndex === 0}
       <About {contentAnimationDirection} />
     {:else if selectedIndex === 1}
