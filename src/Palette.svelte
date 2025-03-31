@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import { ScanSearch, X } from "lucide-svelte";
   let { onDismiss = () => {} } = $props();
 
@@ -8,25 +8,29 @@
     dismissing = true;
     setTimeout(() => {
       onDismiss();
-      dismissing = false;
     }, 300);
   }
 
-  // closing the palette when the esc key is pressed
   function handleKeydown(event) {
     if (event.key === "Escape") {
       dismissPalette();
+    }
+    if (event.target === inputElement) {
+      setTimeout(() => {
+        console.log("search", searchValue);
+      }, 0);
     }
   }
 
   let inputElement = $state();
   onMount(() => {
-    inputElement.focus();
+    inputElement?.focus();
     window.addEventListener("keydown", handleKeydown);
-    return () => {
-      // cleanup the event listener on component destroy
-      window.removeEventListener("keydown", handleKeydown);
-    };
+  });
+
+  onDestroy(() => {
+    // cleanup event listener on component destroy
+    window.removeEventListener("keydown", handleKeydown);
   });
 
   const options = {
@@ -61,10 +65,6 @@
   };
 
   let searchValue = $state("");
-
-  $effect(() => {
-    console.log("search", searchValue);
-  });
 </script>
 
 <container
@@ -81,11 +81,11 @@
     onmousedown={(e) => e.stopPropagation()}
     class="w-md h-96 bg-white font-mono {dismissing
       ? 'animate-palette-out'
-      : 'animate-palette-in'} border border-gray-200 rounded-xl"
+      : 'animate-palette-in'} border border-gray-200 rounded-xl overflow-hidden flex flex-col"
   >
     <search
-      style="border-bottom: 1.5px dashed #eaeaea"
-      class="flex gap-3 items-center pb-3 p-4"
+      style="border-bottom: 1.5px solid #eaeaea"
+      class="flex gap-3 items-center p-4 flex-shrink-0"
     >
       <ScanSearch size={20} class="opacity-50" />
       <input
@@ -93,15 +93,17 @@
         bind:value={searchValue}
         type="text"
         placeholder="choose a command or search..."
-        class="w-full focus:outline-none font-medium font-jetbrains-mono"
+        class="w-full focus:outline-none font-medium font-jetbrains-mono text-sm"
       />
-      <X
-        size={20}
-        class="opacity-50 cursor-pointer"
-        onmousedown={dismissPalette}
-      />
+      <button
+        class="focus:outline-none"
+        onclick={dismissPalette}
+        aria-label="Close command palette"
+      >
+        <X size={20} class="opacity-50 cursor-pointer" />
+      </button>
     </search>
-    <content class="flex flex-col gap-4 p-4">
+    <content class="flex flex-col gap-4 p-4 overflow-y-auto">
       <p class="text-sm font-jetbrains-mono font-semibold">LINKS:</p>
       <div class="flex flex-col gap-2.5">
         {#each options.links as link}
