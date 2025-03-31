@@ -38,6 +38,13 @@
   document.addEventListener("keydown", (e) => {
     movementDetected(); // detect movement on any keypress
 
+    // check for cmd+k or ctrl+k to trigger command palette
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      onCmdPalette();
+      return;
+    }
+
     if (
       e.key === "ArrowUp" ||
       e.key === "ArrowDown" ||

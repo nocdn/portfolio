@@ -118,7 +118,7 @@
     <div class="font-jetbrains-mono text-sm">
       HOPE YOU ENJOY THE SITE <Heart
         size={14}
-        class="inline-block mb-1"
+        class="inline-block mb-0.75"
         fill="red"
       />
     </div>
