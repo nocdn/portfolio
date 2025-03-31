@@ -3,8 +3,9 @@
   import Skybordered from "./lib/Skybordered.svelte";
   import Signature from "./lib/Signature.svelte";
   import TrafficLights from "./lib/TrafficLights.svelte";
+  import Skills from "./lib/Skills.svelte";
   import { Heart } from "lucide-svelte";
-  import { Globe } from "lucide-svelte";
+  import { onMount } from "svelte";
   // accept the prop
   let { contentAnimationDirection } = $props();
 
@@ -61,21 +62,58 @@
 
   setTimeout(showBlinkingCursor, 1000); // show cursor after 1 second
   setTimeout(writeCommand, 1500); // start typing the command after 1.5 seconds
+
+  const startDateEpoch = 1644508311000;
+  let epochTimeValue = $state();
+
+  function timeSince(epoch) {
+    const millisecondsSince = Date.now() - epoch; //milliseconds since start
+    return millisecondsSince;
+  }
+
+  function updateEpochTime() {
+    epochTimeValue = timeSince(startDateEpoch);
+  }
+
+  onMount(() => {
+    updateEpochTime();
+    const intervalId = setInterval(updateEpochTime, 1);
+    return () => {
+      clearInterval(intervalId);
+    };
+  });
+
+  let showingEpochTime = $state(true);
+
+  let showingSignature = $state(false);
+  setTimeout(() => {
+    showingSignature = true;
+  }, 5000);
 </script>
 
 <about
-  class="flex flex-col gap-9.5 {contentAnimationDirection === 'up'
+  class="flex flex-col gap-10.5 {contentAnimationDirection === 'up'
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'} h-full"
 >
   <ContentHeader title="Who am I?" />
   <header class="flex flex-col gap-3">
-    <p class="text-md pr-24 text-balance font-geist-mono font-medium">
-      My name is Bartosz Bak, and I'm a student at the University of York and an
-      aspiring full-stack engineer who likes to craft nice things.
-    </p>
+    <div
+      class="text-md pr-24 text-balance font-geist-mono font-medium"
+      onmouseover={() => (showingEpochTime = false)}
+      onmouseout={() => (showingEpochTime = true)}
+      onblur={() => (showingEpochTime = true)}
+      onfocus={() => (showingEpochTime = false)}
+      role="presentation"
+    >
+      My name is Bartosz Bak, I have been a developer <span
+        >{#if showingEpochTime}for {epochTimeValue}{:else}since Feb. 2022{/if}.
+      </span> I am a student at the University of York and an aspiring full-stack
+      engineer who likes to craft nice things.
+    </div>
   </header>
-  <div class="flex flex-col bg-gray-50 p-3 rounded-lg w-lg">
+  <!-- <div class="flex flex-col bg-gray-50 p-3 rounded-lg w-lg">
+  
     <TrafficLights />
     <p class="text-red-700 font-geist-mono mb-2 font-bold">
       bartosz@{userAgent} ~ $ <span id="command"></span><span
@@ -107,15 +145,20 @@
     >
       AWS, GCP, Supabase, OCI, CI/CD understanding
     </p>
-  </div>
-  <div class="mt-auto flex flex-col gap-3 opacity-40">
-    <div class="font-jetbrains-mono text-sm">
-      HOPE YOU ENJOY THE SITE <Heart
-        size={14}
-        class="inline-block mb-0.75"
-        fill="red"
-      />
+  </div> -->
+  <Skills />
+  {#if showingSignature}
+    <div
+      class="mt-auto flex flex-col gap-3 opacity-35 motion-opacity-in-0 hover:opacity-100 transition-all motion-duration-800"
+    >
+      <div class="font-jetbrains-mono text-sm">
+        MADE BY BARTEK WITH <Heart
+          size={14}
+          class="inline-block mb-0.75"
+          fill="red"
+        />
+      </div>
+      <Signature />
     </div>
-    <Signature />
-  </div>
+  {/if}
 </about>
