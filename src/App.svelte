@@ -34,11 +34,7 @@
   }
 </script>
 
-<main
-  class="grid grid-cols-[20%_80%] w-dvw h-dvh motion-opacity-in-0 {cmdPaletteVisible
-    ? 'opacity-50'
-    : ''} transition-all duration-300"
->
+<main class="grid grid-cols-[20%_80%] w-dvw h-dvh motion-opacity-in-0">
   <Sidebar
     {selectedIndex}
     onIndexChange={handleIndexChange}

@@ -15,12 +15,12 @@
 </script>
 
 <projects
-  class="flex flex-col gap-12 motion-opacity-in-0 pr-16 {contentAnimationDirection ===
+  class="flex flex-col gap-12 motion-opacity-in-0 pr-16 pb-12 {contentAnimationDirection ===
   'up'
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'}"
 >
-  <ContentHeader title="What have I made?" />
+  <ContentHeader title="What have I built?" />
   <div id="projects-columns" class="grid grid-cols-2 lg:grid-cols-3 gap-x-10">
     <div id="first-column" class="flex flex-col gap-10">
       <ProjectCard
@@ -112,7 +112,7 @@
       />
     </div>
   </div>
-  <p class="text-2xl font-bold font-mono mt-12">
+  <p class="text-2xl font-bold font-jetbrains-mono mt-12">
     <span class="opacity-20">##</span> Miscellaneous projects:
   </p>
   <miscProjects class="w-full h-64 p-6 flex gap-10">

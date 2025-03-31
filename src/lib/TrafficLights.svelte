@@ -1,3 +1,4 @@
+<!-- Credit: https://github.com/lwouis/macos-traffic-light-buttons-as-SVG -->
 <script>
   let hoveringClose = $state(false);
   let hoveringMinimize = $state(false);

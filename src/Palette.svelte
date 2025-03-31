@@ -19,7 +19,9 @@
     }
   }
 
+  let inputElement = $state();
   onMount(() => {
+    inputElement.focus();
     window.addEventListener("keydown", handleKeydown);
     return () => {
       // cleanup the event listener on component destroy
@@ -81,9 +83,10 @@
     >
       <ScanSearch size={20} class="opacity-50" />
       <input
+        bind:this={inputElement}
         type="text"
         placeholder="choose a command or search..."
-        class="w-full focus:outline-none font-medium"
+        class="w-full focus:outline-none font-medium font-jetbrains-mono"
       />
       <X
         size={20}
