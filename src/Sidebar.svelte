@@ -1,5 +1,9 @@
 <script>
-  let { selectedIndex, onIndexChange = () => {} } = $props();
+  let {
+    selectedIndex,
+    onIndexChange = () => {},
+    onCmdPalette = () => {},
+  } = $props();
 
   import pfpImage from "/pfp.webp";
   import SidebarItem from "./lib/SidebarItem.svelte";
@@ -102,21 +106,22 @@
     {#if noMovement}
       <div class="grid grid-cols-[20%_80%] opacity-40 motion-opacity-in-0 w-30">
         <ChevronsUpDown size={16} strokeWidth={2} class="mt-1" />
-        <span class="text-sm">Use arrow keys or vi(m) bindings to navigate</span
+        <span class="text-xs">USE ARROW KEYS OR VI(M) BINDINGS TO NAVIGATE</span
         >
       </div>
     {/if}
   </div>
-  <!-- <div
-    class="font-geist-mono text-sm flex gap-2 items-center mt-auto hover:outline outline-gray-200 w-fit px-2 py-1 cursor-pointer"
+  <button
+    onclick={() => {
+      onCmdPalette();
+    }}
+    class="mt-auto focus:outline-none"
   >
-    <Command size={13} />
-    <Plus size={12} strokeWidth={2.5} /> K
-  </div> -->
-  <Skybordered
-    class="px-2 py-1 cursor-pointer flex items-center gap-2 w-fit h-fit mt-auto"
-  >
-    <Command size={13} />
-    <Plus size={12} strokeWidth={2.5} /> K
-  </Skybordered>
+    <Skybordered
+      class="px-2 py-1 cursor-pointer flex items-center gap-2 w-fit h-fit"
+    >
+      <Command size={13} />
+      <Plus size={12} strokeWidth={2.5} /> K
+    </Skybordered>
+  </button>
 </sidebar>

@@ -4,6 +4,7 @@
   import Projects from "./Projects.svelte";
   import Education from "./Education.svelte";
   import Contact from "./Contact.svelte";
+  import Palette from "./Palette.svelte";
 
   let selectedIndex = $state(0);
   // 'up' means the content should slide up (user navigated down)
@@ -26,10 +27,19 @@
     // update the index *after* determining direction
     selectedIndex = newIndex;
   }
+
+  let cmdPaletteVisible = $state(false);
+  function handleCmdPalette() {
+    cmdPaletteVisible = !cmdPaletteVisible;
+  }
 </script>
 
 <main class="grid grid-cols-[20%_80%] w-dvw h-dvh motion-opacity-in-0">
-  <Sidebar {selectedIndex} onIndexChange={handleIndexChange} />
+  <Sidebar
+    {selectedIndex}
+    onIndexChange={handleIndexChange}
+    onCmdPalette={handleCmdPalette}
+  />
   <content class="px-16 py-16 overflow-y-scroll">
     {#if selectedIndex === 0}
       <About {contentAnimationDirection} />
@@ -42,3 +52,7 @@
     {/if}
   </content>
 </main>
+
+{#if cmdPaletteVisible}
+  <Palette onDismiss={handleCmdPalette} />
+{/if}

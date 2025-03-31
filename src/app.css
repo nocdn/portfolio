@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 @import "tailwindcss";
 @plugin "tailwindcss-motion";
 
@@ -23,6 +23,7 @@
 @theme {
   --font-geist-mono: "Geist Mono", monospace;
   --font-geist: "Geist", sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
 
   --animate-pointing-top-right-md: pointing-top-right-md 1.75s
     cubic-bezier(0.87, 0, 0.13, 1) infinite;
@@ -56,6 +57,56 @@
 
   --animate-small-fade-down: small-fade-down 0.3s
     cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  --animate-palette-in: palette-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --animate-palette-out: palette-out 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  --animate-bg-fade-in: bg-fade-in 0.3s ease forwards;
+  --animate-bg-fade-out: bg-fade-out 0.3s ease forwards;
+
+  @keyframes palette-in {
+    0% {
+      opacity: 0;
+      filter: blur(4px);
+      transform: translateY(30px) scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes palette-out {
+    0% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      filter: blur(4px);
+      transform: translateY(15px) scale(1.05);
+    }
+  }
+
+  @keyframes bg-fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes bg-fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 
   @keyframes small-fade-up {
     0% {
