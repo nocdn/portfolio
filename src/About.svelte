@@ -2,6 +2,7 @@
   import ContentHeader from "./lib/ContentHeader.svelte";
   import Skybordered from "./lib/Skybordered.svelte";
   import Signature from "./lib/Signature.svelte";
+  import TrafficLights from "./lib/TrafficLights.svelte";
   import { Heart } from "lucide-svelte";
   import { Globe } from "lucide-svelte";
   // accept the prop
@@ -74,15 +75,8 @@
       aspiring full-stack engineer who likes to craft nice things.
     </p>
   </header>
-  <div class="flex flex-col bg-gray-50 p-3 rounded-sm w-lg">
-    <div class="flex gap-2 items-center pb-2 pt-1">
-      {#each ["#FF5F57", "#FDBC2C", "#29C941"] as color}
-        <div
-          style="background-color: {color};"
-          class="h-2.5 w-2.5 rounded-full"
-        ></div>
-      {/each}
-    </div>
+  <div class="flex flex-col bg-gray-50 p-3 rounded-lg w-lg">
+    <TrafficLights />
     <p class="text-red-700 font-geist-mono mb-2 font-bold">
       bartosz@{userAgent} ~ $ <span id="command"></span><span
         id="blinking-cursor">█</span
