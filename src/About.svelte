@@ -9,81 +9,39 @@
   // accept the prop
   let { contentAnimationDirection } = $props();
 
-  let userAgent = $state("");
-  if (window.navigator.userAgent.includes("Mac")) {
-    userAgent = "macintosh";
-  } else if (window.navigator.userAgent.includes("Windows")) {
-    userAgent = "windows";
-  } else if (window.navigator.userAgent.includes("Linux")) {
-    userAgent = "linux";
-  } else {
-    userAgent = "unknown";
+  // start date: feb 10, 2022, approx 15:51:51 utc
+  const startDateEpoch = 1644508311000; // milliseconds
+
+  // state variable to hold the calculated years elapsed string
+  let yearsElapsedValue = $state("calculating...");
+
+  // average milliseconds in a gregorian year (365.2425 days)
+  const msPerYear = 1000 * 60 * 60 * 24 * 365.2425;
+
+  // calculates time since start date in years to 10 decimal places
+  function calculateYearsSince(epoch) {
+    const now = Date.now();
+    const millisecondsSince = now - epoch; // milliseconds since start
+    const yearsSince = millisecondsSince / msPerYear;
+    return yearsSince.toFixed(10); // format to 10 decimal places
   }
 
-  let shownOutputs = $state(0);
-  function graduallyShowOutputs() {
-    const interval = setInterval(() => {
-      if (shownOutputs < 4) {
-        shownOutputs += 1;
-      } else {
-        clearInterval(interval);
-      }
-    }, 250);
-  }
-
-  setTimeout(graduallyShowOutputs, 1800);
-
-  let commandPrompt = "";
-
-  // simulate typing of the command
-  function writeCommand() {
-    let promptTextContent = commandPrompt;
-    const fullCommand = [" cat ", "stack", ".txt"];
-
-    // remove blinking cursor just before the command starts to appear
-    const cursor = document.getElementById("blinking-cursor");
-    if (cursor) cursor.style.display = "none";
-
-    for (let i = 0; i < fullCommand.length; i++) {
-      setTimeout(() => {
-        promptTextContent += fullCommand[i];
-        commandPrompt = promptTextContent;
-        const commandEl = document.getElementById("command");
-        if (commandEl) commandEl.innerText = commandPrompt;
-      }, i * 100);
-    }
-  }
-
-  // show the blinking cursor before the command is typed
-  function showBlinkingCursor() {
-    const cursor = document.getElementById("blinking-cursor");
-    if (cursor) cursor.style.display = "inline-block";
-  }
-
-  setTimeout(showBlinkingCursor, 1000); // show cursor after 1 second
-  setTimeout(writeCommand, 1500); // start typing the command after 1.5 seconds
-
-  const startDateEpoch = 1644508311000;
-  let epochTimeValue = $state();
-
-  function timeSince(epoch) {
-    const millisecondsSince = Date.now() - epoch; //milliseconds since start
-    return millisecondsSince;
-  }
-
-  function updateEpochTime() {
-    epochTimeValue = timeSince(startDateEpoch);
+  // updates the state variable
+  function updateYearsElapsed() {
+    yearsElapsedValue = calculateYearsSince(startDateEpoch);
   }
 
   onMount(() => {
-    updateEpochTime();
-    const intervalId = setInterval(updateEpochTime, 1);
+    updateYearsElapsed(); // initial calculation
+    // set interval to update the value frequently
+    const intervalId = setInterval(updateYearsElapsed, 50); // update every 50ms (more reasonable than 1ms)
+    // clear interval on component destroy
     return () => {
       clearInterval(intervalId);
     };
   });
 
-  let showingEpochTime = $state(true);
+  let showingTimeElapsed = $state(true);
 
   let showingSignature = $state(false);
   setTimeout(() => {
@@ -100,58 +58,25 @@
   <header class="flex flex-col gap-3">
     <div
       class="text-md pr-24 text-balance font-geist-mono font-medium"
-      onmouseover={() => (showingEpochTime = false)}
-      onmouseout={() => (showingEpochTime = true)}
-      onblur={() => (showingEpochTime = true)}
-      onfocus={() => (showingEpochTime = false)}
+      onmouseover={() => (showingTimeElapsed = false)}
+      onmouseout={() => (showingTimeElapsed = true)}
+      onblur={() => (showingTimeElapsed = true)}
+      onfocus={() => (showingTimeElapsed = false)}
       role="presentation"
     >
       My name is Bartosz Bak, I have been a developer <span
-        >{#if showingEpochTime}for {epochTimeValue}{:else}since Feb. 2022{/if}.
+        >{#if showingTimeElapsed}for {yearsElapsedValue} years.{:else}since 10th
+          Feb. 2022.{/if}
       </span> I am a student at the University of York and an aspiring full-stack
       engineer who likes to craft nice things.
     </div>
   </header>
-  <!-- <div class="flex flex-col bg-gray-50 p-3 rounded-lg w-lg">
-  
-    <TrafficLights />
-    <p class="text-red-700 font-geist-mono mb-2 font-bold">
-      bartosz@{userAgent} ~ $ <span id="command"></span><span
-        id="blinking-cursor">█</span
-      >
-    </p>
-
-    <p
-      class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
-      style="opacity: {shownOutputs >= 1 ? 1 : 0};"
-    >
-      TypeScript, JavaScript, Python, Bash
-    </p>
-    <p
-      class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
-      style="opacity: {shownOutputs >= 2 ? 1 : 0};"
-    >
-      SvelteKit, Flask, Tailwind CSS
-    </p>
-    <p
-      class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
-      style="opacity: {shownOutputs >= 3 ? 1 : 0};"
-    >
-      Git, Docker, Unix systems, Nginx, PostgreSQL
-    </p>
-    <p
-      class="mb-1 opacity-70 transition-opacity duration-300 font-geist-mono"
-      style="opacity: {shownOutputs >= 4 ? 1 : 0};"
-    >
-      AWS, GCP, Supabase, OCI, CI/CD understanding
-    </p>
-  </div> -->
   <Skills />
   {#if showingSignature}
     <div
-      class="mt-auto flex flex-col gap-3 opacity-35 motion-opacity-in-0 hover:opacity-100 transition-all motion-duration-800"
+      class="mt-auto flex flex-col gap-3 w-fit opacity-35 hover:opacity-100 duration-400 transition-all"
     >
-      <div class="font-jetbrains-mono text-sm">
+      <div class="font-jetbrains-mono text-sm motion-opacity-in-0">
         MADE BY BARTEK WITH <Heart
           size={14}
           class="inline-block mb-0.75"

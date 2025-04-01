@@ -578,7 +578,7 @@
   });
 </script>
 
-<div class="signature-main">
+<div class="signature-main motion-opacity-in-0 motion-blur-in-md">
   {#each displayedLetters as letter (letter.id)}
     {#if letter.data?.isSpace}
       <div class="space" style:margin={letter.data.margin}></div>
