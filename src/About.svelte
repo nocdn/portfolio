@@ -34,7 +34,7 @@
   onMount(() => {
     updateYearsElapsed(); // initial calculation
     // set interval to update the value frequently
-    const intervalId = setInterval(updateYearsElapsed, 50); // update every 50ms (more reasonable than 1ms)
+    const intervalId = setInterval(updateYearsElapsed, 25); // update every 50ms (more reasonable than 1ms)
     // clear interval on component destroy
     return () => {
       clearInterval(intervalId);
