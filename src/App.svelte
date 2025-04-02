@@ -42,7 +42,7 @@
   />
   <content class="px-16 pt-16 pb-11 overflow-y-scroll">
     {#if selectedIndex === 0}
-      <About {contentAnimationDirection} />
+      <About {contentAnimationDirection} onIndexChange={handleIndexChange} />
     {:else if selectedIndex === 1}
       <Projects {contentAnimationDirection} />
     {:else if selectedIndex === 2}
