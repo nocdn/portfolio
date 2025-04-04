@@ -62,6 +62,18 @@
         link: "mailto:contact@bartoszbak.org",
       },
     ],
+    projects: [
+      {
+        name: "Cloudflare Temp Mail",
+        githubLink: "https://github.com/nocdn/cloudflare-temp-mail",
+        demoLink: "",
+      },
+      {
+        name: "Transcriptions",
+        githubLink: "https://github.com/nocdn/transcriptions",
+        demoLink: "https://whisper.bartoszbak.org",
+      },
+    ],
   };
 
   let searchValue = $state("");
@@ -127,6 +139,19 @@
             class="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
           >
             {link.name}
+          </a>
+        {/each}
+      </div>
+      <p class="text-sm font-jetbrains-mono font-semibold">PROJECTS:</p>
+      <div class="flex flex-col gap-2.5">
+        {#each options.projects as project}
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
+          >
+            {project.name}
           </a>
         {/each}
       </div>
