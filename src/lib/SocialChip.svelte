@@ -129,7 +129,11 @@
         ? 'motion-preset-fade'
         : 'motion-opacity-out-0'} motion-duration-300 z-10"
     >
-      <ArrowUpRight size={20} class="animate-pointing-top-right-sm" />
+      <ArrowUpRight
+        size={20}
+        color={textColor}
+        class="animate-pointing-top-right-sm"
+      />
     </div>
   {/if}
 

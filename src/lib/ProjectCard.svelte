@@ -16,6 +16,7 @@
     maintained = false,
     crossSize = 8,
     crossOffset = 3.5,
+    class: className = "",
   } = $props();
 
   let darkenedHex = $state("");
@@ -41,7 +42,7 @@
 </script>
 
 <card
-  class="relative flex flex-col gap-5 p-3"
+  class="relative flex flex-col gap-5 p-3 {className}"
   style="background-color: {backgroundColor}; --text-color-prop: {textColor};"
 >
   <span
@@ -85,7 +86,7 @@
     </svg>
   {/each}
 
-  <div class="relative z-10 flex flex-col gap-5">
+  <div class="relative z-10 flex flex-col gap-4">
     {#if imageurl !== null}
       <div class="relative">
         <img

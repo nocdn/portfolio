@@ -13,11 +13,14 @@
     : 'animate-small-fade-down'}"
 >
   <ContentHeader title="What have I built?" />
-  <div id="projects-columns" class="grid grid-cols-2 lg:grid-cols-3 gap-x-10">
+  <div
+    id="projects-columns"
+    class="grid grid-cols-2 lg:grid-cols-3 gap-x-10 group"
+  >
     <div id="first-column" class="flex flex-col gap-10">
       <ProjectCard
         title="Transcription app"
-        description="A web app to transcribe uploaded files into text, using the OpenAI Whisper models and Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
+        description="Full-stack, containerized web app to transcribe uploaded files into text, using various STT providers, including OpenAI's Whisper, or Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
         githubLink="https://github.com/nocdn/transcription-svelte"
         demoLink="https://whisper.bartoszbak.org"
         techStack={["Svelte", "Flask", "Tailwind"]}

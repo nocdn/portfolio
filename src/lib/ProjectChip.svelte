@@ -105,7 +105,7 @@
 
 {#if currentStyle}
   <main
-    class="relative grid place-content-center p-1 px-2 border border-dashed w-fit h-fit text-xs font-geist-mono {currentStyle.isSemibold
+    class="relative grid place-content-center p-1 px-2 border border-dashed w-fit h-fit text-xs font-jetbrains-mono {currentStyle.isSemibold
       ? 'font-semibold'
       : ''}"
     style="background-color: {currentStyle.bgColor}; border-color: {currentStyle.borderColor}; opacity: {currentStyle.opacity}; --text-color-prop: {currentStyle.textColor};"
