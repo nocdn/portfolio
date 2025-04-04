@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import tinycolor from "tinycolor2";
-  import { ArrowUpRight } from "lucide-svelte";
+  import { ArrowUpRight, BadgeCheck } from "lucide-svelte";
   import ProjectChip from "./ProjectChip.svelte";
 
   let {
@@ -13,6 +13,7 @@
     backgroundColor,
     textColor,
     techStack,
+    maintained = false,
     crossSize = 8,
     crossOffset = 3.5,
   } = $props();
@@ -26,6 +27,17 @@
     darkestHex = tinycolor(backgroundColor).darken(10).toString();
     slightlyDarkenedBg = tinycolor(backgroundColor).darken(1).toString();
   });
+
+  let showPopover = $state(false);
+  let isLeaving = $state(false);
+
+  function handleMouseLeave() {
+    isLeaving = true;
+    setTimeout(() => {
+      showPopover = false;
+      isLeaving = false;
+    }, 200);
+  }
 </script>
 
 <card
@@ -79,14 +91,47 @@
         <img
           src={imageurl}
           alt={title}
-          loading="eager"
+          loading="lazy"
           class="w-full border border-gray-200"
         />
       </div>
     {/if}
-    <div id="title-and-github" class="flex gap-2 w-full items-start pl-1">
-      <p style="color: {textColor};" class="font-geist font-semibold text-md">
+    <div id="title-and-github" class="flex flex-col gap-1">
+      <p
+        style="color: {textColor};"
+        class="font-geist font-semibold text-md inline-flex items-center gap-2"
+      >
         {title}
+        <span
+          role="tooltip"
+          class="relative {maintained ? 'block' : 'hidden'}"
+          onfocus={() => {
+            showPopover = true;
+            isLeaving = false;
+          }}
+          onmouseover={() => {
+            showPopover = true;
+            isLeaving = false;
+          }}
+          onmouseleave={handleMouseLeave}
+        >
+          <BadgeCheck color={textColor} size={15} strokeWidth={2.65} />
+          {#if showPopover}
+            <!-- svelte-ignore node_invalid_placement_ssr -->
+            <div
+              class="w-52 h-fit absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-xl border border-gray-200 shadow-xl z-10 p-3 font-jetbrains-mono text-sm {isLeaving
+                ? 'animate-preview-popover-down'
+                : 'animate-preview-popover-up'}"
+            >
+              <p class="text-center">
+                This project is currently actively <span
+                  class="font-semibold"
+                  style="color: {textColor};">maintained.</span
+                >
+              </p>
+            </div>
+          {/if}
+        </span>
       </p>
     </div>
     <links class="flex gap-2.5 w-full items-start">

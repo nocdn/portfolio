@@ -66,6 +66,37 @@
   --animate-bg-fade-in: bg-fade-in 0.3s ease forwards;
   --animate-bg-fade-out: bg-fade-out 0.3s ease forwards;
 
+  --animate-preview-popover-up: preview-popover-up
+    cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s forwards;
+  --animate-preview-popover-down: preview-popover-down
+    cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s forwards;
+
+  @keyframes preview-popover-up {
+    0% {
+      opacity: 0;
+      filter: blur(3px);
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes preview-popover-down {
+    0% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0px);
+    }
+    100% {
+      opacity: 0;
+      filter: blur(6px);
+      transform: translateY(4px);
+    }
+  }
+
   @keyframes palette-in {
     0% {
       opacity: 0;
