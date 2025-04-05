@@ -9,6 +9,7 @@
     selectedIndex,
     onIndexChange = () => {},
     onCmdPalette = () => {},
+    cmdPaletteVisible,
   } = $props();
 
   function handleKeyDown(e) {
@@ -19,7 +20,9 @@
       return;
     }
 
-    // handle navigation keys
+    if (cmdPaletteVisible || e.target.tagName === "INPUT") {
+      return; // don't handle keys if command palette is open or input is focused
+    }
     if (
       e.key === "ArrowUp" ||
       e.key === "ArrowDown" ||

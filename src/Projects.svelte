@@ -105,7 +105,7 @@
       <ProjectCard
         title="This website"
         description="How's that for recursion? This is a fairly simple website that I made to introduce myself and showcase some of my skills. It was also a way for me to learn and practice Svelte and Tailwind CSS. It also comes with some fun easter eggs."
-        githubLink="https://github.com/nocdn/portfolio-website-svelte"
+        githubLink="https://github.com/nocdn/portfolio"
         demoLink="https://bartoszbak.org"
         techStack={["Svelte", "JavaScript", "Tailwind"]}
         backgroundColor="white"

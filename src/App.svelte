@@ -39,6 +39,7 @@
     {selectedIndex}
     onIndexChange={handleIndexChange}
     onCmdPalette={handleCmdPalette}
+    {cmdPaletteVisible}
   />
   <content class="px-16 pt-16 pb-11 overflow-y-scroll">
     {#if selectedIndex === 0}

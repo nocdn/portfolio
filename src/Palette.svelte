@@ -73,6 +73,56 @@
         githubLink: "https://github.com/nocdn/transcriptions",
         demoLink: "https://whisper.bartoszbak.org",
       },
+      {
+        name: "Society Voting Platform",
+        githubLink: "https://github.com/nocdn/voting",
+        demoLink: "https://voting.bartoszbak.org",
+      },
+      {
+        name: "Shared Calendar, Notes and Files",
+        githubLink: "https://github.com/nocdn/Non-Exam-Assessment",
+        demoLink: "",
+      },
+      {
+        name: "Ad Segment Remover",
+        githubLink: "https://github.com/nocdn/ad-segment-remover",
+        demoLink: "https://segments.bartoszbak.org",
+      },
+      {
+        name: "Psychology MCQs",
+        githubLink: "https://github.com/nocdn/mcqs",
+        demoLink: "https://mcqs.bartoszbak.org",
+      },
+      {
+        name: "Language Learning App",
+        githubLink: "https://github.com/nocdn/language-learning",
+        demoLink: "",
+      },
+      {
+        name: "Elo Film Ranking",
+        githubLink: "https://github.com/nocdn/films-elo",
+        demoLink: "https://films-elo.vercel.app/",
+      },
+      {
+        name: "This Website",
+        githubLink: "https://github.com/nocdn/portfolio",
+        demoLink: "https://bartoszbak.org",
+      },
+      {
+        name: "Minecraft Account Finder",
+        githubLink: "https://github.com/nocdn/namesniper",
+        demoLink: "",
+      },
+      {
+        name: "Curseforge Pack Downloader",
+        githubLink: "https://github.com/nocdn/curseforge-modpack-downloader",
+        demoLink: "",
+      },
+      {
+        name: "Random Topic for Revision",
+        githubLink: "https://github.com/nocdn/random-revision",
+        demoLink: "https://random-revision.vercel.app",
+      },
     ],
   };
 
@@ -146,7 +196,7 @@
       <div class="flex flex-col gap-2.5">
         {#each options.projects as project}
           <a
-            href={project.link}
+            href={project.demoLink || project.githubLink}
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"

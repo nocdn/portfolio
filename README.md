@@ -13,7 +13,7 @@ This is a static site I made to learn Svelte, then Svelte 5, and later Tailwind 
 Clone the repo:
 
 ```bash
-git clone github.com/nocdn/portfolio-website-svelte.git
+git clone github.com/nocdn/portfolio.git
 ```
 
 Install dependencies:
