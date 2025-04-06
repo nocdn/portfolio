@@ -1,3 +1,1 @@
-- when command palette open, pressing cmd+k should smoothly close it, not abruptly like currently
 - if content section already visited, do not play heading unscramble animation
-- add the rest of the projects to the palette

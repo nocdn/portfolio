@@ -13,6 +13,9 @@
   } = $props();
 
   function handleKeyDown(e) {
+    if (cmdPaletteVisible || e.target.tagName === "INPUT") {
+      return; // don't handle keys if command palette is open or input is focused
+    }
     // handle cmd/ctrl+K to launch command palette
     if ((e.metaKey || e.ctrlKey) && e.key === "k") {
       e.preventDefault();
@@ -20,9 +23,6 @@
       return;
     }
 
-    if (cmdPaletteVisible || e.target.tagName === "INPUT") {
-      return; // don't handle keys if command palette is open or input is focused
-    }
     if (
       e.key === "ArrowUp" ||
       e.key === "ArrowDown" ||

@@ -11,9 +11,16 @@
     }, 300);
   }
 
+  let inputElement = $state();
+
   function handleKeydown(event) {
     if (event.key === "Escape") {
       dismissPalette();
+    }
+    if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+      event.preventDefault();
+      dismissPalette();
+      return;
     }
     if (event.target === inputElement) {
       setTimeout(() => {
@@ -22,10 +29,11 @@
     }
   }
 
-  let inputElement = $state();
   onMount(() => {
     inputElement?.focus();
-    window.addEventListener("keydown", handleKeydown);
+    setTimeout(() => {
+      window.addEventListener("keydown", handleKeydown);
+    }, 100);
   });
 
   onDestroy(() => {
