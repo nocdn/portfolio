@@ -41,7 +41,7 @@
 </script>
 
 <card
-  class="rounded-xl border border-gray-200 px-4 py-3 max-w-xs flex flex-col gap-1"
+  class="rounded-xl border border-gray-200 px-4 py-3 max-w-sm flex flex-col gap-2.5"
   onmouseover={handleMouseEnter}
   onmouseleave={handleMouseLeave}
   onfocus={handleMouseEnter}
@@ -50,7 +50,9 @@
 >
   <div class="flex gap-1.5 items-center">
     {title}
-    <Maintained />
+    {#if maintained}
+      <Maintained highlightColor="green" />
+    {/if}
     <div class="flex gap-1.5 ml-auto items-center">
       {#if showCode}
         <Code
@@ -58,25 +60,25 @@
             window.location.href = sourceLink;
           }}
           size={17}
-          class="cursor-pointer {isCodeLeaving
+          class="cursor-pointer text-gray-400 {isCodeLeaving
             ? 'animate-arrow-out'
             : 'animate-arrow-in'}"
         />
       {/if}
-      {#if showArrow}
+      {#if showArrow && demoLink !== ""}
         <ArrowUpRight
           onmousedown={() => {
             window.location.href = demoLink;
           }}
           size={20}
-          class="cursor-pointer text-blue-800 {isArrowLeaving
+          class="cursor-pointer text-red-900/55 {isArrowLeaving
             ? 'animate-arrow-out'
             : 'animate-arrow-in'}"
         />
       {/if}
     </div>
   </div>
-  <p class="text-gray-500 font-jetbrains-mono text-sm text-balance">
+  <p class="text-gray-500 font-jetbrains-mono text-sm text-pretty">
     {description}
   </p>
   <div class="flex *:flex-wrap gap-2 mt-2">

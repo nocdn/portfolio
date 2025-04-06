@@ -48,7 +48,7 @@
   <span class="text-3xl font-bold opacity-15"># </span>
   <p
     bind:this={titleElement}
-    class="text-3xl font-geist-mono font-bold"
+    class="text-3xl font-geist-mono opacity-80 font-bold"
     data-value={title}
   >
     {title}
