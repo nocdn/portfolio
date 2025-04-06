@@ -1,6 +1,4 @@
 <script>
-  import { BadgeCheck } from "lucide-svelte";
-
   let { color = "black", highlightColor = "black" } = $props();
 
   let showPopover = $state(false);
@@ -35,7 +33,7 @@
   {#if showPopover}
     <!-- svelte-ignore node_invalid_placement_ssr -->
     <div
-      class="w-52 h-fit absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-xl border border-gray-200 shadow-xl z-10 p-3 font-jetbrains-mono text-sm {isLeaving
+      class="w-48 h-fit absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-xl border border-gray-200 shadow-xl z-10 p-3 font-jetbrains-mono text-sm {isLeaving
         ? 'animate-preview-popover-down'
         : 'animate-preview-popover-up'}"
     >
