@@ -21,7 +21,7 @@
       <ProjectCard
         title="Transcription app"
         description="Full-stack, containerized web app to transcribe uploaded files into text, using various STT providers, including OpenAI's Whisper, or Gemini's multimodal capabilities. Returns text and a .txt file download. Deployed with Flask, ffmpeg on a VPS."
-        githubLink="https://github.com/nocdn/transcription-svelte"
+        githubLink="https://github.com/nocdn/transcriptions"
         demoLink="https://whisper.bartoszbak.org"
         techStack={["Svelte", "Flask", "Tailwind"]}
         backgroundColor="white"

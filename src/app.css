@@ -71,6 +71,34 @@
   --animate-preview-popover-down: preview-popover-down
     cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s forwards;
 
+  --animate-arrow-in: arrow-in 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  --animate-arrow-out: arrow-out 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+    forwards;
+
+  @keyframes arrow-in {
+    0% {
+      opacity: 0;
+      filter: blur(3px);
+      transform: translateY(-5px) translateX(5px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  @keyframes arrow-out {
+    0% {
+      opacity: 1;
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-3px) translateX(3px);
+    }
+  }
+
   @keyframes preview-popover-up {
     0% {
       opacity: 0;
