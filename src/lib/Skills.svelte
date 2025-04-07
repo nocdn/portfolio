@@ -11,7 +11,13 @@
   ];
   let skills = $state([]);
   function graduallyShowSkills() {
-    let skillIndex = 0;
+    // immediately add first skill and increase height
+    if (availableSkills.length > 0) {
+      skills = [availableSkills[0]];
+      height = 25;
+    }
+
+    let skillIndex = 1; // start from second skill for the intervals
     interval = setInterval(() => {
       if (height < 100) {
         height += 25;
@@ -23,16 +29,22 @@
       } else {
         clearInterval(interval); // stop when full height is reached
       }
-    }, 500);
+    }, 600);
   }
 
-  // running the function when the component mounts
-  graduallyShowSkills();
+  let blinking = $state(true);
+  setTimeout(() => {
+    blinking = false;
+    graduallyShowSkills();
+  }, 3750);
 </script>
 
 <skills class="flex flex-col gap-2 group">
   <heading class="flex items-center gap-3 font-jetbrains-mono text-sm">
-    <Package size={20} /> SKILLS
+    <Package size={20} />
+    <span class="{blinking ? 'animation-fade-in-out' : ''} font-bold"
+      >SKILLS</span
+    >
     <span
       class="opacity-0 group-hover:opacity-50 text-red-600 transition-opacity duration-200"
       >[MOST PROFICIENT]</span
@@ -72,3 +84,18 @@
     {/each}
   </div>
 </skills>
+
+<style>
+  .animation-fade-in-out {
+    animation: fade-in-out 0.75s ease-in-out infinite;
+  }
+  @keyframes fade-in-out {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.15;
+    }
+  }
+</style>

@@ -21,7 +21,7 @@
     const now = Date.now();
     const millisecondsSince = now - epoch; // milliseconds since start
     const yearsSince = millisecondsSince / msPerYear;
-    return yearsSince.toFixed(10); // format to 10 decimal places
+    return yearsSince.toFixed(11); // format to 10 decimal places
   }
 
   // updates the state variable
@@ -44,7 +44,7 @@
   let showingSignature = $state(false);
   setTimeout(() => {
     showingSignature = true;
-  }, 5000);
+  }, 7150);
 </script>
 
 <about
@@ -64,7 +64,7 @@
     >
       My name is Bartosz Bak, I have been a developer <span
         >{#if showingTimeElapsed}for {yearsElapsedValue} years.{:else}since 10th
-          Feb. 2022.{/if}
+          February '22.{/if}
       </span>
       I am a student at the University of York and an aspiring full-stack engineer
       who likes to
