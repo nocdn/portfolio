@@ -1,11 +1,15 @@
 <script>
+  import { onMount } from "svelte";
   import MailChip from "./lib/MailChip.svelte";
   import SocialChip from "./lib/SocialChip.svelte";
-
   import ContentHeader from "./lib/ContentHeader.svelte";
-
   import MorphingText from "./lib/MorphingText.svelte";
-  let { contentAnimationDirection } = $props();
+
+  let { contentAnimationDirection, visited, onVisited = () => {} } = $props();
+
+  onMount(() => {
+    onVisited(3);
+  });
 </script>
 
 <contact
@@ -14,7 +18,7 @@
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'}"
 >
-  <ContentHeader title="You can reach me on">
+  <ContentHeader title="You can reach me on" enabled={!visited}>
     {#snippet customElement()}
       <MorphingText />
     {/snippet}

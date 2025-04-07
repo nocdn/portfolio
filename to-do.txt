@@ -1,1 +1,0 @@
-- if content section already visited, do not play heading unscramble animation

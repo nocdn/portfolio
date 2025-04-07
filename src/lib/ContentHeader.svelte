@@ -1,9 +1,14 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
 
-  let { title, customElement } = $props<{
+  let {
+    title,
+    customElement,
+    enabled = true,
+  } = $props<{
     title: string;
     customElement?: Snippet;
+    enabled?: boolean;
   }>();
 
   let showingCustomElement = $state(false);
@@ -38,7 +43,7 @@
   }
 
   $effect(() => {
-    if (titleElement) {
+    if (titleElement && enabled) {
       applyHackedEffect(titleElement);
     }
   });

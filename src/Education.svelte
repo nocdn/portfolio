@@ -1,7 +1,12 @@
 <script>
-  let { contentAnimationDirection } = $props();
-  import ProjectCardAlt from "./lib/ProjectCardAlt.svelte";
+  import { onMount } from "svelte";
   import ContentHeader from "./lib/ContentHeader.svelte";
+
+  let { contentAnimationDirection, visited, onVisited = () => {} } = $props();
+
+  onMount(() => {
+    onVisited(2);
+  });
 </script>
 
 <education
@@ -9,5 +14,5 @@
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'} flex flex-col gap-12 motion-opacity-in-0 pr-16 pb-12"
 >
-  <ContentHeader title="What did I study?" />
+  <ContentHeader title="What did I study?" enabled={!visited} />
 </education>

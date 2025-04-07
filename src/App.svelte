@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Sidebar from "./Sidebar.svelte";
   import About from "./About.svelte";
   import Projects from "./Projects.svelte";
@@ -10,6 +10,14 @@
   // 'up' means the content should slide up (user navigated down)
   // 'down' means the content should slide down (user navigated up)
   let contentAnimationDirection = $state("down"); // default animation for initial load
+
+  let visitedIndexes = $state(new Set<number>());
+
+  function addIndex(index: number) {
+    console.log("adding index to visited indexes", index);
+    visitedIndexes.add(index);
+    console.log("visited indexes", visitedIndexes);
+  }
 
   function handleIndexChange(newIndex) {
     // determine direction based on index change
@@ -43,13 +51,31 @@
   />
   <content class="px-16 pt-16 pb-11 overflow-y-scroll">
     {#if selectedIndex === 0}
-      <About {contentAnimationDirection} onIndexChange={handleIndexChange} />
+      <!-- this one has the onIndexChange to handle the "craft nice things" hyperlink -->
+      <About
+        {contentAnimationDirection}
+        onIndexChange={handleIndexChange}
+        visited={visitedIndexes.has(0)}
+        onVisited={addIndex}
+      />
     {:else if selectedIndex === 1}
-      <Projects {contentAnimationDirection} />
+      <Projects
+        {contentAnimationDirection}
+        visited={visitedIndexes.has(1)}
+        onVisited={addIndex}
+      />
     {:else if selectedIndex === 2}
-      <Education {contentAnimationDirection} />
+      <Education
+        {contentAnimationDirection}
+        visited={visitedIndexes.has(2)}
+        onVisited={addIndex}
+      />
     {:else if selectedIndex === 3}
-      <Contact {contentAnimationDirection} />
+      <Contact
+        {contentAnimationDirection}
+        visited={visitedIndexes.has(3)}
+        onVisited={addIndex}
+      />
     {/if}
   </content>
 </main>

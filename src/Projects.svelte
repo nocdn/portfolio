@@ -1,9 +1,14 @@
 <script>
+  import { onMount } from "svelte";
   import ContentHeader from "./lib/ContentHeader.svelte";
   import MiscProjectCard from "./lib/MiscProjectCard.svelte";
   import ProjectCardAlt from "./lib/ProjectCardAlt.svelte";
 
-  let { contentAnimationDirection } = $props();
+  let { contentAnimationDirection, visited, onVisited = () => {} } = $props();
+
+  onMount(() => {
+    onVisited(1);
+  });
 </script>
 
 <projects
@@ -12,7 +17,7 @@
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'}"
 >
-  <ContentHeader title="What have I built?" />
+  <ContentHeader title="What have I built?" enabled={!visited} />
   <div class="flex gap-6">
     <column class="flex flex-col gap-6">
       <ProjectCardAlt

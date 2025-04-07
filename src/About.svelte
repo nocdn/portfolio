@@ -1,11 +1,16 @@
 <script>
+  import { onMount } from "svelte";
+  import { Heart } from "lucide-svelte";
   import ContentHeader from "./lib/ContentHeader.svelte";
   import Signature from "./lib/Signature.svelte";
   import Skills from "./lib/Skills.svelte";
-  import { Heart } from "lucide-svelte";
-  import { onMount } from "svelte";
-  // accept the props
-  let { contentAnimationDirection, onIndexChange = () => {} } = $props();
+
+  let {
+    contentAnimationDirection,
+    onIndexChange = () => {},
+    visited,
+    onVisited = () => {},
+  } = $props();
 
   // start date: feb 10, 2022, approx 15:51:51 utc
   const startDateEpoch = 1644508311000; // milliseconds
@@ -35,6 +40,7 @@
     const intervalId = setInterval(updateYearsElapsed, 25); // update every 50ms (more reasonable than 1ms)
     // clear interval on component destroy
     return () => {
+      onVisited(0);
       clearInterval(intervalId);
     };
   });
@@ -52,7 +58,7 @@
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'} h-full"
 >
-  <ContentHeader title="Who am I?" />
+  <ContentHeader title="Who am I?" enabled={!visited} />
   <header class="flex flex-col gap-3 group">
     <div
       class="text-md pr-24 text-balance font-geist-mono font-medium"
