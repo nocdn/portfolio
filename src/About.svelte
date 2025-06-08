@@ -84,7 +84,7 @@
       >.
     </div>
   </header>
-  <Skills />
+  <Skills firstTime={!visited} />
   {#if showingSignature}
     <div
       class="mt-auto flex flex-col gap-3 w-fit opacity-35 hover:opacity-100 duration-400 transition-all"

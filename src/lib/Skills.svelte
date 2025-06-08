@@ -1,6 +1,8 @@
 <script>
   import { Package } from "lucide-svelte";
+  let { firstTime } = $props();
   let height = $state(0);
+  let blinking = $state(false);
   let interval = null;
 
   let availableSkills = [
@@ -32,11 +34,20 @@
     }, 600);
   }
 
-  let blinking = $state(true);
-  setTimeout(() => {
-    blinking = false;
-    graduallyShowSkills();
-  }, 3750);
+  function instantlyShowSkills() {
+    skills = availableSkills;
+    height = 100;
+  }
+
+  if (firstTime) {
+    blinking = true;
+    setTimeout(() => {
+      blinking = false;
+      graduallyShowSkills();
+    }, 3750);
+  } else {
+    instantlyShowSkills();
+  }
 </script>
 
 <skills class="flex flex-col gap-2 group">
@@ -57,7 +68,9 @@
     {#each skills as skill}
       <p
         style="height: 25px"
-        class="text-md font-geist-mono text-balance opacity-50 motion-preset-blur-down"
+        class="text-md font-geist-mono text-balance opacity-50 {firstTime
+          ? 'motion-preset-blur-down'
+          : ''}"
       >
         {#each skill.split(",") as part, i}
           {@const trimmedPart = part.trim()}
