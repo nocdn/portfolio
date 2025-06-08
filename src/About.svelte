@@ -96,7 +96,7 @@
           fill="red"
         />
       </div>
-      <Signature />
+      <Signature strokeColor="black" />
     </div>
   {/if}
 </about>

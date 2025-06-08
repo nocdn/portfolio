@@ -2,6 +2,8 @@
 <script>
   import { onMount } from "svelte";
 
+  let { strokeColor = "black" } = $props();
+
   const lettersData = {
     // Uppercase
     A_up: {
@@ -556,7 +558,7 @@
           // Timeout to trigger animation after DOM update
           setTimeout(() => {
             const indexToAnimate = displayedLetters.findIndex(
-              (l) => l.id === i
+              (l) => l.id === i,
             );
             if (indexToAnimate !== -1) {
               const updatedLetters = [...displayedLetters];
@@ -587,6 +589,7 @@
         class="{letter.data.caseClass} {letter.char.toLowerCase()}"
         class:animate-in={letter.animate}
         style:--dasharray={letter.data.dasharray}
+        style:--stroke-color={strokeColor}
         style:margin={letter.data.margin}
       >
         <svg
@@ -630,7 +633,10 @@
     stroke-linejoin: round;
     stroke-linecap: round;
     stroke-width: 1.5; /* Adjusted thickness */
-    stroke: #1a1a1a; /* Darker color */
+    stroke: var(
+      --stroke-color,
+      #1a1a1a
+    ); /* Use CSS custom property with fallback */
     fill: none;
     stroke-dasharray: var(--dasharray);
     stroke-dashoffset: var(--dasharray);
