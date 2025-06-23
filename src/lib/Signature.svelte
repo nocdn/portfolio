@@ -654,4 +654,11 @@
     box-sizing: border-box;
     /* Margin applied via inline style */
   }
+
+  /* Force white stroke in dark mode */
+  @media (prefers-color-scheme: dark) {
+    .signature-main :global(svg path) {
+      stroke: #ffffff;
+    }
+  }
 </style>

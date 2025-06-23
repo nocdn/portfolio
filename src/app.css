@@ -326,3 +326,18 @@
     }
   }
 }
+
+@layer base {
+  /* Light mode defaults */
+  body {
+    @apply bg-white text-gray-950;
+  }
+  /* System dark mode – triggered via prefers-color-scheme */
+  @media (prefers-color-scheme: dark) {
+    body {
+      /* A slightly bluish-gray very dark background for enough contrast */
+      background-color: #212121;
+      color: #e2e8f0; /* Tailwind slate-200 */
+    }
+  }
+}
