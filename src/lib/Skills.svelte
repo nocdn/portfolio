@@ -56,10 +56,12 @@
     <span class="{blinking ? 'animation-fade-in-out' : ''} font-bold"
       >SKILLS</span
     >
-    <span
-      class="opacity-0 group-hover:opacity-50 text-red-600 transition-opacity duration-200"
-      >[MOST PROFICIENT]</span
-    >
+    {#if skills.length > 0}
+      <span
+        class="opacity-0 group-hover:opacity-50 text-red-600 transition-opacity duration-200"
+        >[MOST PROFICIENT]</span
+      >
+    {/if}
   </heading>
   <div
     class="border-l-2 border-gray-200 ml-[9.45px] pl-4"

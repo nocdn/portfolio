@@ -12,14 +12,33 @@
     cmdPaletteVisible,
   } = $props();
 
+  let countBuffer = "";
+  let bufferTimeout;
+
+  function resetCountBuffer() {
+    countBuffer = "";
+    if (bufferTimeout) {
+      clearTimeout(bufferTimeout);
+      bufferTimeout = null;
+    }
+  }
+
   function handleKeyDown(e) {
     if (cmdPaletteVisible || e.target.tagName === "INPUT") {
-      return; // don't handle keys if command palette is open or input is focused
+      return;
     }
-    // handle cmd/ctrl+K to launch command palette
     if ((e.metaKey || e.ctrlKey) && e.key === "k") {
       e.preventDefault();
       onCmdPalette();
+      return;
+    }
+
+    if (e.key >= "0" && e.key <= "9") {
+      countBuffer += e.key;
+      clearTimeout(bufferTimeout);
+      bufferTimeout = setTimeout(() => {
+        resetCountBuffer();
+      }, 800);
       return;
     }
 
@@ -31,17 +50,26 @@
     ) {
       e.preventDefault();
 
+      let count = parseInt(countBuffer, 10);
+      if (isNaN(count) || count === 0) count = 1;
+      resetCountBuffer();
+
       let newIndex = selectedIndex;
+      const total = 4; // total number of sections
       if (e.key === "ArrowUp" || e.key === "k") {
-        newIndex = selectedIndex === 0 ? 3 : selectedIndex - 1;
+        newIndex = (selectedIndex - count) % total;
+        if (newIndex < 0) newIndex += total; // ensure positive index
       } else if (e.key === "ArrowDown" || e.key === "j") {
-        newIndex = selectedIndex === 3 ? 0 : selectedIndex + 1;
+        newIndex = (selectedIndex + count) % total;
       }
 
       if (newIndex !== selectedIndex) {
         onIndexChange(newIndex);
       }
+      return;
     }
+
+    resetCountBuffer();
   }
 
   // set up keyboard listeners when component mounts
