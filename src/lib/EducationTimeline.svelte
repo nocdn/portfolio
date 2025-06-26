@@ -1,7 +1,12 @@
 <script>
-  import { BookOpen, GraduationCap } from "lucide-svelte";
+  import { ArrowUpRight, GraduationCap } from "lucide-svelte";
   import { onMount } from "svelte";
-  let { onCompleted = () => {}, entries = [], title = "EDUCATION" } = $props();
+  let {
+    onCompleted = () => {},
+    entries = [],
+    title = "EDUCATION",
+    icon,
+  } = $props();
   let height = $state(0);
   let interval = null;
 
@@ -32,48 +37,42 @@
 
   $effect(() => {
     if (height === entries.length * 25) {
-      setTimeout(() => {
-        onCompleted();
-      }, 175);
+      onCompleted();
     }
   });
 </script>
 
-<year class="flex flex-col gap-2 group motion-preset-focus-sm">
+<year class="flex flex-col gap-2 motion-preset-focus-sm">
   <heading class="flex items-center gap-3 font-jetbrains-mono text-sm">
-    <GraduationCap size={20} />
+    {#if icon}
+      {@const Icon = icon}
+      <Icon size={19} />
+    {:else}
+      <GraduationCap size={19} />
+    {/if}
     <span class="font-bold">{title}</span>
   </heading>
   <div
-    class="border-l-2 border-gray-200 ml-[9.45px] pl-4"
+    class="border-l-2 border-gray-200 ml-[9.35px] pl-4"
     style="height: {height}px; transition: height 0.5s cubic-bezier(0.23, 1, 0.32, 1)"
   >
     {#each educationItems as educationItem}
       <p
         style="height: 25px"
-        class="text-md font-geist-mono text-balance opacity-50 motion-preset-blur-down-sm"
+        class="text-md font-geist-mono text-balance opacity-50 motion-preset-blur-down-sm hover:opacity-100 transition-opacity group"
       >
-        {#each educationItem.split(",") as part, i}
-          {@const trimmedPart = part.trim()}
-          {@const isLast = i === educationItem.split(",").length - 1}
-          {@const proficientSkills = [
-            "javascript",
-            "sveltekit",
-            "git",
-            "postgresql",
-            "aws",
-            "tailwind css",
-          ]}
-          {#if proficientSkills.includes(trimmedPart.toLowerCase())}
-            <span
-              class="group-hover:text-red-600 transition-colors duration-200"
-              >{trimmedPart}</span
-            >{#if !isLast},{/if}
-          {:else}
-            {trimmedPart}{#if !isLast},{/if}
-          {/if}
-          {#if !isLast}{/if}
-        {/each}
+        <a
+          href={educationItem[1]}
+          target="_blank"
+          class="flex items-center gap-1"
+        >
+          {educationItem[0]}
+          <ArrowUpRight
+            size={15}
+            strokeWidth={2.25}
+            class="group-hover:translate-x-0.5 opacity-0 group-hover:opacity-100 transition-all duration-200"
+          />
+        </a>
       </p>
     {/each}
   </div>
