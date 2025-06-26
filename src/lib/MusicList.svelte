@@ -1,6 +1,4 @@
 <script>
-  import { onMount } from "svelte";
-
   import astroworld from "/covers/astroworld.webp";
   import era47 from "/covers/era47.webp";
   import heroes_villains from "/covers/heroes_villains.webp";
@@ -35,13 +33,22 @@
 
   console.log(musicList);
 
+  let enableVinyl = false;
+
   // Indicates whether any album cover (or its tooltip) is being hovered
   let isHovering = false;
+
+  // Index of the album whose vinyl is popped-out & spinning; null means none
+  let activeVinyl = null;
+
+  const toggleVinyl = (idx) => {
+    activeVinyl = activeVinyl === idx ? null : idx;
+  };
 </script>
 
-<music class="flex flex-col gap-3 mt-8" style="perspective: 500px;">
+<music class="flex flex-col gap-3 mt-4 ml-0.5" style="perspective: 500px;">
   <p
-    class="font-jetbrains-mono text-sm transition-all duration-300 {isHovering
+    class="font-jetbrains-mono text-md transition-all duration-300 {isHovering
       ? 'blur-[1px]'
       : 'blur-[0px]'}"
     class:opacity-25={isHovering}
@@ -52,14 +59,16 @@
 
   <div class="rounded-lg flex items-center gap-2 w-fit">
     {#each musicList as music, index}
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
       <div
         role="button"
         tabindex="0"
-        class="relative w-28 h-28 rounded-lg transition-all duration-300"
+        class="relative w-28 h-28 rounded-lg transition-all duration-300 group cursor-pointer"
         style="transform: translate(-{index *
           52}px); z-index: {musicList.length - index};"
         onmouseenter={() => (isHovering = true)}
         onmouseleave={() => (isHovering = false)}
+        onclick={() => toggleVinyl(index)}
       >
         <img
           src={music.cover}
@@ -74,7 +83,89 @@
           </p>
           <p class="font-geist whitespace-nowrap">{music.name}</p>
         </div>
+        {#if enableVinyl}
+          <div
+            class="vinyl-wrapper absolute inset-0 m-auto -z-10 w-[85%] h-[85%] rounded-full flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:translate-y-2"
+            class:translate-y-28={activeVinyl === index}
+          >
+            <div
+              class="vinyl-light w-full h-full rounded-full flex items-center justify-center overflow-hidden"
+              class:spin-slow={activeVinyl === index}
+            >
+              <img
+                src={music.cover}
+                alt="{music.name} label"
+                class="w-10 h-10 rounded-full object-cover border border-gray-700 shadow-inner pointer-events-none"
+              />
+            </div>
+          </div>
+        {/if}
       </div>
     {/each}
   </div>
 </music>
+
+<style>
+  .vinyl {
+    background:
+      repeating-radial-gradient(circle at center, #000 0 2px, #0a0a0a 2px 4px),
+      radial-gradient(circle at center, #202020 0%, #000 80%);
+  }
+
+  .vinyl::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.12) 47%,
+      rgba(255, 255, 255, 0) 55%
+    );
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  /* Silver vinyl variant */
+  .vinyl-light {
+    background:
+      /* grooves (lighter dark tone for subtler contrast) */
+      repeating-radial-gradient(
+        circle at center,
+        #d9d9d9 0 2px,
+        #cfcfcf 2px 4px
+      ),
+      /* metallic sheen */
+        radial-gradient(circle at center, #ffffff 0%, #d0d0d0 70%, #a9a9a9 100%);
+  }
+
+  .vinyl-light::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(255, 255, 255, 0.4) 45%,
+      rgba(255, 255, 255, 0) 55%
+    );
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  /* spin animation for popped vinyl */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spin-slow {
+    animation: spin 4s linear infinite;
+  }
+</style>
