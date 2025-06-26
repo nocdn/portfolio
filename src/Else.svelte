@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import ContentHeader from "./lib/ContentHeader.svelte";
   import MusicList from "./lib/MusicList.svelte";
+  import Podcasts from "./lib/Podcasts.svelte";
   let { contentAnimationDirection, visited, onVisited = () => {} } = $props();
 
   onMount(() => {
@@ -18,4 +19,5 @@
   <ContentHeader title="What else?" enabled={true} />
 
   <MusicList />
+  <Podcasts />
 </else>
