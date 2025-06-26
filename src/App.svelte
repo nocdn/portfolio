@@ -5,8 +5,9 @@
   import Education from "./Education.svelte";
   import Contact from "./Contact.svelte";
   import Palette from "./Palette.svelte";
+  import Else from "./Else.svelte";
 
-  let selectedIndex = $state(0);
+  let selectedIndex = $state(4);
   // 'up' means the content should slide up (user navigated down)
   // 'down' means the content should slide down (user navigated up)
   let contentAnimationDirection = $state("down"); // default animation for initial load
@@ -74,6 +75,12 @@
       <Contact
         {contentAnimationDirection}
         visited={visitedIndexes.has(3)}
+        onVisited={addIndex}
+      />
+    {:else if selectedIndex === 4}
+      <Else
+        {contentAnimationDirection}
+        visited={visitedIndexes.has(4)}
         onVisited={addIndex}
       />
     {/if}
