@@ -7,7 +7,7 @@
   import Palette from "./Palette.svelte";
   import Else from "./Else.svelte";
 
-  let selectedIndex = $state(4);
+  let selectedIndex = $state(0);
   // 'up' means the content should slide up (user navigated down)
   // 'down' means the content should slide down (user navigated up)
   let contentAnimationDirection = $state("down"); // default animation for initial load
