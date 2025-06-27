@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import { ScanSearch, X } from "lucide-svelte";
-  let { onDismiss = () => {} } = $props();
+  let { onDismiss = () => {}, onSecret = () => {} } = $props();
 
   let dismissing = $state(false);
   function dismissPalette() {
@@ -13,21 +13,10 @@
 
   let inputElement = $state();
 
-  function handleKeydown(event) {
-    if (event.key === "Escape") {
-      dismissPalette();
-    }
-    if ((event.metaKey || event.ctrlKey) && event.key === "k") {
-      event.preventDefault();
-      dismissPalette();
-      return;
-    }
-    if (event.target === inputElement) {
-      setTimeout(() => {
-        console.log("search", searchValue);
-      }, 0);
-    }
-  }
+  let searchValue = $state("");
+
+  // index of the currently highlighted command
+  let selectedIndex = $state(0);
 
   onMount(() => {
     inputElement?.focus();
@@ -134,7 +123,132 @@
     ],
   };
 
-  let searchValue = $state("");
+  /* --------------------------------------------------
+   * Sections and filtered lists
+   * -------------------------------------------------- */
+
+  const groups = [
+    {
+      label: "LINKS",
+      raw: options.links,
+    },
+    {
+      label: "SOCIALS",
+      raw: options.social_links,
+    },
+    {
+      label: "PROJECTS",
+      raw: options.projects.map((p) => ({
+        name: p.name,
+        link: p.demoLink || p.githubLink,
+      })),
+    },
+    {
+      label: "",
+      raw: [
+        {
+          name: "More about me",
+          link: "special:more-about-me",
+          keywords: ["secret", "easter", "easter egg", "surprise", "hidden"],
+        },
+      ],
+    },
+  ];
+
+  // sections with filtering applied and global indices for navigation
+  let sections = $derived.by(() => {
+    const q = searchValue.trim().toLowerCase();
+    let counter = 0;
+    return groups
+      .map((g) => {
+        const matcher = (it) => {
+          if (it.name.toLowerCase().includes(q)) return true;
+          return it.keywords?.some((k) => k.toLowerCase().includes(q));
+        };
+
+        const items = (q === "" ? g.raw : g.raw.filter(matcher)).map((it) => ({
+          ...it,
+          idx: counter++,
+        }));
+        return { label: g.label, items };
+      })
+      .filter((s) => s.items.length);
+  });
+
+  // flat list for keyboard navigation
+  let flatItems = $derived.by(() => sections.flatMap((s) => s.items));
+
+  // whenever the search text changes, reset the highlighted item to the first result
+  $effect(() => {
+    searchValue; // track dependency
+    selectedIndex = 0;
+  });
+
+  // ensure the highlighted element stays in view
+  $effect(() => {
+    selectedIndex; // track
+    const el = document.querySelector(`a[data-idx='${selectedIndex}']`);
+    el?.scrollIntoView({ block: "nearest" });
+  });
+
+  function moveSelection(delta) {
+    const len = flatItems.length;
+    const next = selectedIndex + delta;
+    if (next < 0 || next >= len) return; // stop at ends, no wrap
+    selectedIndex = next;
+  }
+
+  function activateSelected() {
+    const item = flatItems[selectedIndex];
+    item && handleItemSelect(item);
+  }
+
+  function handleItemSelect(item) {
+    if (item.link === "special:more-about-me") {
+      onSecret();
+      dismissPalette();
+    } else {
+      window.open(item.link, "_blank", "noopener,noreferrer");
+      dismissPalette();
+    }
+  }
+
+  function getItemClass(i) {
+    return `text-sm font-medium px-2 py-1 rounded ${
+      i === selectedIndex
+        ? "bg-gray-100 text-gray-900"
+        : "text-gray-600 hover:text-gray-900"
+    }`;
+  }
+
+  function handleKeydown(event) {
+    if (event.key === "Escape") {
+      dismissPalette();
+    }
+    if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+      event.preventDefault();
+      dismissPalette();
+      return;
+    }
+
+    // keyboard navigation (works regardless of where focus is inside the palette)
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      moveSelection(1);
+      return;
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      moveSelection(-1);
+      return;
+    }
+    if (event.key === "Enter") {
+      // activate the currently selected command
+      event.preventDefault();
+      activateSelected();
+      return;
+    }
+  }
 </script>
 
 <container
@@ -173,46 +287,35 @@
         <X size={20} class="opacity-50 cursor-pointer" />
       </button>
     </search>
-    <content class="flex flex-col gap-4 p-4 overflow-y-auto">
-      <p class="text-sm font-jetbrains-mono font-semibold">LINKS:</p>
-      <div class="flex flex-col gap-2.5">
-        {#each options.links as link}
-          <a
-            href={link.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
-          >
-            {link.name}
-          </a>
-        {/each}
-      </div>
-      <p class="text-sm font-jetbrains-mono font-semibold">SOCIALS:</p>
-      <div class="flex flex-col gap-2.5">
-        {#each options.social_links as link}
-          <a
-            href={link.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
-          >
-            {link.name}
-          </a>
-        {/each}
-      </div>
-      <p class="text-sm font-jetbrains-mono font-semibold">PROJECTS:</p>
-      <div class="flex flex-col gap-2.5">
-        {#each options.projects as project}
-          <a
-            href={project.demoLink || project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
-          >
-            {project.name}
-          </a>
-        {/each}
-      </div>
+    <content
+      class="flex flex-col gap-3 p-4 overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full"
+    >
+      {#each sections as sec}
+        {#if sec.label}
+          <p class="text-sm font-jetbrains-mono font-semibold mt-2">
+            {sec.label}:
+          </p>
+        {/if}
+        <div class="flex flex-col gap-0">
+          {#each sec.items as item}
+            <a
+              href={item.link.startsWith("special:") ? "#" : item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-idx={item.idx}
+              class={getItemClass(item.idx)}
+              onclick={(_) => {
+                handleItemSelect(item);
+              }}
+            >
+              {item.name}
+            </a>
+          {/each}
+        </div>
+      {/each}
+      {#if flatItems.length === 0}
+        <p class="text-sm text-gray-400 px-2">No results</p>
+      {/if}
     </content>
   </palette>
 </container>

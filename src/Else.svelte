@@ -16,7 +16,7 @@
     ? 'animate-small-fade-up'
     : 'animate-small-fade-down'} flex flex-col gap-12 motion-opacity-in-0 pr-16 pb-12"
 >
-  <ContentHeader title="What else?" enabled={true} />
+  <ContentHeader title="Some more about me" enabled={true} />
 
   <MusicList />
   <Podcasts />
