@@ -60,7 +60,7 @@
   --animate-small-fade-down: small-fade-down 0.3s
     cubic-bezier(0.215, 0.61, 0.355, 1);
 
-  --animate-palette-in: palette-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --animate-palette-in: palette-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1);
   --animate-palette-out: palette-out 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 
   --animate-bg-fade-in: bg-fade-in 0.3s ease forwards;

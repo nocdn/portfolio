@@ -23,17 +23,32 @@
         [
           102,
           "Money Maker",
-          "https://podcasts.apple.com/us/podcast/money-maker/id1296350485?i=1000538150692",
+          "https://podyssey.fm/podcast/itunes1296350485/episode23988614-Money-Maker-Darknet-Diaries",
         ],
         [
           111,
           "ZeuS",
-          "https://podcasts.apple.com/us/podcast/zeus/id1296350485?i=1000551832087",
+          "https://podyssey.fm/podcast/itunes1296350485/episode24505826--Darknet-Diaries",
         ],
         [
           27,
           "Chartbreakers",
-          "https://podcasts.apple.com/us/podcast/chartbreakers/id1296350485?i=1000424917059",
+          "https://podyssey.fm/podcast/itunes1296350485/episode2711135-Chartbreakers-Darknet-Diaries",
+        ],
+        [
+          116,
+          "Mad Dog",
+          "https://podyssey.fm/podcast/itunes1296350485/episode24827468--Darknet-Diaries",
+        ],
+        [
+          90,
+          "Jenny",
+          "https://podyssey.fm/podcast/itunes1296350485/episode23247807-Jenny-Darknet-Diaries",
+        ],
+        [
+          92,
+          "Pirate Bay",
+          "https://podyssey.fm/podcast/itunes1296350485/episode23463431-Pirate-Darknet-Diaries",
         ],
       ],
     },
@@ -49,6 +64,23 @@
       artist: "Jordan Harbinger",
       description:
         "Interesting conversations with very interesting people. That's pretty much it. Lots of episodes, lots of topics and guests.",
+      best: [
+        [
+          1,
+          "Frank Abagnale",
+          "https://podyssey.fm/podcast/itunes1344999619/episode1015225-Frank-Abagnale-The-Jordan-Harbinger-Show",
+        ],
+        [
+          488,
+          "Frank Bourassa (pt. 1)",
+          "https://podyssey.fm/podcast/itunes1344999619/episode23130505-Frank-Bourassa-Worlds-Greatest-Counterfeiter-The-Jordan-Harbinger-Show",
+        ],
+        [
+          489,
+          "Frank Bourassa (pt. 2)",
+          "https://podyssey.fm/podcast/itunes1344999619/episode23154351-Frank-Bourassa-Worlds-Greatest-Counterfeiter-The-Jordan-Harbinger-Show",
+        ],
+      ],
     },
     { name: "Nudge", cover: nudge, artist: "Phill Agnew" },
     { name: "Better Offline", cover: offline, artist: "Ed Zitron" },
@@ -69,11 +101,14 @@
   let currentIndex = $state(0);
 </script>
 
-<music class="flex flex-col gap-3 mt-4 ml-0.5" style="perspective: 500px;">
+<podcasts
+  class="flex flex-col gap-3 mt-4 ml-0.5 max-w-3xl"
+  style="perspective: 500px;"
+>
   <div
     class="font-jetbrains-mono text-md transition-all duration-300 {isHovering
       ? 'blur-[1px]'
-      : 'blur-[0px]'} flex items-center gap-3"
+      : 'blur-[0px]'} flex items-center gap-3.5"
     class:opacity-25={isHovering}
     style:transform={isHovering ? "translateZ(-7px)" : "translateZ(0)"}
   >
@@ -85,7 +120,7 @@
           tabindex={i}
           class="bg-gray-200 rounded-full w-1.5 h-1.5 {currentIndex === i
             ? 'bg-gray-500'
-            : 'bg-gray-200'} cursor-pointer"
+            : 'bg-gray-200'} cursor-pointer transition-all duration-300"
           onmousedown={() => {
             currentIndex = i;
           }}
@@ -111,7 +146,7 @@
   </div>
 
   <div class="rounded-md flex gap-3 w-fit">
-    <div class="rounded-md w-48 h-48 relative">
+    <div class="rounded-md min-w-40 max-w-40 min-h-40 max-h-40 relative">
       <img
         src={podcastList[currentIndex].cover}
         alt={podcastList[currentIndex].name}
@@ -129,23 +164,26 @@
       <p class="font-geist font-normal text-gray-500">
         {podcastList[currentIndex].description}
       </p>
-      <p
-        class="font-geist-mono text-sm font-semibold text-gray-500 mt-2.5 pb-1"
-      >
-        BEST EPISODES:
-      </p>
-      <div class="flex gap-3.5 items-center">
-        {#each podcastList[currentIndex].best as best}
-          <div class="flex gap-1.5 items-center">
-            <p
-              class="font-geist text-gray-500 text-sm px-1 py-[1.75px] rounded-md bg-gray-100"
-            >
-              {best[0]}
-            </p>
-            <a href={best[2]} class="font-geist text-gray-500">{best[1]}</a>
-          </div>
-        {/each}
-      </div>
+      {#if podcastList[currentIndex].best}
+        <p
+          class="font-geist-mono text-sm font-semibold text-gray-500 mt-2.5 pb-1"
+        >
+          BEST EPISODES:
+        </p>
+        <div class="flex flex-wrap gap-x-2 gap-y-0.5 items-center max-w-sm">
+          {#each podcastList[currentIndex].best as best}
+            <div class="flex gap-1 items-center">
+              <span
+                class="font-geist text-gray-500 text-xs bg-gray-100 rounded px-1"
+                >{best[0]}</span
+              >
+              <a href={String(best[2])} class="font-geist text-gray-500"
+                >{best[1]}</a
+              >
+            </div>
+          {/each}
+        </div>
+      {/if}
     </div>
   </div>
-</music>
+</podcasts>
