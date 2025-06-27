@@ -61,7 +61,7 @@
   />
   {#if showHere}
     <div
-      class="flex items-center gap-3 text-red-700/80 font-jetbrains-mono font-bold text-sm motion-preset-blur-down-md"
+      class="flex items-center gap-3 text-red-700/80 dark:text-red-400/80 font-jetbrains-mono font-bold text-sm motion-preset-blur-down-md"
     >
       <Here /> I AM HERE
     </div>

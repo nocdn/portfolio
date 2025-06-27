@@ -52,13 +52,13 @@
 
 <skills class="flex flex-col gap-2 group">
   <heading class="flex items-center gap-3 font-jetbrains-mono text-sm">
-    <Package size={20} />
+    <Package size={20} class="dark:text-red-400" />
     <span class="{blinking ? 'animation-fade-in-out' : ''} font-bold"
       >SKILLS</span
     >
     {#if skills.length > 0}
       <span
-        class="opacity-0 group-hover:opacity-50 text-red-600 transition-opacity duration-200"
+        class="opacity-0 group-hover:opacity-50 text-red-600 dark:text-red-400 dark:group-hover:opacity-100 transition-opacity duration-200"
         >[MOST PROFICIENT]</span
       >
     {/if}
@@ -70,7 +70,7 @@
     {#each skills as skill}
       <p
         style="height: 25px"
-        class="text-md font-geist-mono text-balance opacity-50 {firstTime
+        class="text-md font-geist-mono text-balance opacity-50 dark:opacity-100 {firstTime
           ? 'motion-preset-blur-down'
           : ''}"
       >
@@ -87,7 +87,7 @@
           ]}
           {#if proficientSkills.includes(trimmedPart.toLowerCase())}
             <span
-              class="group-hover:text-red-600 transition-colors duration-200"
+              class="group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-200"
               >{trimmedPart}</span
             >{#if !isLast},{/if}
           {:else}

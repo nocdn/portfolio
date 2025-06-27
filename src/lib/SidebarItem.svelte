@@ -8,7 +8,7 @@
   id="sidebar-item"
   onclick={() => onClick(0)}
   class="text-left font-geist-mono {isSelected
-    ? 'text-red-900'
+    ? 'text-red-900 dark:text-red-400'
     : ''} font-medium cursor-pointer focus:outline-none"
   >{#if isSelected}
     <div class="flex items-center gap-1.5">

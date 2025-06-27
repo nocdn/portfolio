@@ -75,7 +75,7 @@
       I am a student at the University of York and an aspiring full-stack engineer
       who likes to
       <span
-        class="group-hover:text-red-600/60 transition-all transition-500 group-hover:cursor-pointer relative inline-block after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:bg-red-600/60 after:transition-all after:duration-300 after:ease-[cubic-bezier(0.23,1,0.32,1)] hover:after:w-full after:w-0"
+        class="group-hover:text-red-600/60 dark:group-hover:text-red-400 transition-all transition-500 group-hover:cursor-pointer relative inline-block after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:bg-red-600/60 dark:after:bg-red-400/85 after:transition-all after:duration-300 after:ease-[cubic-bezier(0.23,1,0.32,1)] hover:after:w-full after:w-0"
         onclick={() => onIndexChange(1)}
         role="button"
         tabindex="0"

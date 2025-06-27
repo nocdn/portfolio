@@ -83,7 +83,7 @@
 </script>
 
 <sidebar
-  class="p-8 pb-10 pl-12 grid grid-rows-[40%_30%_30%] h-full opacity-40 hover:opacity-100 transition-opacity duration-300"
+  class="p-8 pb-10 pl-12 grid grid-rows-[40%_30%_30%] h-full opacity-40 hover:opacity-100 transition-opacity duration-300 dark:opacity-60"
 >
   <div id="sidebar-items" class="flex flex-col justify-start gap-3 mt-12">
     <SidebarItem

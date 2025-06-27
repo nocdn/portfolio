@@ -82,8 +82,48 @@
         ],
       ],
     },
-    { name: "Nudge", cover: nudge, artist: "Phill Agnew" },
-    { name: "Better Offline", cover: offline, artist: "Ed Zitron" },
+    {
+      name: "Nudge",
+      cover: nudge,
+      artist: "Phill Agnew",
+      description: "",
+      best: [
+        [
+          null,
+          "17½ persuasion tactics in 28 minutes",
+          "https://podyssey.fm/podcast/itunes1457621005/episode258186781-persuasion-tactics-minutes-Nudge",
+        ],
+        [
+          null,
+          "FBI hostage negotiator shares his worst mistakes",
+          "https://podyssey.fm/podcast/itunes1457621005/episode206989916-hostage-negotiator-shares-worst-mistakes-Nudge",
+        ],
+        [
+          null,
+          "Steve Jobs: The master of persuasion (pt 1)",
+          "https://podyssey.fm/podcast/itunes1457621005/episode113282400-Steve-master-persuasion-Nudge",
+        ],
+        [
+          null,
+          "Steve Jobs: How he persuaded the world (pt 2)",
+          "https://podyssey.fm/podcast/itunes1457621005/episode114984446-Steve-persuaded-world-Nudge",
+        ],
+      ],
+    },
+    {
+      name: "Better Offline",
+      cover: offline,
+      artist: "Ed Zitron",
+      description:
+        "Emotion-filled and raw, looking at the tech world through a critical lens, often touching on the “growth-at-all-costs” mentality of tech elites.",
+      best: [
+        [
+          null,
+          "The Shareholder Supremacy",
+          "https://podyssey.fm/podcast/itunes1730587238/episode221850697-Shareholder-Supremacy-Better-Offline",
+        ],
+      ],
+    },
     {
       name: "Reply All",
       cover: reply,
@@ -173,10 +213,15 @@
         <div class="flex flex-wrap gap-x-2 gap-y-0.5 items-center max-w-sm">
           {#each podcastList[currentIndex].best as best}
             <div class="flex gap-1 items-center">
-              <span
-                class="font-geist text-gray-500 text-xs bg-gray-100 rounded px-1"
-                >{best[0]}</span
-              >
+              {#if best[0] !== null}
+                <span
+                  class="font-geist text-gray-500 text-xs bg-gray-100 rounded px-1"
+                  >{best[0]}</span
+                >
+              {:else}
+                <div class="w-1.5 h-1.5 mr-1 bg-gray-200 rounded-full"></div>
+              {/if}
+
               <a href={String(best[2])} class="font-geist text-gray-500"
                 >{best[1]}</a
               >
