@@ -15,6 +15,16 @@
   interpolate-size: allow-keywords;
 }
 
+::selection {
+  background: #ffb3b3;
+  color: #000;
+}
+
+::-moz-selection {
+  background: #ffb3b3;
+  color: #000;
+}
+
 #app {
   height: 100dvh;
   width: 100dvw;
