@@ -6,7 +6,7 @@
 
 ### Purpose
 
-This is a static site I made to learn Svelte, then Svelte 5, and later Tailwind CSS.
+This is a static site I made to learn Svelte, then Svelte 5, and Tailwind CSS.
 
 ### Building
 
@@ -16,19 +16,19 @@ Clone the repo:
 git clone github.com/nocdn/portfolio.git
 ```
 
-Install dependencies:
+Install dependencies (I prefer to use bun):
 
 ```bash
-npm install
+bun install
 ```
 
 Build the project:
 
 ```bash
-npm run build
+bun run build
 ```
 
-Wow you can serve the files generated in the `dist` folder with any static hosting server or service.
+Now you can serve the files generated in the `dist` folder with any static hosting server or service.
 
 ### License
 
